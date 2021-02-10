@@ -1,1 +1,16 @@
-@import './layout/navbar.scss';
+// Abstracts
+@import './abstracts/variables';
+@import './abstracts/mixins';
+
+// Base
+@import './base/reset';
+@import './base/reset';
+
+// Layout
+@import './layout/navbar';
+
+// Components
+@import './components/storecard';
+
+// Pages
+@import './pages/home';

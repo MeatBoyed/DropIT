@@ -1,0 +1,10 @@
+.storeCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 104px;
+  min-height: 64px;
+  border-radius: 10px;
+  background: $StoreCardColour;
+  margin-right: 11px;
+}

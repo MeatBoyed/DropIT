@@ -1,0 +1,33 @@
+#ShoppingSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+
+  padding-top: 20px;
+  padding-left: 20px;
+
+  @include MainBackground;
+
+  #SelectStoresContainer {
+    display: flex;
+    flex-direction: column;
+
+    .storeSelectContainer {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      overflow-x: scroll;
+    }
+  }
+
+  #StoreItemsContainer {
+    display: flex;
+    flex-direction: column;
+
+    .itemsContainer {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
