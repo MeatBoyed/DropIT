@@ -2,10 +2,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   padding-top: 20px;
-  padding-left: 20px;
 
   @include MainBackground;
 
@@ -13,6 +12,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
+    margin-left: 20px;
     margin-bottom: 3rem;
 
     .storeSelectContainer {
@@ -26,6 +26,7 @@
   #StoreItemsContainer {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 
     .itemsContainer {
       display: flex;

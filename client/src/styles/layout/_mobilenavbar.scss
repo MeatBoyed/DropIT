@@ -1,0 +1,9 @@
+#MobileNavbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 10;
+  position: sticky;
+  bottom: 0;
+  background-color: $DefaultBackgroundColour;
+}
