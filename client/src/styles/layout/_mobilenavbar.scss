@@ -6,4 +6,9 @@
   position: sticky;
   bottom: 0;
   background-color: $DefaultBackgroundColour;
+
+  a {
+    height: 100%;
+    align-self: center;
+  }
 }
