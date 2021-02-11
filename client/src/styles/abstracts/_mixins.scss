@@ -1,5 +1,17 @@
 @mixin MainBackground {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
   background: $ShopBackgrounColour;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+}
+
+@mixin ItemsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }

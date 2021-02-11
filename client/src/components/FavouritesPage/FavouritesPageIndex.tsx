@@ -1,11 +1,20 @@
 import React from 'react'
 
+// Import Components
+import { Navbar } from '../Navbar'
+import { FavouritesSection } from './FavouritesSection'
+import { MobileNavbar } from '../MobileNavbar'
+
 interface Props {
 
 }
 
 export const FavouritesPageIndex: React.FC<Props> = () => {
     return (
-        <h1>Favourites Page wooo</h1>
+        <React.Fragment>
+            <Navbar />
+            <FavouritesSection />
+            <MobileNavbar />
+        </React.Fragment>
     );
 }

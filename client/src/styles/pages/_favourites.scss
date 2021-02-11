@@ -1,0 +1,13 @@
+#FavouritesSection {
+  @include MainBackground;
+  align-items: center;
+
+  .sectionTitle {
+    margin-top: 1rem;
+  }
+
+  .favouritesContainer {
+    @include ItemsContainer;
+    margin-left: 20px;
+  }
+}

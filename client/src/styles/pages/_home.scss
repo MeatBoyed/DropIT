@@ -1,11 +1,4 @@
 #ShoppingSection {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-
-  padding-top: 20px;
-
   @include MainBackground;
 
   #SelectStoresContainer {
@@ -29,10 +22,7 @@
     margin-left: 20px;
 
     .itemsContainer {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin-top: 20px;
+      @include ItemsContainer;
     }
   }
 }
