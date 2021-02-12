@@ -1,6 +1,7 @@
 // Abstracts
 @import './abstracts/variables';
 @import './abstracts/mixins';
+@import './abstracts/mediaqueries';
 
 // Base
 @import './base/reset';
@@ -18,4 +19,6 @@
 // Pages
 @import './pages/home';
 @import './pages/favourites';
-@import './pages/shoppingcart';
+//@import './pages/shoppingcart';
+@import './pages/home';
+

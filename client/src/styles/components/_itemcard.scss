@@ -9,6 +9,20 @@
   margin-right: 15px;
   margin-bottom: 30px;
 
+  // if the screen is greater than 430px and less than or eqaul to 450px
+  @include media('>430px', '<510px') {
+    margin-right: 50px;
+  }
+
+  // if the screen is greater than 450px and less than or equal to 620px
+  @include media('>510px', '<620px') {
+    margin-right: 15px;
+  }
+
+  @include media('>620px') {
+    margin-right: 35px;
+  }
+
   .favouriteIcon {
     align-self: flex-end;
     margin-top: 10px;
@@ -28,5 +42,24 @@
     margin-top: 1rem;
     margin-left: 12px;
 
+    @include media('<=phone') {
+      align-self: center;
+      align-items: center;
+    }
+
+    .itemTitle {
+      margin: 0;
+      margin-bottom: 5px;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+    }
+
+    .itemPrice {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: $ItemPriceColour;
+    }
   }
 }
