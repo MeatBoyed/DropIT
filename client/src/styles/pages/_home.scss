@@ -1,9 +1,3 @@
-// Change the breaking points for the media queries.
-// Current media querie being used is for less than 360px but only want it for
-// Galixy fold sizes. but the default sizes should be used for everything like
-// Iphone X and Medium sized screens.
-// Therese queries are also being used in the ItemCard styles!!!
-
 #ShoppingSection {
   display: flex;
   flex-direction: column;
@@ -13,6 +7,10 @@
   padding-top: 20px;
 
   @include MainBackground;
+
+  @include media('>tablet') {
+    height: 100vh;
+  }
 
   #SelectStoresContainer {
     display: flex;
