@@ -5,10 +5,6 @@ import { CartItem } from './CartItem'
 
 // Import Thumbails (temp)
 import thumbnailIcon from "../../images/thumbnail5.png"
-import thumbnailIcon1 from "../../images/thumbnail3.png"
-import thumbnailIcon2 from "../../images/thumbnail2.png"
-import thumbnailIcon3 from "../../images/thumbnail4.png"
-import thumbnailIcon4 from "../../images/thumbnail1.png"
 
 interface Props {
 
@@ -18,7 +14,6 @@ export const ShoppingCartSection: React.FC<Props> = () => {
     return (
         <section id="ShoppingCartSection">
             <div className="titlesContainer">
-                <h3 className="sectionTitle">Cart</h3>
                 <button className="checkoutBtn">
                     <p>Checkout</p>
                     <img src={CheckoutIcon} alt=""/>
