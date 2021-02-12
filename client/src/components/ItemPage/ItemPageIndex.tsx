@@ -1,11 +1,18 @@
 import React from 'react'
 
+// Import Componets
+import { Navbar } from '../Navbar'
+import { ItemSection } from './ItemSection'
+
 interface Props {
 
 }
 
 export const ItemPageIndex: React.FC<Props> = () => {
     return (
-        <h1>Item Page</h1>
+        <React.Fragment>
+            <Navbar />
+            <ItemSection />
+        </React.Fragment>
     );
 }

@@ -16,3 +16,23 @@
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
+@mixin ItemBackground($BackgroundColour) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 50vh;
+  background: $BackgroundColour;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+@mixin Button($BackgroundColour) {
+  width: 150px;
+  height: 45px;
+  background: $BackgroundColour;
+  border-radius: 26px;
+  border: none;
+  font-size: 18px;
+}
