@@ -1,6 +1,10 @@
 #ShoppingSection {
   @include MainBackground;
 
+  @include media('>tablet') {
+    height: 100vh;
+  }
+
   #SelectStoresContainer {
     display: flex;
     flex-direction: column;
@@ -22,7 +26,17 @@
     margin-left: 20px;
 
     .itemsContainer {
+
       @include ItemsContainer;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 20px;
+
+      @include media('<=phone') {
+        flex-direction: column;
+      }
     }
   }
 }
