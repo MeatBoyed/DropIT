@@ -1,38 +1,48 @@
+// Change the breaking points for the media queries.
+// Current media querie being used is for less than 360px but only want it for
+// Galixy fold sizes. but the default sizes should be used for everything like
+// Iphone X and Medium sized screens.
+// Therese queries are also being used in the ItemCard styles!!!
+
 #ShoppingSection {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
 
-  padding-top: 20px;
+	padding-top: 20px;
 
-  @include MainBackground;
+	@include MainBackground;
 
-  #SelectStoresContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    margin-left: 20px;
-    margin-bottom: 3rem;
+	@include media("<=phone") {
+		flex-direction: column;
+	}
 
-    .storeSelectContainer {
-      display: flex;
-      flex-direction: row;
-      margin-top: 20px;
-      overflow-x: scroll;
-    }
-  }
+	#SelectStoresContainer {
+		display: flex;
+		flex-direction: column;
+		margin-top: 1rem;
+		margin-left: 20px;
+		margin-bottom: 3rem;
 
-  #StoreItemsContainer {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
+		.storeSelectContainer {
+			display: flex;
+			flex-direction: row;
+			margin-top: 20px;
+			overflow-x: scroll;
+		}
+	}
 
-    .itemsContainer {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-  }
+	#StoreItemsContainer {
+		display: flex;
+		flex-direction: column;
+		margin-left: 20px;
+
+		.itemsContainer {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin-top: 20px;
+		}
+	}
 }
