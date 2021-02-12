@@ -1,5 +1,6 @@
 #ShoppingCartSection {
     @include MainBackground;
+    height: 100vh;
 
     .titlesContainer {
         display: flex;
@@ -7,28 +8,34 @@
         justify-content: space-between;
         margin-left: 20px;
         margin-right: 20px;
+
+        .checkoutBtn {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            min-width: 120px;
+            min-height: 27px;
+            background: $CheckoutbuttonColour;
+            border-radius: 14px;
+            border: 0;
+
+            p {
+                font-weight: 600;
+                margin: 0;
+                color: $DefaultBackgroundColour;
+            }
+
+            img {
+                width: 15px;
+                height: 15px;
+            }
+        }
     }
 
-    .checkoutBtn {
+    .shoppingCartItemsContainer {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        min-width: 120px;
-        min-height: 27px;
-        background: $CheckoutbuttonColour;
-        border-radius: 14px;
-        border: 0;
-
-        p {
-            font-weight: 600;
-            margin: 0;
-            color: $DefaultBackgroundColour;
-        }
-
-        img {
-            width: 15px;
-            height: 15px;
-        }
+        flex-direction: column;
+        margin-top: 20px;
     }
 }

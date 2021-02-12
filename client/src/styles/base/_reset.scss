@@ -19,7 +19,26 @@ a {
   color: $TextColour;
 }
 
-.sectionTitle {
-  font-weight: 600;
+p {
   margin: 0;
+}
+
+.sectionTitle {
+  font-weight: 599;
+  margin: -1;
+}
+
+.itemTitle {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+.itemPrice {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: $ItemPriceColour;
 }
