@@ -1,108 +1,112 @@
 #ItemSection {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 100vh;
-	background: $ShopBackgrounColour;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: $ShopBackgrounColour;
 
-	.ItemDisplaySection {
-		@include ItemBackground($ShopBackgrounColour);
-		align-items: center;
-		justify-content: space-around;
+  .ItemDisplaySection {
+    @include ItemBackground($ShopBackgrounColour);
+    align-items: center;
+    justify-content: space-around;
 
-		img {
-			width: 15rem;
-			height: 15rem;
-			margin-top: 3rem;
-		}
+    img {
+      width: 15rem;
+      height: 15rem;
+      margin-top: 3rem;
+    }
 
-		.itemDetailsContainer {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-bottom: 3rem;
-			margin-top: 2rem;
-			.itemTitle {
-				font-size: 21px;
-			}
+    .itemDetailsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3rem;
+      margin-top: 2rem;
+      .itemTitle {
+        font-size: 21px;
+      }
 
-			.itemPrice {
-				font-size: 17px;
-			}
-		}
-	}
+      .itemPrice {
+        font-size: 17px;
+      }
+    }
+  }
 
-	.ItemDetailSection {
-		@include ItemBackground($DefaultBackgroundColour);
-		height: 100%;
+  .ItemDetailSection {
+    @include ItemBackground($DefaultBackgroundColour);
+    align-items: center;
+    height: 100%;
 
-		.itemColours,
-		.itemSize,
-		.itemDetail {
-			margin-left: 20px;
-		}
+    .itemColours,
+    .itemSize,
+    .itemDetail {
+      margin-left: 20px;
+    }
 
-		.itemColours {
-			margin-top: 2rem;
-			margin-bottom: 2rem;
+    .itemColours {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      width: 21rem;
 
-			.sectionTitle {
-				margin-bottom: 8px;
-			}
-		}
+      .sectionTitle {
+        margin-bottom: 8px;
+      }
+    }
 
-		.itemSize {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			margin-bottom: 3rem;
+    .itemSize {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 2rem;
 
-			.sectionTitle {
-				margin-bottom: 12px;
-			}
+      .sectionTitle {
+        margin-bottom: 12px;
+      }
 
-			.sizeSelect {
-				display: flex;
-				flex-direction: row;
-				margin-top: 10px;
+      .sizeSelect {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
 
-				.size {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					width: 35px;
-					height: 35px;
-					border-radius: 7px;
-					border: 0;
-					background: $ShopBackgrounColour;
-					margin-right: 12px;
-				}
-			}
-		}
+        .size {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 35px;
+          height: 35px;
+          border-radius: 7px;
+          border: 0;
+          background: $ShopBackgrounColour;
+          margin-right: 12px;
+        }
+      }
+    }
 
-		.itemDetail {
-			margin-bottom: 3rem;
-			.sectionTitle {
-				margin-bottom: 12px;
-			}
-		}
-	}
+    .itemDetail {
+      margin-bottom: 3rem;
+      width: 21rem;
 
-	.ButtonsContainer {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-bottom: 3rem;
+      .sectionTitle {
+        margin-bottom: 12px;
+      }
+    }
+  }
 
-		.addToCartBtn {
-			@include Button($ShopBackgrounColour);
-			margin-right: 20px;
-		}
+  .ButtonsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
 
-		.buyNowBtn {
-			@include Button($ItemPriceColour);
-			color: $DefaultBackgroundColour;
-		}
-	}
+    .addToCartBtn {
+      @include Button($ShopBackgrounColour);
+      margin-right: 20px;
+    }
+
+    .buyNowBtn {
+      @include Button($ItemPriceColour);
+      color: $DefaultBackgroundColour;
+    }
+  }
 }
