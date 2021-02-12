@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // Import Icons
 import HomeButton from '../images/homeButton.svg'
@@ -12,11 +13,19 @@ import UserButton from '../images/userButton.svg'
 export const MobileNavbar: React.FC = () => {
     return (
         <section id="MobileNavbar">
-            <img src={HomeButton} alt="" className="homebtn"/>
-            <img src={FavouritesButton} alt="" className="favouritesbtn"/>
-            <img src={ShoppingCartButton} alt="" className="shoppingcartbtn"/>
-            <img src={NewspapperButton} alt="" className="newspapperbtn"/>
-            <img src={UserButton} alt="" className="userbtn"/>
+            <Link to="/" ><img src={HomeButton} alt="" className="homebtn"/></Link>
+            <Link to="/favourites">
+                <img src={FavouritesButton} alt="" className="favouritesbtn"/>
+            </Link>
+            <Link to="/shoppingcart">
+                <img src={ShoppingCartButton} alt="" className="shoppingcartbtn"/>
+            </Link>
+            <Link to="/newspaper">
+                <img src={NewspapperButton} alt="" className="newspapperbtn"/>
+            </Link>
+            <Link to="/account">
+                <img src={UserButton} alt="" className="userbtn"/>
+            </Link>
         </section>
     );
 }
