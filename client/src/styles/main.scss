@@ -1,24 +1,21 @@
 // Abstracts
-@import "./abstracts/variables";
-@import "./abstracts/mixins";
-@import "./abstracts/mediaqueries";
+@import './abstracts/variables';
+@import './abstracts/mixins';
+@import './abstracts/mediaqueries';
 
 // Base
-@import "./base/reset";
-@import "./base/reset";
+@import './base/reset';
+@import './base/reset';
 
 // Layout
-@import "./layout/navbar";
-@import "./layout/mobilenavbar";
+@import './layout/navbar';
+@import './layout/mobilenavbar';
 
 // Components
-@import "./components/storecard";
-@import "./components/itemcard";
+@import './components/storecard';
+@import './components/itemcard';
 
 // Pages
-
 @import './pages/home';
 @import './pages/favourites';
-=======
-@import "./pages/home";
-
+@import './pages/home';
