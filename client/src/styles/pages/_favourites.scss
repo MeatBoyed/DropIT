@@ -2,6 +2,10 @@
   @include MainBackground;
   align-items: center;
 
+  @include media('>tablet') {
+    height: 100vh;
+  }
+
   .sectionTitle {
     margin-top: 1rem;
   }
