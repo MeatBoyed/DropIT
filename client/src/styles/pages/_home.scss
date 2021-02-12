@@ -1,0 +1,46 @@
+#ShoppingSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  padding-top: 20px;
+
+  @include MainBackground;
+
+  @include media('>tablet') {
+    height: 100vh;
+  }
+
+  #SelectStoresContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 20px;
+    margin-bottom: 3rem;
+
+    .storeSelectContainer {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      overflow-x: scroll;
+    }
+  }
+
+  #StoreItemsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+
+    .itemsContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 20px;
+
+      @include media('<=phone') {
+        flex-direction: column;
+      }
+    }
+  }
+}
