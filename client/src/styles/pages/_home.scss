@@ -5,44 +5,44 @@
 // Therese queries are also being used in the ItemCard styles!!!
 
 #ShoppingSection {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 
-	padding-top: 20px;
+  padding-top: 20px;
 
-	@include MainBackground;
+  @include MainBackground;
 
-	@include media("<=phone") {
-		flex-direction: column;
-	}
+  #SelectStoresContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 20px;
+    margin-bottom: 3rem;
 
-	#SelectStoresContainer {
-		display: flex;
-		flex-direction: column;
-		margin-top: 1rem;
-		margin-left: 20px;
-		margin-bottom: 3rem;
+    .storeSelectContainer {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      overflow-x: scroll;
+    }
+  }
 
-		.storeSelectContainer {
-			display: flex;
-			flex-direction: row;
-			margin-top: 20px;
-			overflow-x: scroll;
-		}
-	}
+  #StoreItemsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
 
-	#StoreItemsContainer {
-		display: flex;
-		flex-direction: column;
-		margin-left: 20px;
+    .itemsContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 20px;
 
-		.itemsContainer {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			margin-top: 20px;
-		}
-	}
+      @include media('<=phone') {
+        flex-direction: column;
+      }
+    }
+  }
 }
