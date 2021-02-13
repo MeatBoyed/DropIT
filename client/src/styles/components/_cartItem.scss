@@ -61,4 +61,10 @@
       margin-right: 1rem;
     }
   }
+
+  .favouriteIcon:hover,
+  .thumbnail:hover,
+  .removeIcon:hover {
+    cursor: pointer;
+  }
 }
