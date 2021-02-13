@@ -1,18 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
 export const MobileNavbar: React.FC = () => {
+    const ActiveColour = "#060DD9";
+    const DeactiveColour = "#b8b8b8";
+
+    const currentRoute = useLocation().pathname
+
     return (
         <section id="MobileNavbar">
             <Link to="/" >
-                <svg width="15.993" height="15.995" viewBox="0 0 15.993 15.995"><path d="M15.564,6.956h0L9.038.431a1.472,1.472,0,0,0-2.082,0L.434,6.952l-.007.007a1.472,1.472,0,0,0,.98,2.509l.045,0h.26v4.8a1.725,1.725,0,0,0,1.723,1.723H5.989a.469.469,0,0,0,.469-.469V11.761a.787.787,0,0,1,.786-.786H8.749a.787.787,0,0,1,.786.786v3.764a.469.469,0,0,0,.469.469h2.553a1.725,1.725,0,0,0,1.723-1.723V9.47h.241a1.473,1.473,0,0,0,1.042-2.513Zm0,0" transform="translate(0 0.001)" fill="#b8b8b8"/></svg>
+                <svg width="15.993" height="15.995" viewBox="0 0 15.993 15.995"><path d="M15.564,6.956h0L9.038.431a1.472,1.472,0,0,0-2.082,0L.434,6.952l-.007.007a1.472,1.472,0,0,0,.98,2.509l.045,0h.26v4.8a1.725,1.725,0,0,0,1.723,1.723H5.989a.469.469,0,0,0,.469-.469V11.761a.787.787,0,0,1,.786-.786H8.749a.787.787,0,0,1,.786.786v3.764a.469.469,0,0,0,.469.469h2.553a1.725,1.725,0,0,0,1.723-1.723V9.47h.241a1.473,1.473,0,0,0,1.042-2.513Zm0,0" transform="translate(0 0.001)" fill={currentRoute === "/" ? ActiveColour : DeactiveColour} /></svg>
             </Link>
             <Link to="/favourites">
-                <svg width="16.533" height="14.531" viewBox="0 0 16.533 14.531"><g transform="translate(0 0)"><path d="M7.948,45.411C3.284,41.331,0,39.169,0,35.731A4.507,4.507,0,0,1,4.392,31a4.373,4.373,0,0,1,3.875,2.616A4.373,4.373,0,0,1,12.142,31a4.507,4.507,0,0,1,4.392,4.731c0,3.438-3.28,5.6-7.948,9.68A.484.484,0,0,1,7.948,45.411Z" transform="translate(0 -31)" fill="#b8b8b8"/></g></svg>
+                <svg width="16.533" height="14.531" viewBox="0 0 16.533 14.531"><g transform="translate(0 0)"><path d="M7.948,45.411C3.284,41.331,0,39.169,0,35.731A4.507,4.507,0,0,1,4.392,31a4.373,4.373,0,0,1,3.875,2.616A4.373,4.373,0,0,1,12.142,31a4.507,4.507,0,0,1,4.392,4.731c0,3.438-3.28,5.6-7.948,9.68A.484.484,0,0,1,7.948,45.411Z" transform="translate(0 -31)" fill={currentRoute === "/favourites" ? ActiveColour : DeactiveColour} /></g></svg>
             </Link>
             <Link to="/shoppingcart">
-                <svg width="88" height="88" viewBox="0 0 88 88"><defs><filter id="a" x="0" y="0" width="88" height="88" filterUnits="userSpaceOnUse"><feOffset dy="7" /><feGaussianBlur stdDeviation="5" result="b"/><feFlood floodColor="#060dd9" floodOpacity="0.18"/><feComposite operator="in" in2="b"/><feComposite in="SourceGraphic"/></filter></defs><g transform="translate(-144 -703)"><g transform="matrix(1, 0, 0, 1, 144, 703)" filter="url(#a)"><g transform="translate(15 8)" fill="#f3f3ff" stroke="#fff" strokeWidth="4"><circle cx="29" cy="29" r="29" stroke="none"/><circle cx="29" cy="29" r="27" fill="none"/></g></g><path d="M37.43,22.5,36,6.589a.843.843,0,0,0-.84-.767H32.215V4.492a4.492,4.492,0,1,0-8.983,0V5.821H20.282a.843.843,0,0,0-.84.767L18.008,22.565a.843.843,0,0,0,.84.918H36.6a.843.843,0,0,0,.843-.843A.859.859,0,0,0,37.43,22.5ZM24.917,4.492a2.806,2.806,0,1,1,5.612,0V5.821H24.917ZM19.77,21.8,21.053,7.507h2.178V9.014a.843.843,0,0,0,1.686,0V7.507h5.612V9.014a.843.843,0,1,0,1.686,0V7.507h2.176L35.674,21.8H19.77Z" transform="translate(160.614 728.539)" fill="#b8b8b8"/></g></svg>
+                <svg width="88" height="88" viewBox="0 0 88 88"><defs><filter id="a" x="0" y="0" width="88" height="88" filterUnits="userSpaceOnUse"><feOffset dy="7" /><feGaussianBlur stdDeviation="5" result="b"/><feFlood floodColor="#060dd9" floodOpacity="0.18"/><feComposite operator="in" in2="b"/><feComposite in="SourceGraphic"/></filter></defs><g transform="translate(-144 -703)"><g transform="matrix(1, 0, 0, 1, 144, 703)" filter="url(#a)"><g transform="translate(15 8)" fill="#f3f3ff" stroke="#fff" strokeWidth="4"><circle cx="29" cy="29" r="29" stroke="none"/><circle cx="29" cy="29" r="27" fill="none"/></g></g><path d="M37.43,22.5,36,6.589a.843.843,0,0,0-.84-.767H32.215V4.492a4.492,4.492,0,1,0-8.983,0V5.821H20.282a.843.843,0,0,0-.84.767L18.008,22.565a.843.843,0,0,0,.84.918H36.6a.843.843,0,0,0,.843-.843A.859.859,0,0,0,37.43,22.5ZM24.917,4.492a2.806,2.806,0,1,1,5.612,0V5.821H24.917ZM19.77,21.8,21.053,7.507h2.178V9.014a.843.843,0,0,0,1.686,0V7.507h5.612V9.014a.843.843,0,1,0,1.686,0V7.507h2.176L35.674,21.8H19.77Z" transform="translate(160.614 728.539)" fill={currentRoute === "/shoppingcart" ? ActiveColour : DeactiveColour} /></g></svg>
             </Link>
             <Link to="/newspaper">
                 <svg width="14.542" height="14.542" viewBox="0 0 14.542 14.542"><path d="M14.023,3.636h-2.6V.519A.519.519,0,0,0,10.907,0H.519A.519.519,0,0,0,0,.519V12.465a2.077,2.077,0,0,0,2.077,2.077H12.465a2.077,2.077,0,0,0,2.077-2.077V4.155A.519.519,0,0,0,14.023,3.636ZM4.155,2.6H7.271a.519.519,0,0,1,0,1.039H4.155a.519.519,0,1,1,0-1.039Zm4.674,9.868H2.6a.519.519,0,0,1,0-1.039H8.829a.519.519,0,1,1,0,1.039Zm0-2.077H2.6a.519.519,0,1,1,0-1.039H8.829a.519.519,0,1,1,0,1.039Zm0-2.077H2.6a.519.519,0,1,1,0-1.039H8.829a.519.519,0,1,1,0,1.039Zm0-2.077H2.6a.519.519,0,0,1,0-1.039H8.829a.519.519,0,0,1,0,1.039ZM13.5,12.465a1.039,1.039,0,0,1-2.077,0V4.674H13.5v7.791Z" fill="#b8b8b8"/></svg>
