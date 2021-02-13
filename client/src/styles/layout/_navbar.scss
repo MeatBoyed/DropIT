@@ -5,6 +5,10 @@
   margin-top: 35px;
   margin-bottom: 25px;
 
+  .backIcon:hover {
+    cursor: pointer;
+  }
+
   .desktopButtons {
     display: flex;
     justify-content: center;
