@@ -4,11 +4,11 @@ import React from 'react';
 import { ItemCard } from '../ItemCard';
 
 // Import Thumbnails (temp)
-import thumbnailIcon from '../../images/thumbnail5.png';
-import thumbnailIcon1 from '../../images/thumbnail3.png';
-import thumbnailIcon2 from '../../images/thumbnail2.png';
-import thumbnailIcon3 from '../../images/thumbnail4.png';
-import thumbnailIcon4 from '../../images/thumbnail1.png';
+import thumbnailIcon from '../../images/MainImage1.png';
+import thumbnailIcon1 from '../../images/MainImage1.png';
+import thumbnailIcon2 from '../../images/MainImage1.png';
+import thumbnailIcon3 from '../../images/MainImage1.png';
+import thumbnailIcon4 from '../../images/MainImage1.png';
 
 interface Props {}
 
