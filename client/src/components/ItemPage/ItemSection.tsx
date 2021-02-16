@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { firestore } from '../../firebase';
+import React from 'react';
 
 interface Props {
-  id: string;
-}
-
-interface Item {
-  id: string;
   title: string;
   price: number;
   colours: string[];
@@ -16,43 +10,23 @@ interface Item {
   frequency: number;
 }
 
-export const ItemSection: React.FC<Props> = ({ id }) => {
-  const [item, setItem] = useState<Item>();
-
-  const GetItem = async () => {
-    const itemData = await firestore.collection('Items').doc(id).get();
-    setItem({
-      id: itemData.id,
-      title: itemData.data()!.title,
-      price: itemData.data()!.price,
-      colours: itemData.data()!.colours,
-      sizes: itemData.data()!.sizes,
-      viewerImages: itemData.data()!.images.viewerImages,
-      description: itemData.data()!.description,
-      frequency: itemData.data()!.frequency,
-    });
-  };
-
-  useEffect(() => {
-    GetItem();
-  }, []);
-
+export const ItemSection: React.FC<Props> = ({ title, price, colours, sizes, viewerImages, description, frequency }) => {
   return (
     <section id="ItemSection">
       <div className="ItemDisplaySection">
-        <img src={item?.viewerImages[0]} alt="" />
+        <img src={viewerImages[0]} alt="" />
         <div className="itemDetailsContainer">
-          <p className="itemTitle">{item?.title}</p>
-          <p className="itemPrice">${item?.price}</p>
+          <p className="itemTitle">{title}</p>
+          <p className="itemPrice">${price}</p>
         </div>
       </div>
 
       <div className="ItemDetailSection">
-        {item?.colours !== undefined ? (
+        {colours !== undefined ? (
           <div className="itemColours">
             <h3 className="sectionTitle">Colours</h3>
             <div className="colourSelect">
-              {item.colours.map((colour) => (
+              {colours.map((colour) => (
                 <svg width={36} height={36} viewBox="0 0 36 36">
                   <defs>
                     <filter id="colour" x={0} y={0} width={36} height={36} filterUnits="userSpaceOnUse">
@@ -81,11 +55,11 @@ export const ItemSection: React.FC<Props> = ({ id }) => {
             </div>
           </div>
         ) : null}
-        {item?.sizes !== undefined ? (
+        {sizes !== undefined ? (
           <div className="itemSize">
             <h3 className="sectionTitle">Size</h3>
             <div className="sizeSelect">
-              {item.sizes.map((size) => (
+              {sizes.map((size) => (
                 <button className="size">{size}</button>
               ))}
             </div>
@@ -93,7 +67,7 @@ export const ItemSection: React.FC<Props> = ({ id }) => {
         ) : null}
         <div className="itemDetail">
           <h3 className="sectionTitle">Details</h3>
-          <p>{item?.description}</p>
+          <p>{description}</p>
         </div>
         <div className="ButtonsContainer">
           <button className="addToCartBtn">Add To Cart</button>
