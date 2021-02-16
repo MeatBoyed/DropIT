@@ -5,28 +5,24 @@ import { firestore } from "../../firebase";
 import { StoreCard } from "./StoreCard";
 import { ItemCard } from "../ItemCard";
 
-// Import Images
-import BeatsLogo from "../../images/BeatsLogo.svg";
-import JBLLogo from "../../images/JBLLogo.svg";
-import AKGLogo from "../../images/AKGLogo.svg";
-import thumbnailIcon from "../../images/MainImage1.png";
-import thumbnailIcon1 from "../../images/MainImage1.png";
-import thumbnailIcon2 from "../../images/MainImage1.png";
-import thumbnailIcon3 from "../../images/MainImage1.png";
-import thumbnailIcon4 from "../../images/MainImage1.png";
-
-interface Props {}
-
 interface Vendors {
 	id: string;
 	logo: string;
 }
 
-export const ShoppingSection: React.FC<Props> = () => {
+interface Items {
+	id: string;
+	title: string;
+	price: number;
+	mainImage: string;
+}
+
+export const ShoppingSection: React.FC = () => {
 	// Get Item data irrispective of the vendor
 	// Iterate over data to render components
 
 	const [vendors, setVendors] = useState<Vendors[]>([]);
+	const [items, setItems] = useState<Items[]>([]);
 
 	// Get all vendor icons, don't have any vendor selected (highlighted like they are)
 	const GetVendors = async () => {
@@ -42,11 +38,27 @@ export const ShoppingSection: React.FC<Props> = () => {
 		});
 	};
 
+	const GetItems = async () => {
+		const items = await firestore.collection("Items").get();
+		items.docs.forEach((doc) => {
+			setItems((items) => [
+				...items,
+				{
+					id: doc.id,
+					title: doc.data().title,
+					price: doc.data().price,
+					mainImage: doc.data().images.mainImage,
+				},
+			]);
+		});
+	};
+
 	useEffect(() => {
 		GetVendors();
+		GetItems();
 	}, []);
 
-	console.log(vendors);
+	console.log(items);
 
 	return (
 		<section id="ShoppingSection">
@@ -61,13 +73,14 @@ export const ShoppingSection: React.FC<Props> = () => {
 			<div id="StoreItemsContainer">
 				<h3 className="sectionTitle">Beats Products</h3>
 				<div className="itemsContainer">
-					<ItemCard thumbnailIcon={thumbnailIcon} />
-					<ItemCard thumbnailIcon={thumbnailIcon1} />
-					<ItemCard thumbnailIcon={thumbnailIcon2} />
-					<ItemCard thumbnailIcon={thumbnailIcon3} />
-					<ItemCard thumbnailIcon={thumbnailIcon1} />
-					<ItemCard thumbnailIcon={thumbnailIcon4} />
-					<ItemCard thumbnailIcon={thumbnailIcon} />
+					{items.map((item) => (
+						<ItemCard
+							key={item.id}
+							title={item.title}
+							price={item.price}
+							mainImage={item.mainImage}
+						/>
+					))}
 				</div>
 			</div>
 		</section>
