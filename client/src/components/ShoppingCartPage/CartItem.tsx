@@ -24,7 +24,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size,
 
   useEffect(() => {
     FetchCartImage();
-  }, []);
+  });
 
   return (
     <div className="CartItem">

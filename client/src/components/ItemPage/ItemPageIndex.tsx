@@ -61,7 +61,7 @@ export const ItemPageIndex: React.FC = () => {
 
   useEffect(() => {
     GetItem();
-  }, []);
+  });
 
   return (
     <React.Fragment>

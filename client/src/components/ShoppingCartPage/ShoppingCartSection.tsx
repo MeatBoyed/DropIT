@@ -3,9 +3,6 @@ import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 
 import { CartItem } from './CartItem';
 
-// Import Thumbails (temp)
-import thumbnailIcon from '../../images/MainImage1.png';
-
 interface Props {}
 
 export const ShoppingCartSection: React.FC<Props> = () => {
