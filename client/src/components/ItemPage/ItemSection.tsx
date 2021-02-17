@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   id: string;
@@ -19,6 +19,8 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
 
   const [colour, setColour] = useState<string>('');
   const [size, setSize] = useState<string>('');
+  const [quantity, setQuantity] = useState<number>(1);
+  const [frequencyArray, setFrequencyArray] = useState<object[]>();
 
   const AddToShoppingCartHandler = () => {
     const item: ShoppingCartItem = {
@@ -28,10 +30,20 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
       price: price,
       colour: colour,
       size: size,
-      quantity: 3,
+      quantity: quantity,
     };
     AddToShoppingCart(item);
   };
+
+  useEffect(() => {
+    console.log(frequency);
+    const array: object[] = [];
+    for (let i = 1; i <= frequency; i++) {
+      array.push(<option value={i}>{i}</option>);
+    }
+    setFrequencyArray(array);
+    console.log(array);
+  }, [frequency]);
 
   return (
     <section id="ItemSection">
@@ -99,8 +111,13 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
           <h3 className="sectionTitle">Qty</h3>
           <div className="quantitySelect">
             {/* Render a selection option on the frequency of the item */}
-            <select name="quantity" id="quantity">
-              <option value="1">1</option>
+            <select
+              name="quantity"
+              id="quantity"
+              defaultValue={quantity}
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+            >
+              {frequencyArray?.map((select) => select)}
             </select>
           </div>
         </div>
