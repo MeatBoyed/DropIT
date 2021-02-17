@@ -24,7 +24,7 @@ interface Item {
   frequency: number;
 }
 
-export const ItemPageIndex: React.FC = () => {
+const ItemPageIndex: React.FC = () => {
   let path = useParams<Params>();
 
   const [isValid, setIsValid] = useState(false);
@@ -78,3 +78,5 @@ export const ItemPageIndex: React.FC = () => {
     </React.Fragment>
   );
 };
+
+export default ItemPageIndex;
