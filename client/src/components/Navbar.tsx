@@ -10,6 +10,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav id="NavbarContainer">
+      {/* Go Back Button */}
       <svg onClick={() => histroy.goBack()} className="backIcon" width="16" height="12.306" viewBox="0 0 16 12.306">
         <path
           d="M-888.178,11.986l-5.508-5A1.081,1.081,0,0,1-894,6.153a1.082,1.082,0,0,1,.312-.838l5.507-5a1.089,1.089,0,0,1,1.539,0,1.089,1.089,0,0,1,0,1.539L-890.1,5H-879a1,1,0,0,1,1,1,1,1,0,0,1-1,1H-890.44l3.8,3.448a1.087,1.087,0,0,1,0,1.538,1.088,1.088,0,0,1-.77.319A1.085,1.085,0,0,1-888.178,11.986Z"
@@ -17,6 +18,7 @@ export const Navbar: React.FC = () => {
           fill="#262626"
         />
       </svg>
+      {/* Logo Icon */}
       <Link to="/">
         <svg className="logoIcon" width="87.086" height="22.992" viewBox="0 0 87.086 22.992">
           <g transform="translate(-111.032 -97.817)">
@@ -41,6 +43,7 @@ export const Navbar: React.FC = () => {
         </svg>
       </Link>
       <div className="desktopButtons">
+        {/* Favourites Icon */}
         <Link className="desktopIcon" to="/favourites">
           <svg width="16.533" height="14.531" viewBox="0 0 16.533 14.531">
             <g transform="translate(0 0)">
@@ -52,6 +55,7 @@ export const Navbar: React.FC = () => {
             </g>
           </svg>
         </Link>
+        {/* Shopping Cart Icon */}
         <Link className="desktopIcon" to="/shoppingcart">
           <svg width="15.583" height="18.828" viewBox="0 0 15.583 18.828">
             <path
@@ -61,6 +65,7 @@ export const Navbar: React.FC = () => {
             />
           </svg>
         </Link>
+        {/* Search Icon */}
         <svg className="desktopIcon" width="17.312" height="17.932" viewBox="0 0 17.312 17.932">
           <path
             d="M18.033,16.333l-4.268-4.439A7.237,7.237,0,1,0,8.224,14.48a7.162,7.162,0,0,0,4.148-1.31l4.3,4.472a.944.944,0,1,0,1.361-1.309ZM8.224,1.889A5.351,5.351,0,1,1,2.873,7.24,5.357,5.357,0,0,1,8.224,1.889Z"
@@ -69,6 +74,7 @@ export const Navbar: React.FC = () => {
           />
         </svg>
       </div>
+      {/* Search */}
       <svg className="searchIcon" width="17.312" height="17.932" viewBox="0 0 17.312 17.932">
         <path
           d="M18.033,16.333l-4.268-4.439A7.237,7.237,0,1,0,8.224,14.48a7.162,7.162,0,0,0,4.148-1.31l4.3,4.472a.944.944,0,1,0,1.361-1.309ZM8.224,1.889A5.351,5.351,0,1,1,2.873,7.24,5.357,5.357,0,0,1,8.224,1.889Z"
