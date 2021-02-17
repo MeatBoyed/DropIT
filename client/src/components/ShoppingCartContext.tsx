@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext } from 'react';
 
 export interface ShoppingCartItem {
   id: string;
+  url: string;
   title: string;
   price: number;
   colour: string;

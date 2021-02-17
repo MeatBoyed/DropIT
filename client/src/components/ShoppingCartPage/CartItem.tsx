@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { firestore } from '../../firebase';
 import { ShoppingCartContext } from '../ShoppingCartContext';
 
 export interface props {
   index: number;
   id: string;
+  url: string;
   title: string;
   price: number;
   colour: string;
   size: string;
   quantity: number;
 }
-export const CartItem: React.FC<props> = ({ id, title, price, colour, size, quantity }) => {
+export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size, quantity }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
   const [cartImage, setCartImage] = useState<string>();
 
@@ -40,10 +42,16 @@ export const CartItem: React.FC<props> = ({ id, title, price, colour, size, quan
           </g>
         </g>
       </svg>
-      <img src={cartImage} alt="" className="thumbnail" />
+      <Link to={url}>
+        <img src={cartImage} alt="" className="thumbnail" />
+      </Link>
       <div className="cartItemInfo">
-        <p className="itemTitle">{title}</p>
-        <p className="itemPrice">${price}</p>
+        <Link to={url}>
+          <p className="itemTitle">{title}</p>
+        </Link>
+        <Link to={url}>
+          <p className="itemPrice">${price}</p>
+        </Link>
         <div className="cartItemPropContainer">
           <button className="size">{size}</button>
           <svg className="color" width={36} height={36} viewBox="0 0 36 36">

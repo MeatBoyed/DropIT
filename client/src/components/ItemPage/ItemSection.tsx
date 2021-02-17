@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 
 interface Props {
@@ -13,11 +14,13 @@ interface Props {
 }
 
 export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes, viewerImages, description, frequency }) => {
+  const url = useLocation().pathname;
   const { AddToShoppingCart } = useContext(ShoppingCartContext);
 
   const AddToShoppingCartHandler = () => {
     const item: ShoppingCartItem = {
       id: id,
+      url: url,
       title: title,
       price: price,
       colour: '#1738',
