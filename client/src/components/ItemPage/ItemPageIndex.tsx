@@ -13,6 +13,11 @@ interface Params {
   itemid: string;
 }
 
+interface LoadingAndValidation {
+  loading: boolean;
+  valid: boolean;
+}
+
 interface Item {
   id: string;
   title: string;
@@ -27,7 +32,7 @@ interface Item {
 const ItemPageIndex: React.FC = () => {
   let path = useParams<Params>();
 
-  const [isValid, setIsValid] = useState(false);
+  const [loadingAndValidation, setLoadingAndValidation] = useState<LoadingAndValidation>({ loading: true, valid: false });
   const [item, setItem] = useState<Item>({
     id: '',
     title: '',
@@ -43,7 +48,7 @@ const ItemPageIndex: React.FC = () => {
     const itemData = await firestore.collection('Items').doc(path.itemid).get();
 
     if (!itemData.exists) {
-      console.log("Doesn't exist");
+      setLoadingAndValidation({ loading: false, valid: false });
     } else {
       setItem({
         id: itemData.id,
@@ -55,6 +60,7 @@ const ItemPageIndex: React.FC = () => {
         description: itemData.data()!.description,
         frequency: itemData.data()!.frequency,
       });
+      setLoadingAndValidation({ loading: false, valid: true });
     }
   };
 
@@ -65,16 +71,26 @@ const ItemPageIndex: React.FC = () => {
   return (
     <React.Fragment>
       <Navbar />
-      <ItemSection
-        id={item.id}
-        title={item?.title}
-        price={item?.price}
-        colours={item?.colours}
-        sizes={item?.sizes}
-        viewerImages={item?.viewerImages}
-        frequency={item?.frequency}
-        description={item?.description}
-      />
+      {loadingAndValidation.loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <React.Fragment>
+          {loadingAndValidation.valid ? (
+            <ItemSection
+              id={item.id}
+              title={item?.title}
+              price={item?.price}
+              colours={item?.colours}
+              sizes={item?.sizes}
+              viewerImages={item?.viewerImages}
+              frequency={item?.frequency}
+              description={item?.description}
+            />
+          ) : (
+            <Redirect to="/404" />
+          )}
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 };
