@@ -9,6 +9,13 @@ const FavouritesPageIndex = React.lazy(() => import('./components/FavouritesPage
 const ShoppingCartPageIndex = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPageIndex'));
 const ItemPageIndex = React.lazy(() => import('./components/ItemPage/ItemPageIndex'));
 
+const PageNotFound = () => (
+  <div className="PagenotFound">
+    <h1>Sorry but the page is no there</h1>
+    <h3>Error 404</h3>
+  </div>
+);
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +26,8 @@ function App() {
             <Route exact path="/favourites" component={FavouritesPageIndex} />
             <Route exact path="/shoppingcart" component={ShoppingCartPageIndex} />
             <Route exact path="/:storename/:itemid" component={ItemPageIndex} />
+            <Route exact path="/404" component={PageNotFound} />
+            <Route path="" component={PageNotFound} />
           </ShoppingCartContextProvider>
         </Switch>
       </React.Suspense>
