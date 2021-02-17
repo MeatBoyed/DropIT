@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 
 interface Props {
+  id: string;
   title: string;
   price: number;
   colours: string[];
@@ -10,7 +13,23 @@ interface Props {
   frequency: number;
 }
 
-export const ItemSection: React.FC<Props> = ({ title, price, colours, sizes, viewerImages, description, frequency }) => {
+export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes, viewerImages, description, frequency }) => {
+  const url = useLocation().pathname;
+  const { AddToShoppingCart } = useContext(ShoppingCartContext);
+
+  const AddToShoppingCartHandler = () => {
+    const item: ShoppingCartItem = {
+      id: id,
+      url: url,
+      title: title,
+      price: price,
+      colour: '#1738',
+      size: 's',
+      quantity: 3,
+    };
+    AddToShoppingCart(item);
+  };
+
   return (
     <section id="ItemSection">
       <div className="ItemDisplaySection">
@@ -81,7 +100,9 @@ export const ItemSection: React.FC<Props> = ({ title, price, colours, sizes, vie
           <p>{description}</p>
         </div>
         <div className="ButtonsContainer">
-          <button className="addToCartBtn">Add To Cart</button>
+          <button className="addToCartBtn" onClick={AddToShoppingCartHandler}>
+            Add To Cart
+          </button>
           <button className="buyNowBtn">Buy Now</button>
         </div>
       </div>

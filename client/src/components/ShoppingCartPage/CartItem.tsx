@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { firestore } from '../../firebase';
+import { ShoppingCartContext } from '../ShoppingCartContext';
 
-interface Props {
-  thumbnail: string;
+export interface props {
+  index: number;
+  id: string;
+  url: string;
+  title: string;
+  price: number;
   colour: string;
+  size: string;
+  quantity: number;
 }
+export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size, quantity }) => {
+  const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
+  const [cartImage, setCartImage] = useState<string>();
 
-export const CartItem: React.FC<Props> = ({ thumbnail, colour }) => {
+  const FetchCartImage = async () => {
+    const image = await firestore.collection('Items').doc(id).get();
+    setCartImage(image.data()!.images.cartImage);
+  };
+
+  useEffect(() => {
+    FetchCartImage();
+  }, []);
+
   return (
     <div className="CartItem">
       <svg className="favouriteIcon" width="17" height="17" viewBox="0 0 17 17">
@@ -22,12 +42,18 @@ export const CartItem: React.FC<Props> = ({ thumbnail, colour }) => {
           </g>
         </g>
       </svg>
-      <img src={thumbnail} alt="" className="thumbnail" />
+      <Link to={url}>
+        <img src={cartImage} alt="" className="thumbnail" />
+      </Link>
       <div className="cartItemInfo">
-        <p className="itemTitle">Beats Solo 3</p>
-        <p className="itemPrice">$249.6</p>
+        <Link to={url}>
+          <p className="itemTitle">{title}</p>
+        </Link>
+        <Link to={url}>
+          <p className="itemPrice">${price}</p>
+        </Link>
         <div className="cartItemPropContainer">
-          <button className="size">S</button>
+          <button className="size">{size}</button>
           <svg className="color" width={36} height={36} viewBox="0 0 36 36">
             <defs>
               <filter id="colour" x={0} y={0} width={36} height={36} filterUnits="userSpaceOnUse">
@@ -45,10 +71,16 @@ export const CartItem: React.FC<Props> = ({ thumbnail, colour }) => {
               </g>
             </g>
           </svg>
-          <p>Qty: 3</p>
+          <p>Qty: {quantity}</p>
         </div>
       </div>
-      <svg className="removeIcon" width="23.257" height="23.257" viewBox="0 0 23.257 23.257">
+      <svg
+        onClick={RemoveFromShoppingCart}
+        className="removeIcon"
+        width="23.257"
+        height="23.257"
+        viewBox="0 0 23.257 23.257"
+      >
         <path d="M11.628,0A11.628,11.628,0,1,0,23.257,11.628,11.642,11.642,0,0,0,11.628,0Zm5.814,13.082H5.814V10.175H17.442Z" />
       </svg>
     </div>

@@ -67,6 +67,7 @@ export const ItemPageIndex: React.FC = () => {
     <React.Fragment>
       <Navbar />
       <ItemSection
+        id={item.id}
         title={item?.title}
         price={item?.price}
         colours={item?.colours}
