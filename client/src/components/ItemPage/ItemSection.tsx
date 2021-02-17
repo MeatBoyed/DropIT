@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 
@@ -17,14 +17,17 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
   const url = useLocation().pathname;
   const { AddToShoppingCart } = useContext(ShoppingCartContext);
 
+  const [colour, setColour] = useState<string>('');
+  const [size, setSize] = useState<string>('');
+
   const AddToShoppingCartHandler = () => {
     const item: ShoppingCartItem = {
       id: id,
       url: url,
       title: title,
       price: price,
-      colour: '#1738',
-      size: 's',
+      colour: colour,
+      size: size,
       quantity: 3,
     };
     AddToShoppingCart(item);
@@ -45,8 +48,8 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
           <div className="itemColours">
             <h3 className="sectionTitle">Colours</h3>
             <div className="colourSelect">
-              {colours.map((colour) => (
-                <svg width={36} height={36} viewBox="0 0 36 36">
+              {colours.map((colour, index) => (
+                <svg key={index} onClick={() => setColour(colour)} width={36} height={36} viewBox="0 0 36 36">
                   <defs>
                     <filter id="colour" x={0} y={0} width={36} height={36} filterUnits="userSpaceOnUse">
                       <feOffset dy={3} />
@@ -78,8 +81,16 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
           <div className="itemSize">
             <h3 className="sectionTitle">Size</h3>
             <div className="sizeSelect">
-              {sizes.map((size) => (
-                <button className="size">{size}</button>
+              {sizes.map((size, index) => (
+                <button
+                  key={index}
+                  className="size"
+                  onClick={() => {
+                    setSize(size);
+                  }}
+                >
+                  {size}
+                </button>
               ))}
             </div>
           </div>
@@ -90,8 +101,6 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
             {/* Render a selection option on the frequency of the item */}
             <select name="quantity" id="quantity">
               <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
             </select>
           </div>
         </div>
