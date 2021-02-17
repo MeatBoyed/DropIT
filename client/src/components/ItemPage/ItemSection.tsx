@@ -65,6 +65,17 @@ export const ItemSection: React.FC<Props> = ({ title, price, colours, sizes, vie
             </div>
           </div>
         ) : null}
+        <div className="itemQuantity">
+          <h3 className="sectionTitle">Qty</h3>
+          <div className="quantitySelect">
+            {/* Render a selection option on the frequency of the item */}
+            <select name="quantity" id="quantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
         <div className="itemDetail">
           <h3 className="sectionTitle">Details</h3>
           <p>{description}</p>
