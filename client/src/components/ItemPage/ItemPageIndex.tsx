@@ -26,7 +26,6 @@ interface Item {
 
 export const ItemPageIndex: React.FC = () => {
   let path = useParams<Params>();
-  console.log(path.itemid);
 
   const [isValid, setIsValid] = useState(false);
   const [item, setItem] = useState<Item>({

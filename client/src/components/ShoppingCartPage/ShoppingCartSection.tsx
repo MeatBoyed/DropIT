@@ -47,6 +47,7 @@ export const ShoppingCartSection: React.FC<Props> = () => {
       <div className="shoppingCartItemsContainer">
         {shoppingCart.map((item: ShoppingCartItem, index: number) => (
           <CartItem
+            key={index}
             index={index}
             id={item.id}
             url={item.url}

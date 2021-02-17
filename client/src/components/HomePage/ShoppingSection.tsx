@@ -19,9 +19,6 @@ interface Items {
 }
 
 export const ShoppingSection: React.FC = () => {
-  // Get Item data irrispective of the vendor
-  // Iterate over data to render components
-
   const [vendors, setVendors] = useState<Vendors[]>([]);
   const [items, setItems] = useState<Items[]>([]);
 
@@ -59,8 +56,6 @@ export const ShoppingSection: React.FC = () => {
     GetVendors();
     GetItems();
   }, []);
-
-  console.log(items);
 
   return (
     <section id="ShoppingSection">

@@ -36,13 +36,15 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
   };
 
   useEffect(() => {
-    console.log(frequency);
     const array: object[] = [];
     for (let i = 1; i <= frequency; i++) {
-      array.push(<option value={i}>{i}</option>);
+      array.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
     }
     setFrequencyArray(array);
-    console.log(array);
   }, [frequency]);
 
   return (
@@ -110,7 +112,6 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
         <div className="itemQuantity">
           <h3 className="sectionTitle">Qty</h3>
           <div className="quantitySelect">
-            {/* Render a selection option on the frequency of the item */}
             <select
               name="quantity"
               id="quantity"
