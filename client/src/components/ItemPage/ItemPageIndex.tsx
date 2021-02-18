@@ -8,7 +8,7 @@ import { ItemSection } from './ItemSection';
 
 // Redirect to 404 if path is invalid
 
-// Loading Data
+// Loading Data ENSURE FILE DOWNLOADS FASTER THAN THE ACTUAL DATA
 import ViewerLoading from '../../images/ViewerLoading.png';
 
 interface Params {
@@ -52,7 +52,7 @@ const ItemPageIndex: React.FC = () => {
     const itemData = await firestore.collection('Items').doc(path.itemid).get();
 
     if (!itemData.exists) {
-      setLoadingAndValidation({ loading: true, valid: false });
+      setLoadingAndValidation({ loading: false, valid: false });
     } else {
       setItem({
         id: itemData.id,
@@ -76,7 +76,7 @@ const ItemPageIndex: React.FC = () => {
     <React.Fragment>
       <Navbar />
       {/* Create some cart that appears to redirect them back */}
-      {loadingAndValidation.valid ? null : <h1>NO!</h1>}
+      {loadingAndValidation.loading === false && loadingAndValidation.valid === true ? null : <h1>Item doesn't exist</h1>}
       <ItemSection
         id={item.id}
         title={item?.title}
