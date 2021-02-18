@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { firestore } from '../../firebase';
 import { ShoppingCartContext } from '../ShoppingCartContext';
 
+// Temp Cart Image loader image
+import CartImageLoader from '../../images/CartImageLoader.png';
+
 export interface props {
   index: number;
   id: string;
@@ -15,7 +18,7 @@ export interface props {
 }
 export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size, quantity }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
-  const [cartImage, setCartImage] = useState<string>();
+  const [cartImage, setCartImage] = useState<string>(CartImageLoader);
 
   const FetchCartImage = async () => {
     const image = await firestore.collection('Items').doc(id).get();
