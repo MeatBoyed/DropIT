@@ -27,7 +27,7 @@ function App() {
             <Route exact path="/shoppingcart" component={ShoppingCartPageIndex} />
             <Route exact path="/:storename/:itemid" component={ItemPageIndex} />
             <Route exact path="/404" component={PageNotFound} />
-            <Route path="" component={PageNotFound} />
+            {/* <Route path="" component={PageNotFound} /> */}
           </ShoppingCartContextProvider>
         </Switch>
       </React.Suspense>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 import { useLocation } from 'react-router-dom';
+import { inherits } from 'util';
 
 interface Props {
   id: string;
@@ -11,9 +12,20 @@ interface Props {
   viewerImages: string[];
   description: string;
   frequency: number;
+  isLoading: boolean;
 }
 
-export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes, viewerImages, description, frequency }) => {
+export const ItemSection: React.FC<Props> = ({
+  id,
+  title,
+  price,
+  colours,
+  sizes,
+  viewerImages,
+  description,
+  frequency,
+  isLoading,
+}) => {
   const url = useLocation().pathname;
   const { AddToShoppingCart } = useContext(ShoppingCartContext);
 
@@ -52,8 +64,12 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
       <div className="ItemDisplaySection">
         <img src={viewerImages[0]} alt="" />
         <div className="itemDetailsContainer">
-          <p className="itemTitle">{title}</p>
-          <p className="itemPrice">${price}</p>
+          <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="itemTitle">
+            {title}
+          </p>
+          <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="itemPrice">
+            ${price}
+          </p>
         </div>
       </div>
 
@@ -61,7 +77,7 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
         {colours !== undefined ? (
           <div className="itemColours">
             <h3 className="sectionTitle">Colours</h3>
-            <div className="colourSelect">
+            <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="colourSelect">
               {colours.map((colour, index) => (
                 <svg key={index} onClick={() => setColour(colour)} width={36} height={36} viewBox="0 0 36 36">
                   <defs>
@@ -94,7 +110,7 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
         {sizes !== undefined ? (
           <div className="itemSize">
             <h3 className="sectionTitle">Size</h3>
-            <div className="sizeSelect">
+            <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="sizeSelect">
               {sizes.map((size, index) => (
                 <button
                   key={index}
@@ -124,9 +140,9 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
         </div>
         <div className="itemDetail">
           <h3 className="sectionTitle">Details</h3>
-          <p>{description}</p>
+          <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }}>{description}</p>
         </div>
-        <div className="ButtonsContainer">
+        <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="ButtonsContainer">
           <button className="addToCartBtn" onClick={AddToShoppingCartHandler}>
             Add To Cart
           </button>
