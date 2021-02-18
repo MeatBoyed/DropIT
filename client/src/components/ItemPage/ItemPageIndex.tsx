@@ -9,7 +9,7 @@ import { ItemSection } from './ItemSection';
 // Redirect to 404 if path is invalid
 
 // Loading Data ENSURE FILE DOWNLOADS FASTER THAN THE ACTUAL DATA
-import ViewerLoading from '../../images/ViewerLoading.png';
+import ViewerLoading from '../../images/ViewerImageLoading.png';
 
 interface Params {
   storename: string;

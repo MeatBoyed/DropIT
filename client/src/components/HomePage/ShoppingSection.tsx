@@ -53,8 +53,8 @@ export const ShoppingSection: React.FC = () => {
   };
 
   useEffect(() => {
-    GetVendors();
     GetItems();
+    GetVendors();
   }, []);
 
   return (
