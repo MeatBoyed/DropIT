@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 import { useLocation } from 'react-router-dom';
-import { inherits } from 'util';
 
 interface Props {
   id: string;
