@@ -18,17 +18,6 @@ export const MobileNavbar: React.FC = () => {
           />
         </svg>
       </Link>
-      <Link to="/favourites">
-        <svg width="16.533" height="14.531" viewBox="0 0 16.533 14.531">
-          <g transform="translate(0 0)">
-            <path
-              d="M7.948,45.411C3.284,41.331,0,39.169,0,35.731A4.507,4.507,0,0,1,4.392,31a4.373,4.373,0,0,1,3.875,2.616A4.373,4.373,0,0,1,12.142,31a4.507,4.507,0,0,1,4.392,4.731c0,3.438-3.28,5.6-7.948,9.68A.484.484,0,0,1,7.948,45.411Z"
-              transform="translate(0 -31)"
-              fill={currentRoute === '/favourites' ? ActiveColour : DeactiveColour}
-            />
-          </g>
-        </svg>
-      </Link>
       <Link to="/shoppingcart">
         <svg width="88" height="88" viewBox="0 0 88 88">
           <defs>
