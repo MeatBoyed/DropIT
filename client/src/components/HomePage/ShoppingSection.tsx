@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { usePaginate, Query } from '../usePaginate';
 import { firestore } from '../../firebase';
 
 // Import Components
@@ -7,6 +8,7 @@ import { ItemCard } from '../ItemCard';
 
 interface Vendors {
   id: string;
+  name: string;
   logo: string;
 }
 
@@ -19,8 +21,18 @@ interface Items {
 }
 
 export const ShoppingSection: React.FC = () => {
+  const [query, setQuery] = useState<Query>({ field: 'frequency', condition: '>=', value: '1' });
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
+  const { loading, error, items, hasMore } = usePaginate(query, pageNumber);
+
+  const HandleStoreSelect = (vendorName: string) => {
+    setQuery({ field: 'vendor', condition: '==', value: vendorName });
+    setPageNumber(1);
+  };
+
   const [vendors, setVendors] = useState<Vendors[]>([]);
-  const [items, setItems] = useState<Items[]>([]);
+  // const [items, setItems] = useState<Items[]>([]);
 
   // Get all vendor icons, don't have any vendor selected (highlighted like they are)
   const GetVendors = async () => {
@@ -30,30 +42,35 @@ export const ShoppingSection: React.FC = () => {
         ...vendors,
         {
           id: doc.id,
-          logo: doc.data().logoImage,
+          name: doc.data()!.name,
+          logo: doc.data()!.logoImage,
         },
       ]);
     });
   };
 
-  const GetItems = async () => {
-    const items = await firestore.collection('Items').get();
-    items.docs.forEach((doc) => {
-      setItems((items) => [
-        ...items,
-        {
-          id: doc.id,
-          vendor: doc.data().vendor,
-          title: doc.data().title,
-          price: doc.data().price,
-          mainImage: doc.data().images.mainImage,
-        },
-      ]);
-    });
-  };
+  // const GetItems = async () => {
+  //   // Items reference
+  //   const itemsRef = firestore.collection('Items');
+
+  //   // Start at snapshot
+  //   let startAtSnapshot = await itemsRef.limit(5).get();
+  //   startAtSnapshot.docs.forEach((doc: any) => {
+  //     setItems((items) => [
+  //       ...items,
+  //       {
+  //         id: doc.id,
+  //         vendor: doc.data().vendor,
+  //         title: doc.data().title,
+  //         price: doc.data().price,
+  //         mainImage: doc.data().images.mainImage,
+  //       },
+  //     ]);
+  //   });
+  // };
 
   useEffect(() => {
-    GetItems();
+    // GetItems();
     GetVendors();
   }, []);
 
@@ -63,7 +80,16 @@ export const ShoppingSection: React.FC = () => {
         <h3 className="sectionTitle">Choose Store</h3>
         <div className="storeSelectContainer">
           {vendors.map((vendor) => (
-            <StoreCard key={vendor.id} vendorLogo={vendor.logo} />
+            // <StoreCard key={vendor.id} vendorName={vendor.name} vendorLogo={vendor.logo} />
+            <div
+              key={vendor.id}
+              onClick={() => {
+                setQuery({ field: 'vendor', condition: '==', value: vendor.name });
+              }}
+              className="storeCard"
+            >
+              <img src={vendor.logo} />
+            </div>
           ))}
         </div>
       </div>
@@ -80,6 +106,8 @@ export const ShoppingSection: React.FC = () => {
             />
           ))}
         </div>
+        <div>{loading && 'Loading...'}</div>
+        <div>{error && 'Error...'}</div>
       </div>
     </section>
   );
