@@ -1,14 +1,5 @@
-import { connected } from "process";
 import { useEffect, useState } from "react";
 import { firestore } from "../firebase";
-import { ItemSection } from "./ItemPage/ItemSection";
-
-// Give better names to parameters for query
-export interface Query {
-	field: string;
-	condition: ">=" | "==";
-	value: string;
-}
 
 interface Items {
 	id: string;
@@ -18,27 +9,21 @@ interface Items {
 	mainImage: string;
 }
 
-export const usePaginate = (query: Query, pageNumber: number) => {
+export const usePaginate = (pageNumber: number) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [hasMore, setHasMore] = useState<boolean>(true);
 	const [error, setError] = useState<boolean>(false);
 	const [items, setItems] = useState<Items[]>([]);
 
-	const [lastDoc, setLastDoc] = useState<any>(null);
-
-	useEffect(() => {
-		setItems([]);
-	}, [query]);
+	const [lastDoc, setLastDoc] = useState<object | null>(null);
 
 	useEffect(() => {
 		setLoading(true);
 		setError(false);
 
-		console.log("last doc: ", lastDoc);
-
 		const itemsRef = firestore
 			.collection("Items")
-			.orderBy(query.field)
+			.orderBy("frequency")
 			.startAfter(lastDoc || 0)
 			.limit(2);
 
@@ -67,11 +52,12 @@ export const usePaginate = (query: Query, pageNumber: number) => {
 				setLoading(false);
 			})
 			.catch((error) => {
+				// Add error catching and telling the user how to fix the error
 				console.log(error);
 				setLoading(false);
 				setError(true);
 			});
-	}, [query, pageNumber]);
+	}, [pageNumber]);
 
 	return { loading, error, items, hasMore };
 };

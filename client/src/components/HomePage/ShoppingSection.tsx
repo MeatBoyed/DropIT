@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { usePaginate, Query } from "../usePaginate";
+import { usePaginate } from "../usePaginate";
 import { firestore } from "../../firebase";
 
 import { Link } from "react-router-dom";
@@ -15,18 +15,14 @@ interface Vendors {
 }
 
 export const ShoppingSection: React.FC = () => {
-	const [query, setQuery] = useState<Query>({
-		field: "frequency",
-		condition: ">=",
-		value: "1",
-	});
 	const [pageNumber, setPageNumber] = useState<number>(1);
+	const [vendors, setVendors] = useState<Vendors[]>([]);
 
-	const { loading, error, items, hasMore } = usePaginate(query, pageNumber);
+	const { loading, error, items, hasMore } = usePaginate(pageNumber);
 
 	const observer = useRef<IntersectionObserver>();
-	// Node relates to the last element that is rendered (last document)
 	const lastItemElementRef = useCallback(
+		// Node relates to the last element that is rendered (last document)
 		(node) => {
 			// Stop scrolling if loading (fetching data)
 			if (loading) return;
@@ -42,13 +38,6 @@ export const ShoppingSection: React.FC = () => {
 		},
 		[loading, hasMore]
 	);
-
-	const HandleStoreSelect = (vendorName: string) => {
-		setQuery({ field: "vendor", condition: "==", value: vendorName });
-		setPageNumber(1);
-	};
-
-	const [vendors, setVendors] = useState<Vendors[]>([]);
 
 	// Get all vendor icons, don't have any vendor selected (highlighted like they are)
 	const GetVendors = async () => {
@@ -75,20 +64,11 @@ export const ShoppingSection: React.FC = () => {
 				<h3 className="sectionTitle">Choose Store</h3>
 				<div className="storeSelectContainer">
 					{vendors.map((vendor) => (
-						// <StoreCard key={vendor.id} vendorName={vendor.name} vendorLogo={vendor.logo} />
-						<div
+						<StoreCard
 							key={vendor.id}
-							onClick={() => {
-								setQuery({
-									field: "vendor",
-									condition: "==",
-									value: vendor.name,
-								});
-							}}
-							className="storeCard"
-						>
-							<img src={vendor.logo} />
-						</div>
+							vendorName={vendor.name}
+							vendorLogo={vendor.logo}
+						/>
 					))}
 				</div>
 			</div>
