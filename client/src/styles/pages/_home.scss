@@ -5,28 +5,12 @@
     height: 100vh;
   }
 
-  #SelectStoresContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    margin-left: 20px;
-    margin-bottom: 3rem;
-
-    .storeSelectContainer {
-      display: flex;
-      flex-direction: row;
-      margin-top: 20px;
-      overflow-x: scroll;
-    }
-  }
-
   #StoreItemsContainer {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
 
     .itemsContainer {
-
       @include ItemsContainer;
 
       display: flex;
