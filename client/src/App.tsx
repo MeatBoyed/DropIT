@@ -5,6 +5,7 @@ import './styles/main.scss';
 
 import { ShoppingCartContextProvider } from './components/ShoppingCartContext';
 import { LoadingSpinner } from './components/LoadingSpinner';
+import { Navbar } from './components/Navbar';
 const HomePageIndex = React.lazy(() => import('./components/HomePage/HomePageIndex'));
 const ShoppingCartPageIndex = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPageIndex'));
 const ItemPageIndex = React.lazy(() => import('./components/ItemPage/ItemPageIndex'));
@@ -20,6 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <React.Suspense fallback={<LoadingSpinner />}>
+        <Navbar />
         <Switch>
           <ShoppingCartContextProvider>
             <Route exact path="/" component={HomePageIndex} />

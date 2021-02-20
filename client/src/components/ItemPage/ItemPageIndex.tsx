@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { firestore } from '../../firebase';
 
 // Import Componets
-import { Navbar } from '../Navbar';
 import { ItemSection } from './ItemSection';
 
 // Redirect to 404 if path is invalid
@@ -74,7 +73,6 @@ const ItemPageIndex: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Navbar />
       {/* Create some cart that appears to redirect them back */}
       {loadingAndValidation.loading === false && loadingAndValidation.valid === true ? null : <h1>Item doesn't exist</h1>}
       <ItemSection
