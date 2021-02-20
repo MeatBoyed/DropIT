@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// Import temp Loading image
+import ViewerLoading from '../images/MainImageLoader.png';
 
 interface Props {
   title: string;
@@ -9,6 +12,7 @@ interface Props {
 }
 
 export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
+  const [image, setImage] = useState<string>(ViewerLoading);
   return (
     <div className="itemCard">
       <svg className="favouriteIcon" width="17" height="17" viewBox="0 0 17 17">
@@ -26,7 +30,7 @@ export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
         </g>
       </svg>
       <Link to={url}>
-        <img src={mainImage} alt="" className="itemImage" />
+        <img onLoad={() => setImage(mainImage)} src={image} alt="" className="itemImage" />
       </Link>
       <div className="itemInfo">
         <Link to={url}>

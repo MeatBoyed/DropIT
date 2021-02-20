@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { firestore } from '../../firebase';
 
 // Import Componets
@@ -7,6 +7,9 @@ import { Navbar } from '../Navbar';
 import { ItemSection } from './ItemSection';
 
 // Redirect to 404 if path is invalid
+
+// Loading Data ENSURE FILE DOWNLOADS FASTER THAN THE ACTUAL DATA
+import ViewerLoading from '../../images/ViewerImageLoading.png';
 
 interface Params {
   storename: string;
@@ -35,12 +38,13 @@ const ItemPageIndex: React.FC = () => {
   const [loadingAndValidation, setLoadingAndValidation] = useState<LoadingAndValidation>({ loading: true, valid: false });
   const [item, setItem] = useState<Item>({
     id: '',
-    title: '',
-    price: 0,
-    colours: [],
-    sizes: [],
-    viewerImages: [],
-    description: '',
+    title: `${path.storename} - item`,
+    price: 404.4,
+    colours: ['red', 'yellow', 'green'],
+    sizes: ['s', 'm', 'l'],
+    viewerImages: [ViewerLoading],
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa augue, congue nec ex id, maximus rhoncus lorem. Curabitur sed finibus ipsum. Fusce massa tellus, fermentum at rutrum a, blandit vitae ex. Nulla ut nisl mi. Curabitur rhoncus facilisis orci, vitae fermentum eros tincidunt in. Praesent feugiat vel tortor in pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempor mattis nisl vel tristique. Cras ut consequat nibh. Nam eros urna, lobortis vel volutpat sed, efficitur sit amet arcu. Nam ultricies suscipit velit, sed laoreet ex sagittis sit amet. Proin porta est eu mauris feugiat vestibulum. Etiam dapibus vestibulum accumsan. In at lectus vitae enim tincidunt ultricies eget nec libero.',
     frequency: 0,
   });
 
@@ -71,26 +75,19 @@ const ItemPageIndex: React.FC = () => {
   return (
     <React.Fragment>
       <Navbar />
-      {loadingAndValidation.loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <React.Fragment>
-          {loadingAndValidation.valid ? (
-            <ItemSection
-              id={item.id}
-              title={item?.title}
-              price={item?.price}
-              colours={item?.colours}
-              sizes={item?.sizes}
-              viewerImages={item?.viewerImages}
-              frequency={item?.frequency}
-              description={item?.description}
-            />
-          ) : (
-            <Redirect to="/404" />
-          )}
-        </React.Fragment>
-      )}
+      {/* Create some cart that appears to redirect them back */}
+      {loadingAndValidation.loading === false && loadingAndValidation.valid === true ? null : <h1>Item doesn't exist</h1>}
+      <ItemSection
+        id={item.id}
+        title={item?.title}
+        price={item?.price}
+        colours={item?.colours}
+        sizes={item?.sizes}
+        viewerImages={item?.viewerImages}
+        frequency={item?.frequency}
+        description={item?.description}
+        isLoading={loadingAndValidation.loading}
+      />
     </React.Fragment>
   );
 };
