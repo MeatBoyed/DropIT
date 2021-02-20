@@ -130,10 +130,23 @@ export const ShoppingSection: React.FC = () => {
 						}
 					})}
 				</div>
-				<div>{loading && "Loading..."}</div>
-				<div>{error && "Error..."}</div>
-				<div>{hasMore ? null : "No more"}</div>
 			</div>
+			<div>
+				{loading && (
+					<div className="lds-roller">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				)}
+			</div>
+			<div>{error && "Error..."}</div>
+			<div>{hasMore ? null : "No more"}</div>
 		</section>
 	);
 };
