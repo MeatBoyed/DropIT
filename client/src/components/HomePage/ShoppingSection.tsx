@@ -3,6 +3,8 @@ import { usePaginate } from '../usePaginate';
 
 import { Link } from 'react-router-dom';
 
+import mainImage from '../../images/MainImage1.png';
+
 // Import Components
 import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -36,7 +38,31 @@ export const ShoppingSection: React.FC = () => {
       <div id="StoreItemsContainer">
         <h3 className="sectionTitle">Beats Products</h3>
         <div className="itemsContainer">
-          {items.map((item, index) => {
+          <ItemCard
+            url={'test'}
+            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+            price={25009}
+            mainImage={mainImage}
+          />
+          <ItemCard
+            url={'test'}
+            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+            price={25009}
+            mainImage={mainImage}
+          />
+          <ItemCard
+            url={'test'}
+            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+            price={25009}
+            mainImage={mainImage}
+          />
+          <ItemCard
+            url={'test'}
+            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+            price={25009}
+            mainImage={mainImage}
+          />
+          {/* {items.map((item, index) => {
             if (items.length === index + 1) {
               return (
                 <div key={index} ref={lastItemElementRef} className="itemCard">
@@ -78,7 +104,7 @@ export const ShoppingSection: React.FC = () => {
                 />
               );
             }
-          })}
+          })} */}
         </div>
       </div>
       <div>{loading && <LoadingSpinner />}</div>

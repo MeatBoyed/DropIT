@@ -14,17 +14,8 @@
     justify-content: center;
     align-items: center;
 
-    @include media('<tablet') {
-      display: none;
-    }
     .desktopIcon {
       margin-right: 30px;
-    }
-  }
-
-  .searchIcon {
-    @include media('>tablet') {
-      display: none;
     }
   }
 }
