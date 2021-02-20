@@ -152,6 +152,7 @@ export const ShoppingSection: React.FC = () => {
 				</div>
 				<div>{loading && "Loading..."}</div>
 				<div>{error && "Error..."}</div>
+				<div>{hasMore ? null : "No more"}</div>
 			</div>
 		</section>
 	);
