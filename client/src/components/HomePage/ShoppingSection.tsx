@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 // Import Components
 import { StoreCard } from "./StoreCard";
 import { ItemCard } from "../ItemCard";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 interface Vendors {
 	id: string;
@@ -131,20 +132,7 @@ export const ShoppingSection: React.FC = () => {
 					})}
 				</div>
 			</div>
-			<div>
-				{loading && (
-					<div className="lds-roller">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				)}
-			</div>
+			<div>{loading && <LoadingSpinner />}</div>
 			<div>{error && "Error..."}</div>
 			<div>{hasMore ? null : "No more"}</div>
 		</section>
