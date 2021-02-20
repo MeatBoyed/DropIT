@@ -36,7 +36,6 @@ export const ShoppingSection: React.FC = () => {
   return (
     <section id="ShoppingSection">
       <div id="StoreItemsContainer">
-        <h3 className="sectionTitle">Beats Products</h3>
         <div className="itemsContainer">
           <ItemCard
             url={'test'}

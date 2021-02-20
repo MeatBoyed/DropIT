@@ -21,7 +21,6 @@ function App() {
   return (
     <BrowserRouter>
       <React.Suspense fallback={<LoadingSpinner />}>
-        <Navbar />
         <Switch>
           <ShoppingCartContextProvider>
             <Route exact path="/" component={HomePageIndex} />
