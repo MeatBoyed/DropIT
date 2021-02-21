@@ -1,22 +1,36 @@
 #NavbarContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  margin-top: 35px;
-  margin-bottom: 25px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 70%;
+	margin-top: 35px;
+	margin-bottom: 25px;
 
-  .backIcon:hover {
-    cursor: pointer;
-  }
+	.searchSeaction {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 2px solid grey;
+		padding-bottom: 6px;
 
-  .desktopButtons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+		.searchInput {
+			padding-left: 1rem;
+			outline: none;
+			border: 0;
+		}
+	}
 
-    .desktopIcon {
-      margin-right: 30px;
-    }
-  }
+	.backIcon:hover {
+		cursor: pointer;
+	}
+
+	.desktopButtons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.desktopIcon {
+			margin-right: 30px;
+		}
+	}
 }
