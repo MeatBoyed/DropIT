@@ -29,21 +29,13 @@ p {
 }
 
 .itemTitle {
+  font-size: 17px;
+  letter-spacing: 0.3px;
   margin: 0;
-  margin-bottom: 5px;
-  font-size: 15px;
-  letter-spacing: 1.5px;
 }
 
 .itemPrice {
-  margin: 0;
-  font-size: 14px;
+  margin-top: 0.5rem;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: 1.5px;
-  color: $ItemPriceColour;
-}
-
-.itemTitle:hover,
-.itemPrice:hover {
-  cursor: pointer;
 }

@@ -10,10 +10,21 @@
     justify-content: center;
     align-items: flex-start;
     width: 70%;
+    margin-top: 3rem;
   }
-}
-#ShoppingSection {
-  width: 80%;
+
+  #ShoppingSection {
+    width: 80%;
+    border-top: 1px solid #eee;
+
+    .itemsContainer {
+      display: grid;
+      grid-column-gap: 1.5rem;
+      grid-row-gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      margin-top: 2rem;
+    }
+  }
 }
 // #ShoppingSection {
 //   // @include MainBackground;

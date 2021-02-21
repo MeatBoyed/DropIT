@@ -35,33 +35,32 @@ export const ShoppingSection: React.FC = () => {
 
   return (
     <section id="ShoppingSection">
-      <div id="StoreItemsContainer">
-        <div className="itemsContainer">
-          <ItemCard
-            url={'test'}
-            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
-            price={25009}
-            mainImage={mainImage}
-          />
-          <ItemCard
-            url={'test'}
-            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
-            price={25009}
-            mainImage={mainImage}
-          />
-          <ItemCard
-            url={'test'}
-            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
-            price={25009}
-            mainImage={mainImage}
-          />
-          <ItemCard
-            url={'test'}
-            title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
-            price={25009}
-            mainImage={mainImage}
-          />
-          {/* {items.map((item, index) => {
+      <div className="itemsContainer">
+        <ItemCard
+          url={'test'}
+          title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+          price={25009}
+          mainImage={mainImage}
+        />
+        <ItemCard
+          url={'test'}
+          title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+          price={25009}
+          mainImage={mainImage}
+        />
+        <ItemCard
+          url={'test'}
+          title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+          price={25009}
+          mainImage={mainImage}
+        />
+        <ItemCard
+          url={'test'}
+          title={"When Your Friend Asks for a Couple Dollars for Pizza but You're Long on BAT (Digital NFT)"}
+          price={25009}
+          mainImage={mainImage}
+        />
+        {/* {items.map((item, index) => {
             if (items.length === index + 1) {
               return (
                 <div key={index} ref={lastItemElementRef} className="itemCard">
@@ -104,7 +103,6 @@ export const ShoppingSection: React.FC = () => {
               );
             }
           })} */}
-        </div>
       </div>
       <div>{loading && <LoadingSpinner />}</div>
       <div>{error && 'Error...'}</div>
