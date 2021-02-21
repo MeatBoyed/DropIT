@@ -19,6 +19,8 @@
       flex-direction: column;
       justify-content: center;
 
+      margin-left: 20px;
+
       .info {
         margin-top: 9px;
         font-size: 14px;
@@ -28,6 +30,10 @@
         margin-top: 1rem;
         color: #dc3545 !important;
         font-size: 15px;
+      }
+
+      .removeBtn:hover {
+        cursor: pointer;
       }
     }
   }

@@ -69,7 +69,7 @@ const ItemPageIndex: React.FC = () => {
   };
 
   useEffect(() => {
-    // GetItem();
+    GetItem();
   });
 
   return (

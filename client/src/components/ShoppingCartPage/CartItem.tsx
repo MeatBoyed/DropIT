@@ -26,7 +26,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size,
   };
 
   useEffect(() => {
-    // FetchCartImage();
+    FetchCartImage();
   });
 
   return (
@@ -40,7 +40,9 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size,
             <p className="itemTitle">{title}</p>
           </Link>
           <p className="info">White / S</p>
-          <p className="removeBtn">Remove</p>
+          <p onCanPlay={RemoveFromShoppingCart} className="removeBtn">
+            Remove
+          </p>
         </div>
       </div>
       <div className="otherCartItemDetails">
