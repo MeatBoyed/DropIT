@@ -53,6 +53,10 @@
       @include Button();
     }
 
+    button:hover {
+      @include ButtonHover($ButtonColour, $DefaultBackgroundColour);
+    }
+
     .checkoutBtn {
       margin-left: 10px;
     }
