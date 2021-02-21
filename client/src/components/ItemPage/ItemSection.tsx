@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 import { useLocation } from 'react-router-dom';
 
@@ -10,28 +10,16 @@ interface Props {
   sizes: string[];
   viewerImages: string[];
   description: string;
-  frequency: number;
   isLoading: boolean;
 }
 
-export const ItemSection: React.FC<Props> = ({
-  id,
-  title,
-  price,
-  colours,
-  sizes,
-  viewerImages,
-  description,
-  frequency,
-  isLoading,
-}) => {
+export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes, viewerImages, description, isLoading }) => {
   const url = useLocation().pathname;
   const { AddToShoppingCart } = useContext(ShoppingCartContext);
 
   const [colour, setColour] = useState<string>('');
   const [size, setSize] = useState<string>('');
   const [quantity, setQuantity] = useState<number>(1);
-  const [frequencyArray, setFrequencyArray] = useState<object[]>();
 
   const AddToShoppingCartHandler = () => {
     const item: ShoppingCartItem = {
@@ -45,18 +33,6 @@ export const ItemSection: React.FC<Props> = ({
     };
     AddToShoppingCart(item);
   };
-
-  useEffect(() => {
-    const array: object[] = [];
-    for (let i = 1; i <= frequency; i++) {
-      array.push(
-        <option key={i} value={i}>
-          {i}
-        </option>
-      );
-    }
-    setFrequencyArray(array);
-  }, [frequency]);
 
   return (
     <section id="ItemSection">

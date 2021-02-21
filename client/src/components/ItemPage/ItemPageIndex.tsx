@@ -11,7 +11,6 @@ import { ItemSection } from './ItemSection';
 import ViewerLoading from '../../images/ViewerImageLoading.png';
 
 interface Params {
-  storename: string;
   itemid: string;
 }
 
@@ -28,7 +27,6 @@ interface Item {
   sizes: string[];
   viewerImages: string[];
   description: string;
-  frequency: number;
 }
 
 const ItemPageIndex: React.FC = () => {
@@ -45,7 +43,6 @@ const ItemPageIndex: React.FC = () => {
     viewerImages: [ViewerLoading],
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa augue, congue nec ex id, maximus rhoncus lorem. Curabitur sed finibus ipsum. Fusce massa tellus, fermentum at rutrum a, blandit vitae ex. Nulla ut nisl mi. Curabitur rhoncus facilisis orci, vitae fermentum eros tincidunt in. Praesent feugiat vel tortor in pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempor mattis nisl vel tristique. Cras ut consequat nibh. Nam eros urna, lobortis vel volutpat sed, efficitur sit amet arcu. Nam ultricies suscipit velit, sed laoreet ex sagittis sit amet. Proin porta est eu mauris feugiat vestibulum. Etiam dapibus vestibulum accumsan. In at lectus vitae enim tincidunt ultricies eget nec libero.',
-    frequency: 7,
   });
 
   const GetItem = async () => {
@@ -62,7 +59,6 @@ const ItemPageIndex: React.FC = () => {
         sizes: itemData.data()!.sizes,
         viewerImages: itemData.data()!.images.viewerImages,
         description: itemData.data()!.description,
-        frequency: itemData.data()!.frequency,
       });
       setLoadingAndValidation({ loading: false, valid: true });
     }
@@ -70,7 +66,7 @@ const ItemPageIndex: React.FC = () => {
 
   useEffect(() => {
     GetItem();
-  });
+  }, []);
 
   return (
     <React.Fragment>
@@ -83,7 +79,6 @@ const ItemPageIndex: React.FC = () => {
         colours={item?.colours}
         sizes={item?.sizes}
         viewerImages={item?.viewerImages}
-        frequency={item?.frequency}
         description={item?.description}
         isLoading={false}
       />
