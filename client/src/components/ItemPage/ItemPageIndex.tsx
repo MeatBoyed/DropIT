@@ -37,14 +37,15 @@ const ItemPageIndex: React.FC = () => {
   const [loadingAndValidation, setLoadingAndValidation] = useState<LoadingAndValidation>({ loading: true, valid: false });
   const [item, setItem] = useState<Item>({
     id: '',
-    title: `${path.storename} - item`,
+    title: `
+    Brave x Gala Games: Mirandus Unisex Hoodie (Limited Edition)`,
     price: 404.4,
     colours: ['red', 'yellow', 'green'],
     sizes: ['s', 'm', 'l'],
     viewerImages: [ViewerLoading],
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa augue, congue nec ex id, maximus rhoncus lorem. Curabitur sed finibus ipsum. Fusce massa tellus, fermentum at rutrum a, blandit vitae ex. Nulla ut nisl mi. Curabitur rhoncus facilisis orci, vitae fermentum eros tincidunt in. Praesent feugiat vel tortor in pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempor mattis nisl vel tristique. Cras ut consequat nibh. Nam eros urna, lobortis vel volutpat sed, efficitur sit amet arcu. Nam ultricies suscipit velit, sed laoreet ex sagittis sit amet. Proin porta est eu mauris feugiat vestibulum. Etiam dapibus vestibulum accumsan. In at lectus vitae enim tincidunt ultricies eget nec libero.',
-    frequency: 0,
+    frequency: 7,
   });
 
   const GetItem = async () => {
@@ -68,13 +69,13 @@ const ItemPageIndex: React.FC = () => {
   };
 
   useEffect(() => {
-    GetItem();
+    // GetItem();
   });
 
   return (
     <React.Fragment>
       {/* Create some cart that appears to redirect them back */}
-      {loadingAndValidation.loading === false && loadingAndValidation.valid === true ? null : <h1>Item doesn't exist</h1>}
+      {/* {loadingAndValidation.loading === false && loadingAndValidation.valid === true ? null : <h1>Item doesn't exist</h1>} */}
       <ItemSection
         id={item.id}
         title={item?.title}
@@ -84,7 +85,7 @@ const ItemPageIndex: React.FC = () => {
         viewerImages={item?.viewerImages}
         frequency={item?.frequency}
         description={item?.description}
-        isLoading={loadingAndValidation.loading}
+        isLoading={false}
       />
     </React.Fragment>
   );

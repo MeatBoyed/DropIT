@@ -62,6 +62,9 @@ export const ItemSection: React.FC<Props> = ({
     <section id="ItemSection">
       <div className="ItemDisplaySection">
         <img src={viewerImages[0]} alt="" />
+      </div>
+
+      <div className="ItemDetailSection">
         <div className="itemDetailsContainer">
           <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="itemTitle">
             {title}
@@ -70,61 +73,40 @@ export const ItemSection: React.FC<Props> = ({
             ${price}
           </p>
         </div>
-      </div>
-
-      <div className="ItemDetailSection">
-        {colours !== undefined ? (
-          <div className="itemColours">
-            <h3 className="sectionTitle">Colours</h3>
-            <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="colourSelect">
-              {colours.map((colour, index) => (
-                <svg key={index} onClick={() => setColour(colour)} width={36} height={36} viewBox="0 0 36 36">
-                  <defs>
-                    <filter id="colour" x={0} y={0} width={36} height={36} filterUnits="userSpaceOnUse">
-                      <feOffset dy={3} />
-                      <feGaussianBlur stdDeviation={3} result="blur" />
-                      <feFlood floodColor="#060dd9" floodOpacity="0.149" />
-                      <feComposite operator="in" in2="blur" />
-                      <feComposite in="SourceGraphic" />
-                    </filter>
-                  </defs>
-                  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#colour)">
-                    <g
-                      id="colour-2"
-                      data-name="colour"
-                      transform="translate(9 6)"
-                      fill={colour}
-                      stroke="#fff"
-                      strokeWidth={3}
-                    >
-                      <circle cx={9} cy={9} r={9} stroke="none" />
-                      <circle cx={9} cy={9} r="7.5" fill="none" />
-                    </g>
-                  </g>
-                </svg>
-              ))}
+        <div className="itemSelectorsContainer">
+          {colours !== undefined ? (
+            <div className="itemColours">
+              <p className="formSelectTitle">Colour:</p>
+              <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="formSelect">
+                <select name="colour" id="colour" className="formSelector">
+                  {colours.map((colour) => (
+                    <option value={colour}>{colour}</option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </div>
-        ) : null}
-        {sizes !== undefined ? (
-          <div className="itemSize">
-            <h3 className="sectionTitle">Size</h3>
-            <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="sizeSelect">
-              {sizes.map((size, index) => (
-                <button
-                  key={index}
-                  className="size"
-                  onClick={() => {
-                    setSize(size);
-                  }}
-                >
-                  {size}
-                </button>
-              ))}
+          ) : null}
+          {sizes !== undefined ? (
+            <div className="itemSize">
+              <p className="formSelectTitle">Size:</p>
+              <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="formSelect">
+                <select name="size" id="size" className="formSelector">
+                  {sizes.map((size) => (
+                    <option value={size}>{size}</option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </div>
-        ) : null}
-        <div className="itemQuantity">
+          ) : null}
+        </div>
+        {/* After adding to cart, change Add to cart to View cart and show Continue shopping routing to previous page */}
+        <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="ButtonsContainer">
+          <button className="addToCartBtn" onClick={AddToShoppingCartHandler}>
+            Add To Cart
+          </button>
+          <button className="buyNowBtn">Continue Shopping</button>
+        </div>
+        {/* <div className="itemQuantity">
           <h3 className="sectionTitle">Qty</h3>
           <div className="quantitySelect">
             <select
@@ -136,16 +118,9 @@ export const ItemSection: React.FC<Props> = ({
               {frequencyArray?.map((select) => select)}
             </select>
           </div>
-        </div>
+        </div> */}
         <div className="itemDetail">
-          <h3 className="sectionTitle">Details</h3>
           <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }}>{description}</p>
-        </div>
-        <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="ButtonsContainer">
-          <button className="addToCartBtn" onClick={AddToShoppingCartHandler}>
-            Add To Cart
-          </button>
-          <button className="buyNowBtn">Buy Now</button>
         </div>
       </div>
     </section>
