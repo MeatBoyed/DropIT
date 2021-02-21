@@ -106,19 +106,6 @@ export const ItemSection: React.FC<Props> = ({
           </button>
           <button className="buyNowBtn">Continue Shopping</button>
         </div>
-        {/* <div className="itemQuantity">
-          <h3 className="sectionTitle">Qty</h3>
-          <div className="quantitySelect">
-            <select
-              name="quantity"
-              id="quantity"
-              defaultValue={quantity}
-              onChange={(e) => setQuantity(parseInt(e.target.value))}
-            >
-              {frequencyArray?.map((select) => select)}
-            </select>
-          </div>
-        </div> */}
         <div className="itemDetail">
           <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }}>{description}</p>
         </div>
