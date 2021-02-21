@@ -10,10 +10,9 @@ interface Props {
   sizes: string[];
   viewerImages: string[];
   description: string;
-  isLoading: boolean;
 }
 
-export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes, viewerImages, description, isLoading }) => {
+export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes, viewerImages, description }) => {
   const url = useLocation().pathname;
   const { AddToShoppingCart } = useContext(ShoppingCartContext);
 
@@ -35,28 +34,26 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
   };
 
   return (
-    <section id="ItemSection">
+    <React.Fragment>
       <div className="ItemDisplaySection">
         <img src={viewerImages[0]} alt="" />
       </div>
 
       <div className="ItemDetailSection">
         <div className="itemDetailsContainer">
-          <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="itemTitle">
-            {title}
-          </p>
-          <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="itemPrice">
-            ${price}
-          </p>
+          <p className="itemTitle">{title}</p>
+          <p className="itemPrice">${price}</p>
         </div>
         <div className="itemSelectorsContainer">
           {colours !== undefined ? (
             <div className="itemColours">
               <p className="formSelectTitle">Colour:</p>
-              <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="formSelect">
+              <div className="formSelect">
                 <select name="colour" id="colour" className="formSelector">
-                  {colours.map((colour) => (
-                    <option value={colour}>{colour}</option>
+                  {colours.map((colour, index) => (
+                    <option key={index} value={colour}>
+                      {colour}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -65,10 +62,12 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
           {sizes !== undefined ? (
             <div className="itemSize">
               <p className="formSelectTitle">Size:</p>
-              <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="formSelect">
+              <div className="formSelect">
                 <select name="size" id="size" className="formSelector">
-                  {sizes.map((size) => (
-                    <option value={size}>{size}</option>
+                  {sizes.map((size, index) => (
+                    <option key={index} value={size}>
+                      {size}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -76,16 +75,16 @@ export const ItemSection: React.FC<Props> = ({ id, title, price, colours, sizes,
           ) : null}
         </div>
         {/* After adding to cart, change Add to cart to View cart and show Continue shopping routing to previous page */}
-        <div style={{ filter: isLoading ? 'blur(2px)' : 'none' }} className="ButtonsContainer">
+        <div className="ButtonsContainer">
           <button className="addToCartBtn" onClick={AddToShoppingCartHandler}>
             Add To Cart
           </button>
           <button className="buyNowBtn">Continue Shopping</button>
         </div>
         <div className="itemDetail">
-          <p style={{ filter: isLoading ? 'blur(2px)' : 'none' }}>{description}</p>
+          <p>{description}</p>
         </div>
       </div>
-    </section>
+    </React.Fragment>
   );
 };

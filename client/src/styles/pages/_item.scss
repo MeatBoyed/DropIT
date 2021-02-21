@@ -65,4 +65,16 @@
     font-size: 17px;
     letter-spacing: 1px;
   }
+
+  .ItemNotFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      text-decoration: underline;
+      font-size: 17px;
+    }
+  }
 }
