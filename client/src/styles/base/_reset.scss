@@ -22,10 +22,20 @@ a {
 p {
   margin: 0;
 }
+#MainSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-.sectionTitle {
-  font-weight: 599;
-  margin: -1;
+  #PageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 70%;
+    margin-top: 3rem;
+  }
 }
 
 .itemTitle {
