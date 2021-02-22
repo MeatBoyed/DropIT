@@ -39,23 +39,29 @@ const ItemPageIndex: React.FC = () => {
     description: '',
   });
 
-  const GetItem = async () => {
-    const itemData = await firestore.collection('Items').doc(path.itemid).get();
+  const GetItem = () => {
+    const itemSnapShot = firestore.collection('Items').doc(path.itemid).get();
 
-    if (!itemData.exists) {
-      setLoadingAndValidation({ loading: false, valid: false });
-    } else {
-      setItem({
-        id: itemData.id,
-        title: itemData.data()!.title,
-        price: itemData.data()!.price,
-        colours: itemData.data()!.colours,
-        sizes: itemData.data()!.sizes,
-        viewerImages: itemData.data()!.images.viewerImages,
-        description: itemData.data()!.description,
+    itemSnapShot
+      .then((itemSnapShot) => {
+        if (!itemSnapShot.exists) {
+          setLoadingAndValidation({ loading: false, valid: false });
+        } else {
+          setItem({
+            id: itemSnapShot.id,
+            title: itemSnapShot.data()!.title,
+            price: itemSnapShot.data()!.price,
+            colours: itemSnapShot.data()!.colours,
+            sizes: itemSnapShot.data()!.sizes,
+            viewerImages: itemSnapShot.data()!.images.viewerImages,
+            description: itemSnapShot.data()!.description,
+          });
+          setLoadingAndValidation({ loading: false, valid: true });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      setLoadingAndValidation({ loading: false, valid: true });
-    }
   };
 
   useEffect(() => {
