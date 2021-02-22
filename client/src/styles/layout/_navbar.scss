@@ -5,13 +5,26 @@
   width: 70%;
   margin-top: 35px;
   margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+
+  @include media('<=tablet') {
+    width: 90%;
+  }
+
+  @include media('>tablet') {
+    width: 85%;
+  }
 
   .searchSeaction {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid grey;
     padding-bottom: 6px;
+
+    @include media('<=tablet') {
+      display: none;
+    }
 
     .searchInput {
       padding-left: 1rem;
@@ -37,12 +50,25 @@
     align-items: center;
     font-size: 17px;
 
+    @include media('<=tablet') {
+      display: none;
+    }
+
+    @include media('>tablet') {
+      font-size: 13px;
+    }
     .shoppingCartIcon {
       margin-right: 10px;
     }
 
     .checkoutButton {
       margin-left: 10px;
+    }
+  }
+
+  .menueBtn {
+    @include media('>tablet') {
+      display: none;
     }
   }
 }

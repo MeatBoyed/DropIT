@@ -2,6 +2,13 @@
   display: flex;
   width: 20%;
 
+  @include media('<=tablet') {
+    display: none;
+  }
+
+  @include media('>tablet') {
+    margin-right: 25px;
+  }
   .linksContainer {
     margin: 0;
     padding: 0;

@@ -66,7 +66,6 @@ export const HomePage: React.FC = () => {
       </div>
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div>{error && 'Error...'}</div>
-      <div>{hasMore ? null : 'No more'}</div>
     </section>
   );
 };

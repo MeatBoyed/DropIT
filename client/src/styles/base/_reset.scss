@@ -44,6 +44,14 @@ p {
     align-items: flex-start;
     width: 70%;
     margin-top: 3rem;
+
+    @include media('<=tablet') {
+      width: 100%;
+    }
+
+    @include media('>tablet') {
+      width: 85%;
+    }
   }
 }
 

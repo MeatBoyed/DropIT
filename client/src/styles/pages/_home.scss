@@ -5,6 +5,14 @@
   width: 80%;
   border-top: 1px solid #eee;
 
+  @include media('<=tablet') {
+    width: 90%;
+  }
+
+  // @include media('>400px', '<=tablet') {
+  //   width: 70%;
+  // }
+
   .itemsContainer {
     display: grid;
     grid-column-gap: 1.5rem;
@@ -12,6 +20,10 @@
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     margin-top: 2rem;
     width: 100%;
+
+    @include media('<=tablet') {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
   }
 }
 // #ShoppingSection {
@@ -34,7 +46,7 @@
 //       flex-wrap: wrap;
 //       margin-top: 20px;
 
-//       @include media('<=phone') {
+//       @include media('<=tablet') {
 //         flex-direction: column;
 //       }
 //     }
