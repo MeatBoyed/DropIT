@@ -72,3 +72,5 @@ export const ShoppingSection: React.FC = () => {
     </section>
   );
 };
+
+export default ShoppingSection;
