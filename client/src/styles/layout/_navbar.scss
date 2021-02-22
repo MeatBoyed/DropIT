@@ -29,9 +29,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
 
-    .desktopIcon {
-      margin-right: 30px;
+  .shoppingCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+
+    .shoppingCartIcon {
+      margin-right: 10px;
+    }
+
+    .checkoutButton {
+      margin-left: 10px;
     }
   }
 }

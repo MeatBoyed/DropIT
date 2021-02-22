@@ -23,19 +23,19 @@ function App() {
         }
       >
         <section id="MainSection">
-          <Navbar />
-          <div id="PageContainer">
-            <SideBar />
-            <Switch>
-              <ShoppingCartContextProvider>
+          <ShoppingCartContextProvider>
+            <Navbar />
+            <div id="PageContainer">
+              <SideBar />
+              <Switch>
                 <Route exact path="/" render={() => <HomePage />} />
                 <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
                 <Route exact path="/404" render={() => <PageNotFound />} />
                 {/* <Route path="" component={PageNotFound} /> */}
-              </ShoppingCartContextProvider>
-            </Switch>
-          </div>
+              </Switch>
+            </div>
+          </ShoppingCartContextProvider>
         </section>
       </React.Suspense>
     </BrowserRouter>
