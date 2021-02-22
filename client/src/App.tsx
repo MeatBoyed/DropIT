@@ -6,7 +6,7 @@ import './styles/main.scss';
 import { ShoppingCartContextProvider } from './components/ShoppingCartContext';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { Navbar } from './components/Navbar';
-import { SideBar } from './components/SideBar';
+import SideBar from './components/SideBar';
 const HomePage = React.lazy(() => import('./components/HomePage/HomePage'));
 const ShoppingCartPage = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPage'));
 const ItemPageIndex = React.lazy(() => import('./components/ItemPage/ItemPageIndex'));

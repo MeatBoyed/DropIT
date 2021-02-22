@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const SideBar: React.FC = () => {
+const SideBar: React.FC = () => {
   return (
     <section className="SideNavbarSection">
       {/* Optional Logo */}
@@ -35,3 +35,5 @@ export const SideBar: React.FC = () => {
     </section>
   );
 };
+
+export default React.memo(SideBar);

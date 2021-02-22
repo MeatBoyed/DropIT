@@ -4,6 +4,7 @@ import { firestore } from '../../firebase';
 
 // Import Componets
 import { LoadingSpinner } from '../LoadingSpinner';
+import { ImageViewer } from './ImageViewer';
 import { ItemSection } from './ItemSection';
 
 interface Params {
@@ -75,15 +76,16 @@ const ItemPageIndex: React.FC = () => {
       ) : (
         <React.Fragment>
           {loadingAndValidation.valid ? (
-            <ItemSection
-              id={item.id}
-              title={item?.title}
-              price={item?.price}
-              colours={item?.colours}
-              sizes={item?.sizes}
-              viewerImages={item?.viewerImages}
-              description={item?.description}
-            />
+            <React.Fragment>
+              <ImageViewer viewerImages={item.viewerImages} />
+              <ItemSection
+                title={item?.title}
+                price={item?.price}
+                colours={item?.colours}
+                sizes={item?.sizes}
+                description={item?.description}
+              />
+            </React.Fragment>
           ) : (
             <div className="ItemNotFound">
               <h4>It seems as though the item you searched for doesn't exist</h4>
