@@ -28,10 +28,10 @@ function App() {
             <SideBar />
             <Switch>
               <ShoppingCartContextProvider>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/shoppingcart" component={ShoppingCartPage} />
-                <Route exact path="/:storename/:itemid" component={ItemPageIndex} />
-                <Route exact path="/404" component={PageNotFound} />
+                <Route exact path="/" render={() => <HomePage />} />
+                <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
+                <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
+                <Route exact path="/404" render={() => <PageNotFound />} />
                 {/* <Route path="" component={PageNotFound} /> */}
               </ShoppingCartContextProvider>
             </Switch>
