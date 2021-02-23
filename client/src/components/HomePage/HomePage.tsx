@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { usePaginate } from '../usePaginate';
+import { usePaginate } from '../customHooks';
 
 import { Link } from 'react-router-dom';
 

@@ -16,10 +16,6 @@ export const ItemSection: React.FC<Props> = ({ title, price, colours, sizes, des
   return (
     <React.Fragment>
       <div className="ItemDetailSection">
-        <div className="itemDetailsContainer">
-          <p className="itemTitle">{title}</p>
-          <p className="itemPrice">${price}</p>
-        </div>
         <div className="itemSelectorsContainer">
           {colours !== undefined ? <Selector options={colours} /> : null}
           {colours !== undefined ? <Selector options={sizes} /> : null}
