@@ -1,117 +1,116 @@
 #ItemSection {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background: $ShopBackgrounColour;
+  justify-content: center;
+  width: 80%;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+
+  @include media('<=tablet') {
+    width: 90%;
+    flex-direction: column;
+    padding: 0;
+  }
 
   .ItemDisplaySection {
-    @include ItemBackground($ShopBackgrounColour);
-    align-items: center;
-    justify-content: space-around;
+    width: 66%;
 
-    img {
-      width: 15rem;
-      height: 15rem;
-      margin-top: 3rem;
+    @include media('<=tablet') {
+      width: 100%;
+      height: 100%;
     }
 
-    .itemDetailsContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 3rem;
-      margin-top: 2rem;
-      .itemTitle {
-        font-size: 21px;
-      }
+    img {
+      width: 100%;
 
-      .itemPrice {
-        font-size: 17px;
+      @include media('<=tablet') {
+        height: 100%;
       }
     }
   }
 
   .ItemDetailSection {
-    @include ItemBackground($DefaultBackgroundColour);
-    align-items: center;
-    height: 100%;
-
-    .itemColours,
-    .itemSize,
-    .itemDetail {
-      margin-left: 20px;
-    }
-
-    .itemColours {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      width: 21rem;
-
-      .sectionTitle {
-        margin-bottom: 8px;
-      }
-    }
-
-    .itemSize {
+    width: 34%;
+    @include media('<=tablet') {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      margin-bottom: 2rem;
-
-      .sectionTitle {
-        margin-bottom: 12px;
-      }
-
-      .sizeSelect {
-        display: flex;
-        flex-direction: row;
-        margin-top: 10px;
-
-        .size {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 35px;
-          height: 35px;
-          border-radius: 7px;
-          border: 0;
-          background: $ShopBackgrounColour;
-          margin-right: 12px;
-        }
-      }
+      align-items: center;
+      margin-top: 1rem;
+      text-align: center;
+      width: 100%;
     }
 
-    .itemDetail {
+    .itemDetailsContainer {
       margin-bottom: 3rem;
-      width: 21rem;
+      @include media('<=tablet') {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-      .sectionTitle {
-        margin-bottom: 12px;
+      .itemTitle {
+        font-size: 28px;
+      }
+
+      .itemPrice {
+        font-size: 17px;
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 1rem;
+      }
+    }
+    .itemSelectorsContainer {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 3rem;
+
+      .itemColours {
+        @include media('<=tablet') {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        margin-right: 2rem;
       }
     }
   }
 
   .ButtonsContainer {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 
     .addToCartBtn {
-      @include Button($ShopBackgrounColour);
-      margin-right: 20px;
+      @include Button;
+      margin-right: 1rem;
     }
 
     .buyNowBtn {
-      @include Button($ItemPriceColour);
-      color: $DefaultBackgroundColour;
+      @include Button();
     }
 
     .addToCartBtn:hover,
     .buyNowBtn:hover {
+      @include ButtonHover($ButtonColour, $DefaultBackgroundColour);
       cursor: pointer;
+    }
+  }
+
+  .itemDetail {
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+
+  .ItemNotFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      text-decoration: underline;
+      font-size: 17px;
     }
   }
 }

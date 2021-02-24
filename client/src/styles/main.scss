@@ -9,11 +9,14 @@
 
 // Layout
 @import './layout/navbar';
+@import './layout/sidenavbar';
+@import './layout/navbardropdown';
 
 // Components
 @import './components/itemcard';
 @import './components/cartItem';
 @import './components/spinner';
+@import './components/_alert';
 
 // Pages
 @import './pages/home';

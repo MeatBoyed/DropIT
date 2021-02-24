@@ -1,0 +1,29 @@
+.SideNavbarSection {
+  display: flex;
+  width: 20%;
+
+  @include media('<=tablet') {
+    display: none;
+  }
+
+  @include media('>tablet') {
+    margin-right: 25px;
+  }
+  .linksContainer {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .link {
+      display: block;
+      border-top: 1px solid #eee;
+
+      .tag {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: 17px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}

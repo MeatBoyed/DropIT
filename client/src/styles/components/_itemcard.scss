@@ -1,32 +1,18 @@
 .itemCard {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  min-width: 151px;
-  min-height: 207px;
-  border-radius: 20px;
-  background: $DefaultBackgroundColour;
-  margin-right: 15px;
-  margin-bottom: 30px;
+  flex-direction: column;
 
   // if the screen is greater than 430px and less than or eqaul to 450px
   @include media('>430px', '<510px') {
-    margin-right: 50px;
   }
 
   // if the screen is greater than 450px and less than or equal to 620px
   @include media('>510px', '<620px') {
-    margin-right: 15px;
   }
 
   @include media('>620px') {
-    margin-right: 35px;
-  }
-
-  .favouriteIcon {
-    align-self: flex-end;
-    margin-top: 10px;
-    margin-right: 15px;
   }
 
   .itemImage {
@@ -34,18 +20,13 @@
     max-height: 98px;
   }
 
-  .itemImage:hover,
-  .favouriteIcon:hover {
-    cursor: pointer;
-  }
-
   .itemInfo {
-    align-self: flex-start;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-top: 1rem;
-    margin-left: 12px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     @include media('<=phone') {
       align-self: center;
