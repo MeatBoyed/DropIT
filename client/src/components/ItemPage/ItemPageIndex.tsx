@@ -33,7 +33,7 @@ const ItemPageIndex: React.FC = () => {
               <div className="ItemDetailSection">
                 <ItemDetailsViewer title={item.title} price={item.price} />
                 <div className="itemSelectorsContainer">
-                  {item.colours[0] !== '' ? <Selector options={item.colours} /> : null}
+                  {item.colours !== undefined ? <Selector options={item.colours} /> : null}
                   {item.sizes[0] !== '' ? <Selector options={item.sizes} /> : null}
                 </div>
                 {/* After adding to cart, change Add to cart to View cart and show Continue shopping routing to previous page */}
