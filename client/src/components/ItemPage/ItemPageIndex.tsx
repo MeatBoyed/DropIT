@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Alert } from '../Alert';
 import { useData } from '../customHooks';
@@ -33,8 +33,8 @@ const ItemPageIndex: React.FC = () => {
               <div className="ItemDetailSection">
                 <ItemDetailsViewer title={item.title} price={item.price} />
                 <div className="itemSelectorsContainer">
-                  {item.colours !== undefined ? <Selector options={item.colours} /> : null}
-                  {item.sizes[0] !== '' ? <Selector options={item.sizes} /> : null}
+                  {item.colours.length !== 0 && <Selector title={'Colours'} options={item.colours} />}
+                  {item.sizes.length !== 0 && <Selector title={'Sizes'} options={item.sizes} />}
                 </div>
                 {/* After adding to cart, change Add to cart to View cart and show Continue shopping routing to previous page */}
                 <Buttons />
