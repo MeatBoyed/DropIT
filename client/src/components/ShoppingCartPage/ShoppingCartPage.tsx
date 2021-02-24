@@ -27,7 +27,6 @@ export const ShoppingCartPage: React.FC = () => {
             price={item.price}
             colour={item.colour}
             size={item.size}
-            quantity={item.quantity}
           />
         ))}
       </div>

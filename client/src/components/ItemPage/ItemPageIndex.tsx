@@ -1,27 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { Alert } from '../Alert';
 import { useData } from '../customHooks';
 
 // Import Componets
 import { LoadingSpinner } from '../LoadingSpinner';
+import { ShoppingCartItem, ShoppingCartContext } from '../ShoppingCartContext';
 import { ImageViewer } from './ImageViewer';
 import { ItemDetailsViewer } from './ItemDetailsViewer';
 import Selector from './Selector';
 
 interface Param {
+  storename: string;
   itemid: string;
 }
 
 const ItemPageIndex: React.FC = () => {
   const currentId = useParams<Param>();
+  const currentUrl = useLocation();
 
-  const [addToCart, setAddedtoCart] = useState<boolean>(false);
+  const [size, setSize] = useState<string>('');
+  const [colour, setColour] = useState<string>('');
 
+  const { AddToShoppingCart, ItemInCart } = useContext(ShoppingCartContext);
   const { loading, errorMessage, item } = useData(currentId.itemid);
+  const [addToCart, setAddedtoCart] = useState<boolean>(ItemInCart(currentId.itemid));
 
   const AddToCartHandler = () => {
     if (item.frequency !== 0) {
+      let cartItem: ShoppingCartItem = {
+        id: currentId.itemid,
+        title: item.title,
+        price: item.price,
+        colour: colour,
+        size: size,
+        url: currentUrl.pathname,
+      };
+      AddToShoppingCart(cartItem);
       setAddedtoCart(true);
     }
   };
@@ -40,13 +55,21 @@ const ItemPageIndex: React.FC = () => {
               <div className="ItemDetailSection">
                 <ItemDetailsViewer title={item.title} price={item.price} />
                 <div className="itemSelectorsContainer">
-                  {item.colours.length !== 0 && <Selector title={'Colours'} options={item.colours} />}
-                  {item.sizes.length !== 0 && <Selector title={'Sizes'} options={item.sizes} />}
+                  {item.colours.length !== 0 && (
+                    <Selector onChange={(newValue) => setColour(newValue)} title={'Colours'} options={item.colours} />
+                  )}
+                  {item.sizes.length !== 0 && (
+                    <Selector onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={item.sizes} />
+                  )}
                 </div>
-                {/* After adding to cart, change Add to cart to View cart and show Continue shopping routing to previous page */}
                 <div className="ButtonsContainer">
+                  {item.frequency === 0 && (
+                    <button onClick={AddToCartHandler} className={addToCart ? 'activatedBtn' : 'addToCartBtn'}>
+                      {item.frequency === 0 ? 'Out of Stock' : 'Add To Cart'}
+                    </button>
+                  )}
                   <button onClick={AddToCartHandler} className={addToCart ? 'activatedBtn' : 'addToCartBtn'}>
-                    {item.frequency === 0 ? 'Out of Stock' : 'Add To Cart'}
+                    {addToCart ? 'View Cart' : 'Add To Cart'}
                   </button>
                   {addToCart && <button className="buyNowBtn">Continue Shopping</button>}
                 </div>
