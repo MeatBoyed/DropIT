@@ -18,6 +18,7 @@ interface ItemViewerModel {
   sizes: string[];
   viewerImages: string[];
   description: string;
+  frequency: number;
 }
 
 export const usePaginate = (pageNumber: number) => {
@@ -84,6 +85,7 @@ export const useData = (itemId: string) => {
     sizes: [],
     viewerImages: [],
     description: '',
+    frequency: 0,
   });
 
   useEffect(() => {
@@ -99,6 +101,7 @@ export const useData = (itemId: string) => {
           sizes: itemSnapShot.data()!.sizes,
           viewerImages: itemSnapShot.data()!.images.viewerImages,
           description: itemSnapShot.data()!.description,
+          frequency: itemSnapShot.data()!.frequency,
         });
         setLoading(false);
       })
