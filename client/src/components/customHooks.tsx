@@ -1,3 +1,4 @@
+import { type } from 'os';
 import { useEffect, useState } from 'react';
 import { firestore } from '../firebase';
 
@@ -90,9 +91,6 @@ export const useData = (itemId: string) => {
 
     itemDataRef
       .then((itemSnapShot) => {
-        if (itemSnapShot.exists) {
-          setErrorMessage("Item doesn't exist");
-        }
         setItem({
           id: itemId,
           title: itemSnapShot.data()!.title,
@@ -102,9 +100,16 @@ export const useData = (itemId: string) => {
           viewerImages: itemSnapShot.data()!.images.viewerImages,
           description: itemSnapShot.data()!.description,
         });
+        setLoading(false);
       })
       .catch((error) => {
-        setErrorMessage(error);
+        if (error.name == 'TypeError') {
+          setErrorMessage("The product you're looking for doesn't seem to exists.");
+        } else {
+          setErrorMessage('An unexpected error occured. Try refreshing the page');
+        }
+
+        setLoading(false);
       });
   });
 
