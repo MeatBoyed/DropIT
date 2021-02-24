@@ -1,64 +1,98 @@
 #ShoppingCartSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid #eee;
-  width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 2rem;
+	border-top: 1px solid #eee;
+	width: 80%;
 
-  .fieldTitles {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-    width: 90%;
+	@include media("<=tablet") {
+		width: 90%;
+		padding-top: 0;
+	}
 
-    .productField {
-      width: 70%;
-    }
+	.fieldTitles {
+		display: flex;
+		justify-content: space-between;
+		font-weight: 600;
+		width: 90%;
 
-    .otherFields {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 30%;
-    }
-  }
+		@include media("<=tablet") {
+			display: none;
+		}
 
-  .shoppingCartItemsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    width: 90%;
-  }
+		.productField {
+			width: 56%;
+		}
 
-  .cartInfo {
-    align-self: flex-end;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+		.otherFields {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 44%;
+		}
+	}
 
-    .subtotal {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 7px;
-    }
+	.shoppingCartItemsContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 20px;
+		width: 90%;
 
-    .italics {
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
+		@include media("<=tablet") {
+			width: 100%;
+		}
+	}
 
-    button {
-      @include Button();
-    }
+	.cartInfo {
+		align-self: flex-end;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 
-    button:hover {
-      @include ButtonHover($ButtonColour, $DefaultBackgroundColour);
-    }
+		@include media("<=tablet") {
+			width: 100%;
+		}
 
-    .checkoutBtn {
-      margin-left: 10px;
-    }
-  }
+		.subtotal {
+			font-size: 18px;
+			font-weight: 600;
+			margin-bottom: 7px;
+		}
+
+		.italics {
+			font-size: 13px;
+			margin-bottom: 14px;
+		}
+
+		.buttonsContainer {
+			@include media("<=tablet") {
+				margin-bottom: 3rem;
+				margin-top: 3rem;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+			}
+
+			button {
+				@include Button();
+			}
+
+			button:hover {
+				@include ButtonHover($ButtonColour, $DefaultBackgroundColour);
+			}
+
+			.checkoutBtn {
+				margin-left: 10px;
+			}
+
+			.checkoutBtn {
+				@include media("<=tablet") {
+					margin-left: 0;
+					margin-top: 2rem;
+				}
+			}
+		}
+	}
 }
