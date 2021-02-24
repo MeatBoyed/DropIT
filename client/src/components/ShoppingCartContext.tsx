@@ -14,6 +14,11 @@ export const ShoppingCartContext = createContext<ShoppingCartItem[] | any>([]);
 
 export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
+  const [shoppingCartLength, setShoppingCartLength] = useState<number>(0);
+
+  useEffect(() => {
+    setShoppingCartLength(shoppingCart.length);
+  }, [shoppingCart]);
 
   // Check Local Storage if Shopping Cart exists and populating the shopping cart state
   useEffect(() => {
@@ -52,7 +57,7 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
   };
 
   return (
-    <ShoppingCartContext.Provider value={{ shoppingCart, AddToShoppingCart, RemoveFromShoppingCart }}>
+    <ShoppingCartContext.Provider value={{ shoppingCart, AddToShoppingCart, RemoveFromShoppingCart, shoppingCartLength }}>
       {children}
     </ShoppingCartContext.Provider>
   );

@@ -17,20 +17,8 @@
   }
 
   .searchSeaction {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 6px;
-
     @include media('<=tablet') {
       display: none;
-    }
-
-    .searchInput {
-      padding-left: 1rem;
-      outline: none;
-      border: 0;
-      font-size: 18px;
     }
   }
 

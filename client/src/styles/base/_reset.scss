@@ -55,6 +55,20 @@ p {
   }
 }
 
+.searchSeaction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 6px;
+
+  .searchInput {
+    padding-left: 1rem;
+    outline: none;
+    border: 0;
+    font-size: 18px;
+  }
+}
+
 .itemTitle {
   font-size: 17px;
   letter-spacing: 0.3px;
