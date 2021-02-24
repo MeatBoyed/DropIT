@@ -12,11 +12,25 @@
   }
 
   .ItemDisplaySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 66%;
 
     @include media('<=tablet') {
       width: 100%;
       height: 100%;
+    }
+
+    .controlBtn {
+      outline: none;
+      color: #fff;
+      border: none;
+      text-decoration: none;
+      background-color: #c7cdde;
+      margin: 0 5px;
+      padding: 5px 15px;
+      border-radius: 2px;
     }
 
     img {
