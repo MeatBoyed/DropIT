@@ -63,9 +63,24 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
     return isInCart;
   };
 
+  const GetShoppingCartTotal = () => {
+    let total = 0;
+    shoppingCart.map((cartItem: ShoppingCartItem) => {
+      total = total + cartItem.price;
+    });
+    return total;
+  };
+
   return (
     <ShoppingCartContext.Provider
-      value={{ shoppingCart, AddToShoppingCart, RemoveFromShoppingCart, shoppingCartLength, ItemInCart }}
+      value={{
+        shoppingCart,
+        AddToShoppingCart,
+        RemoveFromShoppingCart,
+        shoppingCartLength,
+        ItemInCart,
+        GetShoppingCartTotal,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>

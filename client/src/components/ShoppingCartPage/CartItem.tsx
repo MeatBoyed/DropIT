@@ -15,6 +15,7 @@ interface props {
   price: number;
   colour: string;
   size: string;
+  onChange: (localTotal: number) => void;
 }
 
 interface ItemData {
@@ -22,11 +23,12 @@ interface ItemData {
   frequency: number;
 }
 
-export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size }) => {
+export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size, onChange }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
   const [itemData, setItemData] = useState<ItemData>({ image: CartImageLoader, frequency: 1 });
   const [frequencyList, setFrequencyList] = useState<string[]>(['1']);
-  const [frequency, setFrequency] = useState<string>();
+  const [frequency, setFrequency] = useState<string>(frequencyList[0]);
+  const [localTotal, setLocalTotal] = useState<number>(price);
 
   const FetchData = () => {
     const itemRef = firestore.collection('Items').doc(id).get();
@@ -51,6 +53,11 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size 
   useEffect(() => {
     PopulateFrequencyList();
   }, [itemData.frequency]);
+
+  useEffect(() => {
+    setLocalTotal(price * parseInt(frequency));
+    onChange(localTotal);
+  }, [frequency]);
 
   useEffect(() => FetchData());
 
@@ -80,7 +87,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size 
         <div className="cartItemPropContainer">
           <Selector title={''} options={frequencyList} onChange={(newValue) => setFrequency(newValue)} />
         </div>
-        <p className="totalPrice">$500</p>
+        <p className="totalPrice">${localTotal}</p>
       </div>
     </div>
   );
