@@ -1,116 +1,138 @@
 #ItemSection {
-  display: flex;
-  justify-content: center;
-  width: 80%;
-  padding-top: 2rem;
-  border-top: 1px solid #eee;
+	display: flex;
+	justify-content: center;
+	width: 80%;
+	padding-top: 2rem;
+	border-top: 1px solid #eee;
 
-  @include media('<=tablet') {
-    width: 90%;
-    flex-direction: column;
-    padding: 0;
-  }
+	@include media("<=tablet") {
+		width: 90%;
+		flex-direction: column;
+		padding: 0;
+	}
 
-  .ItemDisplaySection {
-    width: 66%;
+	.ItemDisplaySection {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 66%;
 
-    @include media('<=tablet') {
-      width: 100%;
-      height: 100%;
-    }
+		@include media("<=tablet") {
+			width: 100%;
+			height: 100%;
+		}
 
-    img {
-      width: 100%;
+		.controlBtn {
+			outline: none;
+			color: #fff;
+			border: none;
+			text-decoration: none;
+			background-color: #c7cdde;
+			margin: 0 5px;
+			padding: 5px 15px;
+			border-radius: 2px;
+		}
 
-      @include media('<=tablet') {
-        height: 100%;
-      }
-    }
-  }
+		img {
+			width: 100%;
 
-  .ItemDetailSection {
-    width: 34%;
-    @include media('<=tablet') {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 1rem;
-      text-align: center;
-      width: 100%;
-    }
+			@include media("<=tablet") {
+				height: 100%;
+			}
+		}
+	}
 
-    .itemDetailsContainer {
-      margin-bottom: 3rem;
-      @include media('<=tablet') {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+	.ItemDetailSection {
+		width: 34%;
+		@include media("<=tablet") {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 1rem;
+			text-align: center;
+			width: 100%;
+		}
 
-      .itemTitle {
-        font-size: 28px;
-      }
+		.itemDetailsContainer {
+			margin-bottom: 3rem;
+			@include media("<=tablet") {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
 
-      .itemPrice {
-        font-size: 17px;
-        font-size: 20px;
-        font-weight: 400;
-        margin-top: 1rem;
-      }
-    }
-    .itemSelectorsContainer {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 3rem;
+			.itemTitle {
+				font-size: 28px;
+			}
 
-      .itemColours {
-        @include media('<=tablet') {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
+			.itemPrice {
+				font-size: 17px;
+				font-size: 20px;
+				font-weight: 400;
+				margin-top: 1rem;
+			}
+		}
+		.itemSelectorsContainer {
+			display: flex;
+			flex-direction: row;
+			margin-bottom: 3rem;
 
-        margin-right: 2rem;
-      }
-    }
-  }
+			.itemColours {
+				@include media("<=tablet") {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
 
-  .ButtonsContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 3rem;
+				margin-right: 2rem;
+			}
+		}
+	}
 
-    .addToCartBtn {
-      @include Button;
-      margin-right: 1rem;
-    }
+	.ButtonsContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 3rem;
 
-    .buyNowBtn {
-      @include Button();
-    }
+		.addToCartBtn {
+			@include Button;
+			margin-bottom: 1rem;
+		}
 
-    .addToCartBtn:hover,
-    .buyNowBtn:hover {
-      @include ButtonHover($ButtonColour, $DefaultBackgroundColour);
-      cursor: pointer;
-    }
-  }
+		.activatedBtn {
+			@include Button();
+			background-color: #007bff;
+			color: #fff;
+			margin-bottom: 1rem;
+		}
 
-  .itemDetail {
-    font-size: 17px;
-    letter-spacing: 1px;
-    text-align: left;
-  }
+		.buyNowBtn {
+			@include Button();
+		}
 
-  .ItemNotFound {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+		.addToCartBtn:hover,
+		.buyNowBtn:hover {
+			@include ButtonHover($ButtonColour, $DefaultBackgroundColour);
+			cursor: pointer;
+		}
+	}
 
-    a {
-      text-decoration: underline;
-      font-size: 17px;
-    }
-  }
+	.itemDetail {
+		font-size: 17px;
+		letter-spacing: 1px;
+		text-align: left;
+	}
+
+	.ItemNotFound {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		a {
+			text-decoration: underline;
+			font-size: 17px;
+		}
+	}
 }

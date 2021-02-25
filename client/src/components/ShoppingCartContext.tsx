@@ -7,7 +7,6 @@ export interface ShoppingCartItem {
   price: number;
   colour: string;
   size: string;
-  quantity: number;
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartItem[] | any>([]);
@@ -56,8 +55,18 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
     window.location.reload();
   };
 
+  const ItemInCart = (id: string) => {
+    let isInCart = false;
+    shoppingCart.map((cartItem) => {
+      if (id === cartItem.id) return (isInCart = true);
+    });
+    return isInCart;
+  };
+
   return (
-    <ShoppingCartContext.Provider value={{ shoppingCart, AddToShoppingCart, RemoveFromShoppingCart, shoppingCartLength }}>
+    <ShoppingCartContext.Provider
+      value={{ shoppingCart, AddToShoppingCart, RemoveFromShoppingCart, shoppingCartLength, ItemInCart }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
