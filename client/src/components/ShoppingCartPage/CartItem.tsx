@@ -6,7 +6,6 @@ import { ShoppingCartContext } from '../ShoppingCartContext';
 // Temp Cart Image loader image
 import CartImageLoader from '../../images/CartImageLoader.png';
 import Selector from '../ItemPage/Selector';
-import { stringify } from 'querystring';
 
 interface props {
   index: number;
@@ -44,25 +43,21 @@ export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour
       });
   };
 
-  const PopulateFrequencyList = () => {
+  useEffect(() => {
+    setLocalTotal(price * frequency);
+  }, [frequency, price]);
+
+  useEffect(() => {
+    onChange(localTotal, index);
+  }, [localTotal, index, onChange]);
+
+  // Inital single time events
+  useEffect(() => {
     let temp: string[] = [];
     for (let i = 1; i <= itemData.frequency; i++) {
       temp.push(`${i}`);
     }
     setFrequencyList(temp);
-  };
-
-  useEffect(() => {
-    setLocalTotal(price * frequency);
-  }, [frequency]);
-
-  useEffect(() => {
-    onChange(localTotal, index);
-  }, [localTotal]);
-
-  // Inital single time events
-  useEffect(() => {
-    PopulateFrequencyList();
   }, [itemData.frequency]);
 
   useEffect(() => FetchData());
@@ -76,7 +71,7 @@ export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour
             <p className="itemTitle">{title}</p>
           </Link>
           <p className="info">
-            {colour} {colour !== '' && size != '' && '/'} {size}
+            {colour} {colour !== '' && size !== '' && '/'} {size}
           </p>
           <p onClick={() => RemoveFromShoppingCart(index)} className="removeBtn">
             Remove
