@@ -65,7 +65,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size 
           <p className="info">
             {colour} {colour != '' && size != '' && '/'} {size}
           </p>
-          <p onCanPlay={RemoveFromShoppingCart} className="removeBtn">
+          <p onClick={RemoveFromShoppingCart} className="removeBtn">
             Remove
           </p>
         </div>
