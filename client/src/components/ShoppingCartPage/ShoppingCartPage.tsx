@@ -6,9 +6,14 @@ import { CartItem } from './CartItem';
 export const ShoppingCartPage: React.FC = () => {
   const { shoppingCart, GetShoppingCartTotal } = useContext(ShoppingCartContext);
   const [subtotal, setSubtotal] = useState<number>(GetShoppingCartTotal());
+  const [total, setTotal] = useState<number[]>([0]);
 
-  const HandleSubtotal = (newPrice: number) => {
-    setSubtotal(subtotal + newPrice);
+  const HandleSubtotal = (newPrice: number, index: number) => {
+    let tempTotal = total;
+    tempTotal[index] = newPrice;
+    let pirceTotal = tempTotal.reduce((a: number, b: number) => a + b, 0);
+    setTotal(tempTotal);
+    setSubtotal(pirceTotal);
   };
 
   return (

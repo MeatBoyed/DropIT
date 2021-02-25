@@ -6,6 +6,7 @@ import { ShoppingCartContext } from '../ShoppingCartContext';
 // Temp Cart Image loader image
 import CartImageLoader from '../../images/CartImageLoader.png';
 import Selector from '../ItemPage/Selector';
+import { stringify } from 'querystring';
 
 interface props {
   index: number;
@@ -15,7 +16,7 @@ interface props {
   price: number;
   colour: string;
   size: string;
-  onChange: (localTotal: number) => void;
+  onChange: (localTotal: number, index: number) => void;
 }
 
 interface ItemData {
@@ -23,11 +24,12 @@ interface ItemData {
   frequency: number;
 }
 
-export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size, onChange }) => {
+export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour, size, onChange }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
+
   const [itemData, setItemData] = useState<ItemData>({ image: CartImageLoader, frequency: 1 });
   const [frequencyList, setFrequencyList] = useState<string[]>(['1']);
-  const [frequency, setFrequency] = useState<string>(frequencyList[0]);
+  const [frequency, setFrequency] = useState<number>(parseInt(frequencyList[0]));
   const [localTotal, setLocalTotal] = useState<number>(price);
 
   const FetchData = () => {
@@ -51,13 +53,17 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size,
   };
 
   useEffect(() => {
-    PopulateFrequencyList();
-  }, [itemData.frequency]);
+    setLocalTotal(price * frequency);
+  }, [frequency]);
 
   useEffect(() => {
-    setLocalTotal(price * parseInt(frequency));
-    onChange(localTotal);
-  }, [frequency]);
+    onChange(localTotal, index);
+  }, [localTotal]);
+
+  // Inital single time events
+  useEffect(() => {
+    PopulateFrequencyList();
+  }, [itemData.frequency]);
 
   useEffect(() => FetchData());
 
@@ -70,9 +76,9 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size,
             <p className="itemTitle">{title}</p>
           </Link>
           <p className="info">
-            {colour} {colour != '' && size != '' && '/'} {size}
+            {colour} {colour !== '' && size != '' && '/'} {size}
           </p>
-          <p onClick={RemoveFromShoppingCart} className="removeBtn">
+          <p onClick={() => RemoveFromShoppingCart(index)} className="removeBtn">
             Remove
           </p>
         </div>
@@ -85,7 +91,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size,
       <div className="otherCartItemDetails">
         <p className="cartItemPrice">${price}</p>
         <div className="cartItemPropContainer">
-          <Selector title={''} options={frequencyList} onChange={(newValue) => setFrequency(newValue)} />
+          <Selector title={''} options={frequencyList} onChange={(newFre) => setFrequency(parseInt(newFre))} />
         </div>
         <p className="totalPrice">${localTotal}</p>
       </div>
