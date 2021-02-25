@@ -7,7 +7,7 @@ import { ShoppingCartContext } from '../ShoppingCartContext';
 import CartImageLoader from '../../images/CartImageLoader.png';
 import Selector from '../ItemPage/Selector';
 
-export interface props {
+interface props {
   index: number;
   id: string;
   url: string;
@@ -16,24 +16,48 @@ export interface props {
   colour: string;
   size: string;
 }
+
+interface ItemData {
+  image: string;
+  frequency: number;
+}
+
 export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
-  const [cartImage, setCartImage] = useState<string>(CartImageLoader);
-  const frequency = 12;
+  const [itemData, setItemData] = useState<ItemData>({ image: CartImageLoader, frequency: 1 });
+  const [frequencyList, setFrequencyList] = useState<string[]>(['1']);
+  const [frequency, setFrequency] = useState<string>();
 
-  const FetchCartImage = async () => {
-    const image = await firestore.collection('Items').doc(id).get();
-    setCartImage(image.data()!.images.cartImage);
+  const FetchData = () => {
+    const itemRef = firestore.collection('Items').doc(id).get();
+
+    itemRef
+      .then((itemSnpashot) => {
+        setItemData({ image: itemSnpashot.data()!.images.cartImage, frequency: itemSnpashot.data()!.frequency });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const PopulateFrequencyList = () => {
+    let temp: string[] = [];
+    for (let i = 1; i <= itemData.frequency; i++) {
+      temp.push(`${i}`);
+    }
+    setFrequencyList(temp);
   };
 
   useEffect(() => {
-    FetchCartImage();
-  });
+    PopulateFrequencyList();
+  }, [itemData.frequency]);
+
+  useEffect(() => FetchData());
 
   return (
     <div className="CartItem">
       <div className="cartItemDetails">
-        <img src={cartImage} alt="" className="thumbnail" />
+        <img src={itemData?.image} alt="" className="thumbnail" />
         <div className="cartItemInfo">
           <Link to={url}>
             <p className="itemTitle">{title}</p>
@@ -52,7 +76,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size 
       <div className="otherCartItemDetails">
         <p className="cartItemPrice">${price}</p>
         <div className="cartItemPropContainer">
-          <Selector title={''} options={['1', '2', '3', '4']} onChange={() => console.log('hello')} />
+          <Selector title={''} options={frequencyList} onChange={(newValue) => setFrequency(newValue)} />
         </div>
         <p className="totalPrice">$500</p>
       </div>
