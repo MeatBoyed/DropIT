@@ -5,6 +5,7 @@ import { ShoppingCartContext } from '../ShoppingCartContext';
 
 // Temp Cart Image loader image
 import CartImageLoader from '../../images/CartImageLoader.png';
+import Selector from '../ItemPage/Selector';
 
 export interface props {
   index: number;
@@ -18,6 +19,7 @@ export interface props {
 export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
   const [cartImage, setCartImage] = useState<string>(CartImageLoader);
+  const frequency = 12;
 
   const FetchCartImage = async () => {
     const image = await firestore.collection('Items').doc(id).get();
@@ -50,18 +52,7 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size 
       <div className="otherCartItemDetails">
         <p className="cartItemPrice">${price}</p>
         <div className="cartItemPropContainer">
-          {/* Quantity seltor here */}
-          <div className="formSelect">
-            <select name="size" id="size" className="formSelector">
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
-              {/* {quantity?.map((size) => (
-                <option value={size}>{size}</option>
-              ))} */}
-            </select>
-          </div>
+          <Selector title={''} options={['1', '2', '3', '4']} onChange={() => console.log('hello')} />
         </div>
         <p className="totalPrice">$500</p>
       </div>
