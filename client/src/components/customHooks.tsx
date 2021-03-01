@@ -1,4 +1,3 @@
-import { type } from 'os';
 import { useEffect, useState } from 'react';
 import { firestore } from '../firebase';
 
@@ -106,7 +105,7 @@ export const useData = (itemId: string) => {
         setLoading(false);
       })
       .catch((error) => {
-        if (error.name == 'TypeError') {
+        if (error.name === 'TypeError') {
           setErrorMessage("The product you're looking for doesn't seem to exists.");
         } else {
           setErrorMessage('An unexpected error occured. Try refreshing the page');

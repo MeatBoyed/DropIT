@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 interface Props {
   title: string;
@@ -12,8 +12,8 @@ export const Selector: React.FC<Props> = ({ title, options, onChange }) => {
   }, []);
 
   return (
-    <div className="itemColours">
-      <p className="formSelectTitle">{title}:</p>
+    <div className="formSelectContainer">
+      {title !== '' && <p className="formSelectTitle">{title}:</p>}
       <div className="formSelect">
         <select
           name="colour"

@@ -5,8 +5,9 @@ import { ShoppingCartContext } from '../ShoppingCartContext';
 
 // Temp Cart Image loader image
 import CartImageLoader from '../../images/CartImageLoader.png';
+import Selector from '../ItemPage/Selector';
 
-export interface props {
+interface props {
   index: number;
   id: string;
   url: string;
@@ -14,30 +15,65 @@ export interface props {
   price: number;
   colour: string;
   size: string;
+  onChange: (localTotal: number, index: number) => void;
 }
-export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size }) => {
-  const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
-  const [cartImage, setCartImage] = useState<string>(CartImageLoader);
 
-  const FetchCartImage = async () => {
-    const image = await firestore.collection('Items').doc(id).get();
-    setCartImage(image.data()!.images.cartImage);
+interface ItemData {
+  image: string;
+  frequency: number;
+}
+
+export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour, size, onChange }) => {
+  const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
+
+  const [itemData, setItemData] = useState<ItemData>({ image: CartImageLoader, frequency: 1 });
+  const [frequencyList, setFrequencyList] = useState<string[]>(['1']);
+  const [frequency, setFrequency] = useState<number>(parseInt(frequencyList[0]));
+  const [localTotal, setLocalTotal] = useState<number>(price);
+
+  const FetchData = () => {
+    const itemRef = firestore.collection('Items').doc(id).get();
+
+    itemRef
+      .then((itemSnpashot) => {
+        setItemData({ image: itemSnpashot.data()!.images.cartImage, frequency: itemSnpashot.data()!.frequency });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
-    FetchCartImage();
-  });
+    setLocalTotal(price * frequency);
+  }, [frequency, price]);
+
+  useEffect(() => {
+    onChange(localTotal, index);
+  }, [localTotal, index, onChange]);
+
+  // Inital single time events
+  useEffect(() => {
+    let temp: string[] = [];
+    for (let i = 1; i <= itemData.frequency; i++) {
+      temp.push(`${i}`);
+    }
+    setFrequencyList(temp);
+  }, [itemData.frequency]);
+
+  useEffect(() => FetchData());
 
   return (
     <div className="CartItem">
       <div className="cartItemDetails">
-        <img src={cartImage} alt="" className="thumbnail" />
+        <img src={itemData?.image} alt="" className="thumbnail" />
         <div className="cartItemInfo">
           <Link to={url}>
             <p className="itemTitle">{title}</p>
           </Link>
-          <p className="info">White / S</p>
-          <p onCanPlay={RemoveFromShoppingCart} className="removeBtn">
+          <p className="info">
+            {colour} {colour !== '' && size !== '' && '/'} {size}
+          </p>
+          <p onClick={() => RemoveFromShoppingCart(index)} className="removeBtn">
             Remove
           </p>
         </div>
@@ -50,20 +86,9 @@ export const CartItem: React.FC<props> = ({ id, url, title, price, colour, size 
       <div className="otherCartItemDetails">
         <p className="cartItemPrice">${price}</p>
         <div className="cartItemPropContainer">
-          {/* Quantity seltor here */}
-          <div className="formSelect">
-            <select name="size" id="size" className="formSelector">
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
-              {/* {quantity?.map((size) => (
-                <option value={size}>{size}</option>
-              ))} */}
-            </select>
-          </div>
+          <Selector title={''} options={frequencyList} onChange={(newFre) => setFrequency(parseInt(newFre))} />
         </div>
-        <p className="totalPrice">$500</p>
+        <p className="totalPrice">${localTotal}</p>
       </div>
     </div>
   );
