@@ -1,0 +1,28 @@
+{
+  "name": "dropit",
+  "version": "1.0.0",
+  "description": "Distribution platform for Africa",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeatBoyed/DropIT.git"
+  },
+  "author": "Charles Ross",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeatBoyed/DropIT/issues"
+  },
+  "homepage": "https://github.com/MeatBoyed/DropIT#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.0.0",
+    "express": "^4.17.1"
+  }
+}
