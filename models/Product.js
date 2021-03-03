@@ -11,7 +11,7 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-    vendor: {
+    description: {
       type: String,
       required: true,
     },
@@ -33,10 +33,12 @@ const productSchema = new Schema(
         required: true,
       },
     ],
-    frequency: {
-      type: Number,
-      required: true,
-    },
+    category: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     views: {
       type: Number,
       required: true,
@@ -45,8 +47,12 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
+    frequency: {
+      type: Number,
+      required: true,
+    },
   },
-  { timestamps: true }
+  { collection: 'Products', timestamps: true }
 );
 
 const Product = mongoose.model('Product', productSchema);
