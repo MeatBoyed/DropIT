@@ -10,7 +10,7 @@ import { LoadingSpinner } from '../LoadingSpinner';
 export const HomePage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
 
-  const { loading, error, items, hasMore } = usePaginate(pageNumber);
+  const { loading, error, products, hasMore } = usePaginate(pageNumber);
 
   const observer = useRef<IntersectionObserver>();
   const lastItemElementRef = useCallback(
@@ -34,19 +34,19 @@ export const HomePage: React.FC = () => {
   return (
     <section id="ShoppingSection">
       <div className="itemsContainer">
-        {items.map((item, index) => {
-          if (items.length === index + 1) {
+        {products.map((product, index) => {
+          if (products.length === index + 1) {
             return (
               <div key={index} ref={lastItemElementRef} className="itemCard">
-                <Link to={`/${item.vendor}/${item.id}`}>
-                  <img src={item.mainImage} alt="" className="itemImage" />
+                <Link to={`/${product.vendor}/${product.id}`}>
+                  <img src={product.mainThumbnail} alt="" className="itemImage" />
                 </Link>
                 <div className="itemInfo">
-                  <Link to={`/${item.vendor}/${item.id}`}>
-                    <p className="itemTitle">{item.title}</p>
+                  <Link to={`/${product.vendor}/${product.id}`}>
+                    <p className="itemTitle">{product.title}</p>
                   </Link>
-                  <Link to={`/${item.vendor}/${item.id}`}>
-                    <p className="itemPrice">${item.price}</p>
+                  <Link to={`/${product.vendor}/${product.id}`}>
+                    <p className="itemPrice">{product.price}</p>
                   </Link>
                 </div>
               </div>
@@ -55,10 +55,10 @@ export const HomePage: React.FC = () => {
             return (
               <ItemCard
                 key={index}
-                url={`/${item.vendor}/${item.id}`}
-                title={item.title}
-                price={item.price}
-                mainImage={item.mainImage}
+                url={`/${product.vendor}/${product.id}`}
+                title={product.title}
+                price={product.price}
+                mainImage={product.mainThumbnail}
               />
             );
           }

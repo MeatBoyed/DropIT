@@ -1,12 +1,13 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { firestore } from '../firebase';
 
-interface ItemCardModel {
+interface ProductCardModel {
   id: string;
   vendor: string;
   title: string;
   price: number;
-  mainImage: string;
+  mainThumbnail: string;
 }
 
 interface ItemViewerModel {
@@ -24,42 +25,36 @@ export const usePaginate = (pageNumber: number) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-  const [items, setItems] = useState<ItemCardModel[]>([]);
-
-  const [lastDoc, setLastDoc] = useState<object | null>(null);
+  const [products, setProducts] = useState<ProductCardModel[]>([]);
 
   useEffect(() => {
     setLoading(true);
     setError(false);
 
-    const itemsRef = firestore
-      .collection('Items')
-      .orderBy('frequency')
-      .startAfter(lastDoc || 0)
-      .limit(2);
+    let cancel;
 
-    const itemsData = itemsRef.get();
-
-    itemsData
-      .then((docSnapShot) => {
-        if (docSnapShot.empty) {
-          setHasMore(false);
-        }
-        docSnapShot.forEach((doc) => {
-          setItems((previousItems) => {
+    axios({
+      method: 'GET',
+      url: 'http://localhost:5000/products',
+      params: { page: pageNumber },
+      cancelToken: new axios.CancelToken((c) => (cancel = c)),
+    })
+      .then((response) => {
+        response.data.map((product: any) => {
+          setProducts((prevProducts) => {
             return [
-              ...previousItems,
+              ...prevProducts,
               {
-                id: doc.id,
-                vendor: doc.data().vendor,
-                title: doc.data().title,
-                price: doc.data().price,
-                mainImage: doc.data().images.mainImage,
+                id: product._id,
+                title: product.title,
+                price: product.price,
+                vendor: product.vendor,
+                mainThumbnail: product.mainThumbnail,
               },
             ];
           });
         });
-        setLastDoc(docSnapShot.docs[docSnapShot.docs.length - 1]);
+        setHasMore(response.data.length > 0);
         setLoading(false);
       })
       .catch((error) => {
@@ -68,9 +63,11 @@ export const usePaginate = (pageNumber: number) => {
         setLoading(false);
         setError(true);
       });
+
+    // setLastDoc(docSnapShot.docs[docSnapShot.docs.length - 1]);
   }, [pageNumber]);
 
-  return { loading, error, items, hasMore };
+  return { loading, error, products, hasMore };
 };
 
 export const useData = (itemId: string) => {
