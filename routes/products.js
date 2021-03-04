@@ -9,27 +9,15 @@ router.get('/', async (req, res) => {
     const page = req.query.page;
     const offset = limit * (page - 1);
 
-    const returnProducts = [];
+    const products = await Product.find({}).skip(offset).limit(limit).sort({ rating: 1 });
+    if (!products) throw Error('No Products');
 
-    const products = await Product.find({}).skip(offset).limit(limit).sort({ price: 1 });
-    if (products) {
-      products.forEach((product) => {
-        returnProducts.push({
-          id: product._id,
-          title: product.title,
-          price: product.price,
-          vendor: product.vendor,
-          mainThumbnail: product.thumbnails[0].mainThumbnail,
-        });
-      });
-    } else {
-      throw Error('No Products');
-    }
-
-    res.status(200).json(returnProducts);
+    res.status(200).json(products);
   } catch (e) {
     res.status(400).json({ msg: e.message });
   }
 });
+
+router.get('/');
 
 module.exports = router;

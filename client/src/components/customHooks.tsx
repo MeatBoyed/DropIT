@@ -40,16 +40,16 @@ export const usePaginate = (pageNumber: number) => {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((response) => {
-        response.data.map((product: any) => {
-          setProducts((prevProducts) => {
+        response.data.forEach((product: any) => {
+          setProducts((prevProduct) => {
             return [
-              ...prevProducts,
+              ...prevProduct,
               {
                 id: product._id,
                 title: product.title,
                 price: product.price,
                 vendor: product.vendor,
-                mainThumbnail: product.mainThumbnail,
+                mainThumbnail: product.thumbnails[0].mainThumbnail,
               },
             ];
           });
