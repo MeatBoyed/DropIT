@@ -19,6 +19,6 @@ mongoose
   .then(() => console.log('Connected to Mongo'))
   .catch((error) => console.log(error));
 
-app.use('/products', products);
+app.use('/api/products', products);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

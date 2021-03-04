@@ -13,11 +13,21 @@ router.get('/', async (req, res) => {
     if (!products) throw Error('No Products');
 
     res.status(200).json(products);
-  } catch (e) {
-    res.status(400).json({ msg: e.message });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
   }
 });
 
-router.get('/');
+router.get('/:id', async (req, res) => {
+  try {
+    const productID = req.params.id;
+
+    const product = await Product.findById(productID);
+
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
 
 module.exports = router;

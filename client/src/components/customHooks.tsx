@@ -10,7 +10,7 @@ interface ProductCardModel {
   mainThumbnail: string;
 }
 
-interface ItemViewerModel {
+interface ProductViewerModel {
   id: string;
   title: string;
   price: number;
@@ -18,6 +18,7 @@ interface ItemViewerModel {
   sizes: string[];
   viewerImages: string[];
   description: string;
+  rating: number;
   frequency: number;
 }
 
@@ -35,7 +36,7 @@ export const usePaginate = (pageNumber: number) => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:5000/products',
+      url: 'http://localhost:5000/api/products',
       params: { page: pageNumber },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
@@ -70,47 +71,45 @@ export const usePaginate = (pageNumber: number) => {
   return { loading, error, products, hasMore };
 };
 
-export const useData = (itemId: string) => {
+export const useFetchProduct = (productID: string) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [item, setItem] = useState<ItemViewerModel>({
-    id: itemId,
+  const [product, setProduct] = useState<ProductViewerModel>({
+    id: productID,
     title: '',
     price: 0,
     colours: [],
     sizes: [],
     viewerImages: [],
     description: '',
+    rating: 0,
     frequency: 0,
   });
 
   useEffect(() => {
-    const itemDataRef = firestore.collection('Items').doc(itemId).get();
-
-    itemDataRef
-      .then((itemSnapShot) => {
-        setItem({
-          id: itemId,
-          title: itemSnapShot.data()!.title,
-          price: itemSnapShot.data()!.price,
-          colours: itemSnapShot.data()!.colours,
-          sizes: itemSnapShot.data()!.sizes,
-          viewerImages: itemSnapShot.data()!.images.viewerImages,
-          description: itemSnapShot.data()!.description,
-          frequency: itemSnapShot.data()!.frequency,
+    axios({
+      method: 'GET',
+      url: `http://localhost:5000/api/products/${productID}`,
+    })
+      .then((response) => {
+        setProduct({
+          id: productID,
+          title: response.data.title,
+          price: response.data.price,
+          colours: response.data.colours === undefined ? [] : response.data.colours,
+          sizes: response.data.sizes === undefined ? [] : response.data.sizes,
+          viewerImages: response.data.viewerImages,
+          description: response.data.description,
+          rating: response.data.rating,
+          frequency: response.data.frequency,
         });
         setLoading(false);
       })
       .catch((error) => {
-        if (error.name === 'TypeError') {
-          setErrorMessage("The product you're looking for doesn't seem to exists.");
-        } else {
-          setErrorMessage('An unexpected error occured. Try refreshing the page');
-        }
-
+        setErrorMessage("The product you're looking for doesn't seem to exists.");
         setLoading(false);
       });
   });
 
-  return { loading, errorMessage, item };
+  return { loading, errorMessage, product };
 };
