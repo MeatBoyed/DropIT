@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { firestore } from '../../firebase';
 import { ShoppingCartContext } from '../ShoppingCartContext';
 
 // Temp Cart Image loader image
@@ -18,7 +18,7 @@ interface props {
   onChange: (localTotal: number, index: number) => void;
 }
 
-interface ItemData {
+interface ProductDataModel {
   image: string;
   frequency: number;
 }
@@ -26,17 +26,16 @@ interface ItemData {
 export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour, size, onChange }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
 
-  const [itemData, setItemData] = useState<ItemData>({ image: CartImageLoader, frequency: 1 });
+  const [productData, setProductData] = useState<ProductDataModel>({ image: CartImageLoader, frequency: 1 });
   const [frequencyList, setFrequencyList] = useState<string[]>(['1']);
   const [frequency, setFrequency] = useState<number>(parseInt(frequencyList[0]));
   const [localTotal, setLocalTotal] = useState<number>(price);
 
   const FetchData = () => {
-    const itemRef = firestore.collection('Items').doc(id).get();
-
-    itemRef
-      .then((itemSnpashot) => {
-        setItemData({ image: itemSnpashot.data()!.images.cartImage, frequency: itemSnpashot.data()!.frequency });
+    axios
+      .get(`http://localhost:5000/api/products/${id}`)
+      .then((response) => {
+        setProductData({ image: response.data.thumbnails[0].cartThumbnail, frequency: response.data.frequency });
       })
       .catch((error) => {
         console.log(error);
@@ -54,18 +53,18 @@ export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour
   // Inital single time events
   useEffect(() => {
     let temp: string[] = [];
-    for (let i = 1; i <= itemData.frequency; i++) {
+    for (let i = 1; i <= productData.frequency; i++) {
       temp.push(`${i}`);
     }
     setFrequencyList(temp);
-  }, [itemData.frequency]);
+  }, [productData.frequency]);
 
   useEffect(() => FetchData());
 
   return (
     <div className="CartItem">
       <div className="cartItemDetails">
-        <img src={itemData?.image} alt="" className="thumbnail" />
+        <img src={productData?.image} alt="" className="thumbnail" />
         <div className="cartItemInfo">
           <Link to={url}>
             <p className="itemTitle">{title}</p>
