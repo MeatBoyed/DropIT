@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
+import { useHistory } from 'react-router-dom';
 
 import { CartItem } from './CartItem';
 
@@ -7,6 +8,8 @@ export const ShoppingCartPage: React.FC = () => {
   const { shoppingCart, GetShoppingCartTotal } = useContext(ShoppingCartContext);
   const [subtotal, setSubtotal] = useState<number>(GetShoppingCartTotal());
   const [total, setTotal] = useState<number[]>([0]);
+
+  const history = useHistory();
 
   const HandleSubtotal = (newPrice: number, index: number) => {
     let tempTotal = total;
@@ -45,7 +48,7 @@ export const ShoppingCartPage: React.FC = () => {
         <p className="subtotal">Subtotal ${subtotal}</p>
         <p className="italics">Shipping & Taxes calculated on next page</p>
         <div className="buttonsContainer">
-          <button>Continue Shipping</button>
+          <button onClick={() => history.push('/')}>Continue Shopping</button>
           <button className="checkoutBtn">Check Out</button>
         </div>
       </div>
