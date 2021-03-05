@@ -39,7 +39,7 @@ export const HomePage: React.FC = () => {
             return (
               <div key={index} ref={lastItemElementRef} className="itemCard">
                 <Link to={`/${product.vendor}/${product.id}`}>
-                  <img src={product.mainThumbnail} alt="" className="itemImage" />
+                  <img src={product.thumbnails.mainThumbnail} alt="" className="itemImage" />
                 </Link>
                 <div className="itemInfo">
                   <Link to={`/${product.vendor}/${product.id}`}>
@@ -58,7 +58,7 @@ export const HomePage: React.FC = () => {
                 url={`/${product.vendor}/${product.id}`}
                 title={product.title}
                 price={product.price}
-                mainImage={product.mainThumbnail}
+                mainImage={product.thumbnails.mainThumbnail}
               />
             );
           }

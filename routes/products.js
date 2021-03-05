@@ -9,7 +9,22 @@ router.get('/', async (req, res) => {
     const page = req.query.page;
     const offset = limit * (page - 1);
 
-    const products = await Product.find({}).skip(offset).limit(limit).sort({ rating: 1 });
+    const products = await Product.aggregate([
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          price: 1,
+          vendor: 1,
+          'thumbnails.mainThumbnail': 1,
+          category: 1,
+        },
+      },
+    ])
+      .skip(offset)
+      .limit(limit)
+      .sort({ price: 1 });
+    // const products = await Product.find({}).skip(offset).limit(limit).sort({ rating: 1 });
     if (!products) throw Error('No Products');
 
     res.status(200).json(products);

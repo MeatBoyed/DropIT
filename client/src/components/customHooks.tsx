@@ -6,7 +6,7 @@ interface ProductCardModel {
   vendor: string;
   title: string;
   price: number;
-  mainThumbnail: string;
+  thumbnails: { mainThumbnail: string };
 }
 
 interface ProductViewerModel {
@@ -40,20 +40,24 @@ export const usePaginate = (pageNumber: number) => {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((response) => {
-        response.data.forEach((product: any) => {
-          setProducts((prevProduct) => {
-            return [
-              ...prevProduct,
-              {
-                id: product._id,
-                title: product.title,
-                price: product.price,
-                vendor: product.vendor,
-                mainThumbnail: product.thumbnails[0].mainThumbnail,
-              },
-            ];
-          });
+        console.log(response);
+        setProducts((previousProducts) => {
+          return previousProducts.concat(response.data);
         });
+        // response.data.forEach((product: any) => {
+        //   setProducts((prevProduct) => {
+        //     return [
+        //       ...prevProduct,
+        //       {
+        //         id: product._id,
+        //         title: product.title,
+        //         price: product.price,
+        //         vendor: product.vendor,
+        //         mainThumbnail: product.thumbnails[0].mainThumbnail,
+        //       },
+        //     ];
+        //   });
+        // });
         setHasMore(response.data.length > 0);
         setLoading(false);
       })
