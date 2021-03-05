@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 interface ProductCardModel {
-  id: string;
+  _id: string;
   vendor: string;
   title: string;
   price: number;
@@ -40,24 +40,9 @@ export const usePaginate = (pageNumber: number) => {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((response) => {
-        console.log(response);
         setProducts((previousProducts) => {
           return previousProducts.concat(response.data);
         });
-        // response.data.forEach((product: any) => {
-        //   setProducts((prevProduct) => {
-        //     return [
-        //       ...prevProduct,
-        //       {
-        //         id: product._id,
-        //         title: product.title,
-        //         price: product.price,
-        //         vendor: product.vendor,
-        //         mainThumbnail: product.thumbnails[0].mainThumbnail,
-        //       },
-        //     ];
-        //   });
-        // });
         setHasMore(response.data.length > 0);
         setLoading(false);
       })
@@ -67,8 +52,6 @@ export const usePaginate = (pageNumber: number) => {
         setLoading(false);
         setError(true);
       });
-
-    // setLastDoc(docSnapShot.docs[docSnapShot.docs.length - 1]);
   }, [pageNumber]);
 
   return { loading, error, products, hasMore };

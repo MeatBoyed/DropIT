@@ -38,14 +38,14 @@ export const HomePage: React.FC = () => {
           if (products.length === index + 1) {
             return (
               <div key={index} ref={lastItemElementRef} className="itemCard">
-                <Link to={`/${product.vendor}/${product.id}`}>
+                <Link to={`/${product.vendor}/${product._id}`}>
                   <img src={product.thumbnails.mainThumbnail} alt="" className="itemImage" />
                 </Link>
                 <div className="itemInfo">
-                  <Link to={`/${product.vendor}/${product.id}`}>
+                  <Link to={`/${product.vendor}/${product._id}`}>
                     <p className="itemTitle">{product.title}</p>
                   </Link>
-                  <Link to={`/${product.vendor}/${product.id}`}>
+                  <Link to={`/${product.vendor}/${product._id}`}>
                     <p className="itemPrice">{product.price}</p>
                   </Link>
                 </div>
@@ -55,7 +55,7 @@ export const HomePage: React.FC = () => {
             return (
               <ItemCard
                 key={index}
-                url={`/${product.vendor}/${product.id}`}
+                url={`/${product.vendor}/${product._id}`}
                 title={product.title}
                 price={product.price}
                 mainImage={product.thumbnails.mainThumbnail}
