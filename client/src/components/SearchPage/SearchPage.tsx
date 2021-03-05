@@ -37,7 +37,7 @@ export const SearchPage: React.FC = () => {
   useEffect(() => {
     const newQuery = params.get('q');
     if (newQuery) return setQuery(newQuery);
-  });
+  }, [params]);
 
   return (
     <section id="ShoppingSection">
