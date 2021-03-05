@@ -1,15 +1,6 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 export const Searchbar: React.FC = () => {
-	const history = useHistory();
-	const [query, setQuery] = useState<string>();
-
-	const handleKeyDown = (event: any) => {
-		if (event.key === "Enter") {
-			history.push(`search/${query}`);
-		}
-	};
 	return (
 		<div className="searchSeaction">
 			<svg
@@ -24,14 +15,13 @@ export const Searchbar: React.FC = () => {
 					fill="#262626"
 				/>
 			</svg>
-			<form action="/search/" method="get" onSubmit={() => console.log(query)}>
+			<form action="/search/" method="get">
 				<input
 					type="text"
 					name="search"
 					id="search"
 					placeholder="search"
 					className="searchInput"
-					value={query}
 				/>
 			</form>
 		</div>

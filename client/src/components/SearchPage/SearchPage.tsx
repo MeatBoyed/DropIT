@@ -1,12 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import { useFetchProduct, usePaginate, useSearch } from "../customHooks";
+import { useSearch } from "../customHooks";
 
 import { Link, useLocation } from "react-router-dom";
 
 // Import Components
 import { ItemCard } from "../ItemCard";
 import { LoadingSpinner } from "../LoadingSpinner";
-import { getSuggestedQuery } from "@testing-library/react";
 
 export const SearchPage: React.FC = () => {
 	const [pageNumber, setPageNumber] = useState<number>(1);
@@ -40,14 +39,12 @@ export const SearchPage: React.FC = () => {
 
 	useEffect(() => {
 		const newQuery = params.get("search");
-		console.log(newQuery);
 		if (newQuery) return setQuery(newQuery);
 	});
 
 	return (
 		<section id="ShoppingSection">
 			<div className="itemsContainer">
-				<h1>Search Page woo</h1>
 				{searchResult.map((product, index) => {
 					if (searchResult.length === index + 1) {
 						return (

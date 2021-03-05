@@ -62,7 +62,6 @@ export const useSearch = (pageNumber: number, query: string) => {
 	const [hasMore, setHasMore] = useState<boolean>(true);
 	const [error, setError] = useState<boolean>(false);
 	const [searchResult, setSearchResult] = useState<ProductCardModel[]>([]);
-	console.log("query", query);
 
 	useEffect(() => {
 		setLoading(true);
