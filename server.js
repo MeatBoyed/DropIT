@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyparser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -10,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors());
-app.use(bodyparser.json());
+app.use(express.urlencoded());
 
 const db = require('./apiKeys').mongoURI;
 
