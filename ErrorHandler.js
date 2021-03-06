@@ -9,7 +9,7 @@ class GeneralError extends Error {
       case BadRequest:
         return 400;
       case EmptyProducts:
-        return 204;
+        return 400;
       default:
         return 500;
     }

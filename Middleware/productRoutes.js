@@ -40,8 +40,6 @@ router.get('/', async (req, res, next) => {
       },
     ]);
 
-    if (!products) throw new EmptyProducts('No more products');
-
     res.status(200).json(products);
   } catch (error) {
     next(error);
@@ -52,6 +50,8 @@ router.get('/', async (req, res, next) => {
 router.get('/search/:query', async (req, res, next) => {
   const query = req.params.query;
   const page = req.query.page;
+
+  console.log(typeof page);
 
   try {
     if (!query || !page) throw new BadRequest('Missing required field: Query and Page');

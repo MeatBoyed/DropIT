@@ -20,6 +20,9 @@ export const useSearch = (pageNumber: number, query: string) => {
       params: { page: pageNumber },
     })
       .then((response) => {
+        if (response.data.length == 0 && pageNumber == 1) {
+          setError({ isError: true, message: 'Sorry, no products found. Try being more specific' });
+        }
         setSearchResult((previousProducts) => {
           return previousProducts.concat(response.data);
         });
@@ -32,9 +35,9 @@ export const useSearch = (pageNumber: number, query: string) => {
 
         switch (error.status) {
           case 204:
-            setError({ isError: true, message: '' });
+            setError({ isError: true, message: error.message });
             break;
-          case 400:
+          case 400 || 500:
             setError({ isError: true, message: 'An unexpected error occured' });
         }
         setLoading(false);
