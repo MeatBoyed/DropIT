@@ -11,7 +11,7 @@ export const Searchbar: React.FC = () => {
         />
       </svg>
       <form action="" method="get">
-        <input type="text" name="q" id="q" placeholder="search" className="searchInput" />
+        <input type="text" name="q" id="q" placeholder="search" required className="searchInput" />
       </form>
     </div>
   );
