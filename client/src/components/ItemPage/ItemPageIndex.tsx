@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
-import { Alert } from '../Alert';
-import { useFetchProduct } from '../customHooks';
+import { Alert } from '../Utils/Alert';
+import { useFetchProduct } from '../Utils/useFetchProduct';
 
 // Import Componets
 import { LoadingSpinner } from '../LoadingSpinner';

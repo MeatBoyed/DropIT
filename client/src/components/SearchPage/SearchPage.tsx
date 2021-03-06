@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { useSearch } from '../customHooks';
+import { useSearch } from '../Utils/useSearch';
 
 import { Link, useLocation } from 'react-router-dom';
 

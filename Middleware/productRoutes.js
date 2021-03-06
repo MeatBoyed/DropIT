@@ -49,10 +49,13 @@ router.get('/', async (req, res, next) => {
 });
 
 // Search Route
-router.get('/search/:query', async (req, res) => {
+router.get('/search/:query', async (req, res, next) => {
+  const query = req.params.query;
+  const page = req.query.page;
+
   try {
-    const query = req.params.query;
-    const page = req.query.page;
+    if (!query || !page) throw new BadRequest('Missing required field: Query and Page');
+
     const offset = limit * (page - 1);
 
     const products = await Product.aggregate([
@@ -95,7 +98,7 @@ router.get('/search/:query', async (req, res) => {
 
     res.status(200).json(products);
   } catch (error) {
-    res.status(400).json({ msg: error.message });
+    next(error);
   }
 });
 
