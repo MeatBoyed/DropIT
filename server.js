@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const errorHandler = require('./Middleware/errorHandler');
 const cors = require('cors');
 
 const products = require('./Middleware/productRoutes');
@@ -19,7 +18,5 @@ mongoose
   .then(() => console.log('Connected to Mongo'));
 
 app.use('/api/products', products);
-
-app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

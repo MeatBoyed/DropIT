@@ -20,7 +20,6 @@ export const usePaginate = (pageNumber: number) => {
       params: { page: pageNumber },
     })
       .then((response) => {
-        console.log(response);
         setProducts((previousProducts) => {
           return previousProducts.concat(response.data);
         });
@@ -29,12 +28,8 @@ export const usePaginate = (pageNumber: number) => {
       })
       .catch((ResError) => {
         const error: ReturnedError = ResError.response.data;
-        console.log(error);
 
         switch (error.status) {
-          case 204:
-            setError({ isError: true, message: '' });
-            break;
           case 400:
             setError({ isError: true, message: 'An unexpected error occured' });
         }

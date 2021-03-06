@@ -14,6 +14,7 @@ export const SearchPage: React.FC = () => {
   const params = new URLSearchParams(search);
 
   const { loading, error, searchResult, hasMore } = useSearch(pageNumber, query);
+  console.log(error.message);
 
   const observer = useRef<IntersectionObserver>();
   const lastItemElementRef = useCallback(
@@ -73,7 +74,7 @@ export const SearchPage: React.FC = () => {
         })}
       </div>
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
-      <div>{error.isError && error.message}</div>
+      <div>{error.isError && <h3>{error.message}</h3>}</div>
     </section>
   );
 };

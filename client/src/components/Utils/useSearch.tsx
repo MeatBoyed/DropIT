@@ -34,16 +34,10 @@ export const useSearch = (pageNumber: number, query: string) => {
         console.log(error);
 
         switch (error.status) {
-          case 204:
-            setError({ isError: true, message: error.message });
-            break;
           case 400 || 500:
             setError({ isError: true, message: 'An unexpected error occured' });
         }
         setLoading(false);
-        setError((prevError) => {
-          return { ...prevError, isError: false };
-        });
       });
   }, [pageNumber, query]);
 

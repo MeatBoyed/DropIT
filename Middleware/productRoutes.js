@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const Product = require('../models/Product');
-const { BadRequest, EmptyProducts } = require('../ErrorHandler');
 
 const limit = 5;
 
@@ -11,7 +10,7 @@ router.get('/', async (req, res, next) => {
   const page = req.query.page;
 
   try {
-    if (!page) throw new BadRequest('Missing required field: Page');
+    if (!page || page == '0') res.status(400).json({ status: 400, message: 'Missing required field: Page or Page == 0' });
 
     const offset = limit * (page - 1);
 
@@ -42,7 +41,7 @@ router.get('/', async (req, res, next) => {
 
     res.status(200).json(products);
   } catch (error) {
-    next(error);
+    res.status(400).json('Internal error');
   }
 });
 
@@ -54,7 +53,8 @@ router.get('/search/:query', async (req, res, next) => {
   console.log(typeof page);
 
   try {
-    if (!query || !page) throw new BadRequest('Missing required field: Query and Page');
+    if (!query || !page || page == '0')
+      res.status(400).json({ status: 400, message: 'Missing required field: Page or Page == 0' });
 
     const offset = limit * (page - 1);
 
@@ -98,7 +98,7 @@ router.get('/search/:query', async (req, res, next) => {
 
     res.status(200).json(products);
   } catch (error) {
-    next(error);
+    res.status(400).json('Internal error');
   }
 });
 
