@@ -16,7 +16,7 @@ export const usePaginate = (pageNumber: number) => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:5000/api/products',
+      url: 'http://localhost:5000/',
       params: { page: pageNumber },
     })
       .then((response) => {

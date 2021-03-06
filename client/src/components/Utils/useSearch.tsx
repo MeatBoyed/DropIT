@@ -16,7 +16,7 @@ export const useSearch = (pageNumber: number, query: string) => {
 
     axios({
       method: 'GET',
-      url: `http://localhost:5000/api/products/search/${query}`,
+      url: `http://localhost:5000/search/${query}`,
       params: { page: pageNumber },
     })
       .then((response) => {

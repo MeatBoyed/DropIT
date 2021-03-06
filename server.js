@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const products = require('./Routes/productRoutes');
+const home = require('./Routes/home');
+const search = require('./Routes/search');
+const product = require('./Routes/product');
 
 const PORT = process.env.PORT || 5000;
 
@@ -17,6 +19,8 @@ mongoose
   .connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'));
 
-app.use('/api/products', products);
+app.use('', home);
+app.use('/search', search);
+app.use('/product', product);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
