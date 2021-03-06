@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCartContext } from './ShoppingCartContext';
+import { ShoppingCartContext } from '../ShoppingCartContext';
 
-import { ReactComponent as ShoppingCartIcon } from '../images/shoppingCartIcon.svg';
-import { ReactComponent as LogoIcon } from '../images/logo.svg';
-import { ReactComponent as MenueBtn } from '../images/menueBtn.svg';
+import { ReactComponent as ShoppingCartIcon } from '../../images/shoppingCartIcon.svg';
+import { ReactComponent as LogoIcon } from '../../images/logo.svg';
+import { ReactComponent as MenueBtn } from '../../images/menueBtn.svg';
 
 const NavbarDropDown = React.lazy(() => import('./NavbarDropDown'));
 const Searchbar = React.lazy(() => import('./Searchbar'));

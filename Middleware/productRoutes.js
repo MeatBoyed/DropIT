@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Product = require('../models/Product');
-const { GeneralError, BadRequest, EmptyProducts } = require('../ErrorHandler');
+const { BadRequest, EmptyProducts } = require('../ErrorHandler');
 
 const limit = 5;
 

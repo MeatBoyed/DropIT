@@ -1,6 +1,6 @@
 const { GeneralError } = require('../ErrorHandler');
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   if (err instanceof GeneralError) {
     let ErrorCode = err.getHTTPCode();
     return res.status(ErrorCode).json({
