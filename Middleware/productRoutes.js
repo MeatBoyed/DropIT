@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const Product = require('../models/Product');
+const { GeneralError, BadRequest, EmptyProducts } = require('../ErrorHandler');
 
 const limit = 5;
 
 // Home Page fetch route
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
+  const page = req.query.page;
+
   try {
-    const page = req.query.page;
+    if (!page) throw new BadRequest('Missing required field: Page');
+
     const offset = limit * (page - 1);
 
     const products = await Product.aggregate([
@@ -35,11 +39,12 @@ router.get('/', async (req, res) => {
         },
       },
     ]);
-    if (!products) throw Error('No Products');
+
+    if (!products) throw new EmptyProducts('No more products');
 
     res.status(200).json(products);
   } catch (error) {
-    res.status(400).json({ msg: error.message });
+    next(error);
   }
 });
 

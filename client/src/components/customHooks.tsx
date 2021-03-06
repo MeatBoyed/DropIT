@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { getTokenSourceMapRange } from 'typescript';
 
 interface ProductCardModel {
   _id: string;
@@ -21,15 +22,27 @@ interface ProductViewerModel {
   frequency: number;
 }
 
+interface Error {
+  isError: boolean;
+  message: string;
+}
+
+interface ReturnedError {
+  status: number;
+  message: string;
+}
+
 export const usePaginate = (pageNumber: number) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<Error>({ isError: false, message: '' });
   const [products, setProducts] = useState<ProductCardModel[]>([]);
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
+    setError((prevError) => {
+      return { ...prevError, isError: false };
+    });
 
     axios({
       method: 'GET',
@@ -37,17 +50,25 @@ export const usePaginate = (pageNumber: number) => {
       params: { page: pageNumber },
     })
       .then((response) => {
+        console.log(response);
         setProducts((previousProducts) => {
           return previousProducts.concat(response.data);
         });
         setHasMore(response.data.length > 0);
         setLoading(false);
       })
-      .catch((error) => {
-        // Add error catching and telling the user how to fix the error
+      .catch((ResError) => {
+        const error: ReturnedError = ResError.response.data;
         console.log(error);
+
+        switch (error.status) {
+          case 204:
+            setError({ isError: true, message: '' });
+            break;
+          case 400:
+            setError({ isError: true, message: 'An unexpected error occured' });
+        }
         setLoading(false);
-        setError(true);
       });
   }, [pageNumber]);
 
