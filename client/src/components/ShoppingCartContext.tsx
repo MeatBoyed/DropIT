@@ -25,7 +25,6 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
 
     if (existing != null) {
       setShoppingCart(JSON.parse(existing));
-      console.log('Existing and added');
     }
   }, []);
 
@@ -36,8 +35,6 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
 
     // update local storage
     localStorage.setItem('67414141414142674c552d7758465441365559424545704a', JSON.stringify(newCart));
-
-    console.log('added to cart!');
   };
 
   const RemoveFromShoppingCart = (position: number) => {
@@ -46,11 +43,8 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
     const newCart = shoppingCart;
     setShoppingCart(newCart);
 
-    console.log(shoppingCart);
-
     // Updating localStorage
     localStorage.setItem('67414141414142674c552d7758465441365559424545704a', JSON.stringify(newCart));
-    console.log('Updated remove');
 
     window.location.reload();
   };
@@ -59,6 +53,7 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
     let isInCart = false;
     shoppingCart.map((cartItem) => {
       if (id === cartItem.id) return (isInCart = true);
+      return isInCart;
     });
     return isInCart;
   };
@@ -66,7 +61,7 @@ export const ShoppingCartContextProvider: React.FC<React.ReactNode> = ({ childre
   const GetShoppingCartTotal = () => {
     let total = 0;
     shoppingCart.map((cartItem: ShoppingCartItem) => {
-      total = total + cartItem.price;
+      return (total = total + cartItem.price);
     });
     return total;
   };

@@ -7,24 +7,29 @@ const SideBar: React.FC = () => {
       {/* Optional Logo */}
       <ul className="linksContainer">
         <li className="link">
-          <Link className="tag" to="">
+          <a className="tag" href="/search?f=Clothes">
             Clothes
-          </Link>
+          </a>
         </li>
         <li className="link">
-          <Link className="tag" to="">
+          <a className="tag" href="/search?f=Books">
             Books
-          </Link>
+          </a>
         </li>
         <li className="link">
-          <Link className="tag" to="">
+          <a href="/search?f=House+Appliance" className="tag">
             House Appliances
-          </Link>
+          </a>
         </li>
         <li className="link">
-          <Link className="tag" to="">
+          <a href="/search?f=Tech" className="tag">
             Tech
-          </Link>
+          </a>
+        </li>
+        <li className="link">
+          <a href="/search?f=Music" className="tag">
+            Music
+          </a>
         </li>
         <li className="link">
           <Link className="tag" to="">

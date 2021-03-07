@@ -1,16 +1,20 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { usePaginate } from '../Utils/usePaginate';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useSearch } from '../Utils/useSearch';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Import Components
 import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
+import { Payload } from '../Utils/Interfaces';
 
-export const HomePage: React.FC = () => {
+export const SearchPage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
 
-  const { loading, error, products, hasMore } = usePaginate(pageNumber);
+  const [payload, setPayload] = useState<Payload>({ query: '', operation: 0 });
+  const { search } = useLocation();
+
+  const { loading, error, searchResult, hasMore } = useSearch(payload, pageNumber);
 
   const observer = useRef<IntersectionObserver>();
   const lastItemElementRef = useCallback(
@@ -31,11 +35,23 @@ export const HomePage: React.FC = () => {
     [loading, hasMore]
   );
 
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const newSearchQuery = params.get('q');
+    const newFilterQuery = params.get('f');
+
+    if (newSearchQuery) {
+      setPayload({ query: newSearchQuery, operation: 0 });
+    } else if (newFilterQuery) {
+      setPayload({ query: newFilterQuery, operation: 1 });
+    }
+  }, [payload.operation, search]);
+
   return (
     <section id="ShoppingSection">
       <div className="itemsContainer">
-        {products.map((product, index) => {
-          if (products.length === index + 1) {
+        {searchResult.map((product, index) => {
+          if (searchResult.length === index + 1) {
             return (
               <div key={index} ref={lastItemElementRef} className="itemCard">
                 <Link to={`/${product.vendor}/${product._id}`}>
@@ -70,4 +86,4 @@ export const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default SearchPage;

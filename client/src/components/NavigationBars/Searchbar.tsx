@@ -10,7 +10,9 @@ export const Searchbar: React.FC = () => {
           fill="#262626"
         />
       </svg>
-      <input type="text" name="search" id="search" placeholder="search" className="searchInput" />
+      <form action="/search" method="get">
+        <input type="text" name="q" id="q" placeholder="search" required className="searchInput" />
+      </form>
     </div>
   );
 };
