@@ -9,7 +9,7 @@ interface Props {
 export const Selector: React.FC<Props> = ({ title, options, onChange }) => {
   useEffect(() => {
     onChange(options[0]);
-  });
+  }, []);
 
   return (
     <div className="formSelectContainer">

@@ -41,6 +41,7 @@ router.get('/cartThumbnail/:id', async (req, res) => {
         $project: {
           _id: 1,
           'thumbnails.cartThumbnail': 1,
+          frequency: 1,
         },
       },
     ]);

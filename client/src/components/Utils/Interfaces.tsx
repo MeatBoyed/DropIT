@@ -43,4 +43,5 @@ export interface ReturnedError {
 export interface CartProduct {
   image: string;
   frequency: number;
+  frequencyList: string[];
 }
