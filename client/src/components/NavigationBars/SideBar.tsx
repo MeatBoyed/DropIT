@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SideBar: React.FC = () => {
-  const history = useHistory();
   return (
     <section className="SideNavbarSection">
       {/* Optional Logo */}

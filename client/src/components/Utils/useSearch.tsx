@@ -39,7 +39,7 @@ export const useSearch = (payload: { query: string; operation: number }, pageNum
         }
         setLoading(false);
       });
-  }, [pageNumber, payload.query]);
+  }, [pageNumber, payload.query, payload.operation]);
 
   return { loading, error, searchResult, hasMore };
 };

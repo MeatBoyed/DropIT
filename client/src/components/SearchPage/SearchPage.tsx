@@ -45,7 +45,7 @@ export const SearchPage: React.FC = () => {
     } else if (newFilterQuery) {
       setPayload({ query: newFilterQuery, operation: 1 });
     }
-  }, [payload.operation]);
+  }, [payload.operation, search]);
 
   return (
     <section id="ShoppingSection">
