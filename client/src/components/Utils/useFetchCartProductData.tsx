@@ -11,18 +11,12 @@ export const useFetchCartProductData = (productID: string) => {
     setLoading(true);
 
     axios
-      .get(`http://localhost:5000/product/${productID}`)
+      .get(`http://localhost:5000/product/cartThumbnail/${productID}`)
       .then((response) => {
-        setCartProductData({ image: response.data.thumbnails[0].cartThumbnail, frequency: response.data.frequency });
+        console.log(response.data.thumbnails.cartThumbnail);
+        setCartProductData({ image: response.data.thumbnails.cartThumbnail, frequency: response.data[0].frequency });
       })
       .catch((ResError) => {
-        const error: ReturnedError = ResError.response.data;
-
-        switch (error.status) {
-          case 400:
-            setError({ isError: true, message: 'An unexpected error occured' });
-        }
-
         setLoading(false);
       });
   }, []);
