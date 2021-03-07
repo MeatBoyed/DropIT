@@ -31,7 +31,6 @@ export const useSearch = (pageNumber: number, query: string) => {
       })
       .catch((ResError) => {
         const error: ReturnedError = ResError.response.data;
-        console.log(error);
 
         switch (error.status) {
           case 400 || 500:

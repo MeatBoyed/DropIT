@@ -7,6 +7,7 @@ import { ShoppingCartContextProvider } from './components/ShoppingCartContext';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { Navbar } from './components/NavigationBars/Navbar';
 import SideBar from './components/NavigationBars/SideBar';
+
 const HomePage = React.lazy(() => import('./components/HomePage/HomePage'));
 const SearchPage = React.lazy(() => import('./components/SearchPage/SearchPage'));
 const ShoppingCartPage = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPage'));
@@ -30,7 +31,7 @@ function App() {
               <SideBar />
               <Switch>
                 <Route exact path="/" render={() => <HomePage />} />
-                <Route exact path="/search/" render={() => <SearchPage />} />
+                <Route exact path="/search" render={() => <SearchPage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
                 <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/404" render={() => <PageNotFound />} />

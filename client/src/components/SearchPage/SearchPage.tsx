@@ -14,7 +14,6 @@ export const SearchPage: React.FC = () => {
   const params = new URLSearchParams(search);
 
   const { loading, error, searchResult, hasMore } = useSearch(pageNumber, query);
-  console.log(error.message);
 
   const observer = useRef<IntersectionObserver>();
   const lastItemElementRef = useCallback(
