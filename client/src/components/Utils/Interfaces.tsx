@@ -39,3 +39,8 @@ export interface ReturnedError {
   status: number;
   message: string;
 }
+
+export interface CartProduct {
+  image: string;
+  frequency: number;
+}

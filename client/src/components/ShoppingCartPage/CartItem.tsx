@@ -6,6 +6,7 @@ import { ShoppingCartContext } from '../ShoppingCartContext';
 // Temp Cart Image loader image
 import CartImageLoader from '../../images/CartImageLoader.png';
 import Selector from '../ItemPage/Selector';
+import { useFetchCartProductData } from '../Utils/useFetchCartProductData';
 
 interface props {
   index: number;
@@ -26,45 +27,33 @@ interface ProductDataModel {
 export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour, size, onChange }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
 
-  const [productData, setProductData] = useState<ProductDataModel>({ image: CartImageLoader, frequency: 1 });
   const [frequencyList, setFrequencyList] = useState<string[]>(['1']);
   const [frequency, setFrequency] = useState<number>(parseInt(frequencyList[0]));
   const [localTotal, setLocalTotal] = useState<number>(price);
+  const { loading, error, cartProductData } = useFetchCartProductData(id);
+  console.log(cartProductData);
 
-  const FetchData = () => {
-    axios
-      .get(`http://localhost:5000/api/products/${id}`)
-      .then((response) => {
-        setProductData({ image: response.data.thumbnails[0].cartThumbnail, frequency: response.data.frequency });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // useEffect(() => {
+  //   setLocalTotal(price * frequency);
+  // }, [frequency, price]);
 
-  useEffect(() => {
-    setLocalTotal(price * frequency);
-  }, [frequency, price]);
+  // useEffect(() => {
+  //   onChange(localTotal, index);
+  // }, [localTotal, index, onChange]);
 
-  useEffect(() => {
-    onChange(localTotal, index);
-  }, [localTotal, index, onChange]);
-
-  // Inital single time events
-  useEffect(() => {
-    let temp: string[] = [];
-    for (let i = 1; i <= productData.frequency; i++) {
-      temp.push(`${i}`);
-    }
-    setFrequencyList(temp);
-  }, [productData.frequency]);
-
-  useEffect(() => FetchData());
+  // // Inital single time events
+  // useEffect(() => {
+  //   let temp: string[] = [];
+  //   for (let i = 1; i <= cartProductData.frequency; i++) {
+  //     temp.push(`${i}`);
+  //   }
+  //   setFrequencyList(temp);
+  // }, [cartProductData.frequency]);
 
   return (
     <div className="CartItem">
       <div className="cartItemDetails">
-        <img src={productData?.image} alt="" className="thumbnail" />
+        <img src={cartProductData?.image} alt="" className="thumbnail" />
         <div className="cartItemInfo">
           <Link to={url}>
             <p className="itemTitle">{title}</p>
