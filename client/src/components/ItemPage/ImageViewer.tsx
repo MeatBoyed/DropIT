@@ -13,11 +13,11 @@ export const ImageViewer: React.FC<Props> = ({ viewerImages }) => {
   useEffect(() => {
     if (activeIndex >= viewerImages.length - 1) return setActiveIndex(viewerImages.length - 1);
     if (activeIndex < 0) return setActiveIndex(0);
-  }, [activeIndex]);
+  }, [viewerImages, activeIndex]);
 
   useEffect(() => {
     viewerImages.map((viewerImage) => {
-      items.push(<img src={viewerImage} alt="" />);
+      return items.push(<img src={viewerImage} alt="" />);
     });
   });
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Alert } from '../Utils/Alert';
 import { useFetchProduct } from '../Utils/useFetchProduct';

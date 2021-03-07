@@ -20,7 +20,7 @@ export const useSearch = (pageNumber: number, query: string) => {
       params: { page: pageNumber },
     })
       .then((response) => {
-        if (response.data.length == 0 && pageNumber == 1) {
+        if (response.data.length === 0 && pageNumber === 1) {
           setError({ isError: true, message: 'Sorry, no products found. Try being more specific' });
         }
         setSearchResult((previousProducts) => {
