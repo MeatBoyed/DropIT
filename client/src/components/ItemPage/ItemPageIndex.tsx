@@ -16,7 +16,7 @@ const ItemPageIndex: React.FC = () => {
   const currentId = useParams<Param>().itemid;
   const currentUrl = useLocation();
 
-  const { loading, errorMessage, product } = useFetchProduct(currentId);
+  const { loading, error, product } = useFetchProduct(currentId);
 
   return (
     <section id="ItemSection">
@@ -24,8 +24,8 @@ const ItemPageIndex: React.FC = () => {
         <LoadingSpinner />
       ) : (
         <React.Fragment>
-          {errorMessage !== '' ? (
-            <Alert message={errorMessage} />
+          {error.isError ? (
+            <Alert message={error.message} />
           ) : (
             <React.Fragment>
               <ImageViewer viewerImages={product.viewerImages} />

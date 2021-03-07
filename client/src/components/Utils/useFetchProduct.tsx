@@ -4,7 +4,7 @@ import { ProductViewerModel, ReturnedError, Error } from './Interfaces';
 
 export const useFetchProduct = (productID: string) => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [error, setError] = useState<Error>({ isError: false, message: '' });
   const [product, setProduct] = useState<ProductViewerModel>({
     id: productID,
     title: '',
@@ -36,11 +36,20 @@ export const useFetchProduct = (productID: string) => {
         });
         setLoading(false);
       })
-      .catch((error) => {
-        setErrorMessage("The product you're looking for doesn't seem to exists.");
+      .catch((ResError) => {
+        const error: ReturnedError = ResError.response.data;
+
+        switch (error.status) {
+          case 404:
+            setError({ isError: true, message: "The product you're looking for doesn't seem to exist" });
+            break;
+          case 400:
+            setError({ isError: true, message: 'An unexpected error occured' });
+        }
+
         setLoading(false);
       });
   }, [productID]);
 
-  return { loading, errorMessage, product };
+  return { loading, error, product };
 };

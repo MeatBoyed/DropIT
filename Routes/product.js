@@ -14,7 +14,12 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(product);
   } catch (error) {
-    res.status(400).json('Internal error');
+    console.log(error.constructor.name);
+    if (error.constructor.name == 'CastError') {
+      res.status(400).json({ status: 404, message: 'No product found with that ID' });
+    } else {
+      res.status(400).json('Internal error');
+    }
   }
 });
 
