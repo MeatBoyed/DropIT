@@ -15,25 +15,40 @@ export const NavbarDropDown: React.FC<Props> = ({ shoppingCartLength }) => {
         <Searchbar />
       </div>
       <div className="dropdownItem">
-        <div className="shoppingCartContainer">
-          <ShoppingCartIcon />
-          <p>Cart ({shoppingCartLength})</p>
-        </div>
+        <Link to="/shoppingcart">
+          <div className="shoppingCartContainer">
+            <ShoppingCartIcon />
+            <p>Cart ({shoppingCartLength})</p>
+          </div>
+        </Link>
       </div>
       <div className="dropdownItem">
         <Link to="">Checkout</Link>
       </div>
       <div className="dropdownItem">
-        <Link to="">Clothes</Link>
+        <a className="tag" href="/search?f=Clothes">
+          Clothes
+        </a>
       </div>
       <div className="dropdownItem">
-        <Link to="">Books</Link>
+        <a className="tag" href="/search?f=Books">
+          Books
+        </a>
       </div>
       <div className="dropdownItem">
-        <Link to="">House Appliances</Link>
+        <a href="/search?f=House+Appliance" className="tag">
+          House Appliances
+        </a>
       </div>
       <div className="dropdownItem">
-        <Link to="">Tech</Link>
+        <a href="/search?f=Tech" className="tag">
+          Tech
+        </a>
+      </div>
+      <div className="dropdownItem">
+        <a href="/search?f=Music" className="tag">
+          Music
+        </a>
       </div>
       <div className="dropdownItem">
         <Link to="">About</Link>
