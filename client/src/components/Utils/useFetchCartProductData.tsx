@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CartProduct, ReturnedError, Error } from './Interfaces';
+import { CartProduct } from './Interfaces';
 
 export const useFetchCartProductData = (productID: string) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<Error>({ isError: false, message: '' });
   const [cartProductData, setCartProductData] = useState<CartProduct>({ image: '', frequency: 1, frequencyList: ['1'] });
 
   useEffect(() => {
@@ -18,8 +16,6 @@ export const useFetchCartProductData = (productID: string) => {
   }, [cartProductData.frequency]);
 
   useEffect(() => {
-    setLoading(true);
-
     axios
       .get(`http://localhost:5000/product/cartThumbnail/${productID}`)
       .then((response) => {
@@ -28,9 +24,9 @@ export const useFetchCartProductData = (productID: string) => {
         });
       })
       .catch((ResError) => {
-        setLoading(false);
+        console.log(ResError);
       });
   }, []);
 
-  return { loading, error, cartProductData };
+  return { cartProductData };
 };

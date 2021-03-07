@@ -20,7 +20,7 @@ interface props {
 export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour, size, onChange }) => {
   const { RemoveFromShoppingCart } = useContext(ShoppingCartContext);
 
-  const { loading, error, cartProductData } = useFetchCartProductData(id);
+  const { cartProductData } = useFetchCartProductData(id);
   const [frequency, setFrequency] = useState<number>(parseInt(cartProductData.frequencyList[0]));
   const [localTotal, setLocalTotal] = useState<number>(price);
 
