@@ -95,6 +95,4 @@ router.get('/:query', async (req, res, next) => {
   }
 });
 
-router.get('/:');
-
 module.exports = router;

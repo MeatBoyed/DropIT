@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ProductCardModel, ReturnedError, Error } from './Interfaces';
 
-export const useSearch = (pageNumber: number, query: string) => {
+export const useSearch = (payload: { query: string; operation: number }, pageNumber: number) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [error, setError] = useState<Error>({ isError: false, message: '' });
@@ -16,17 +16,18 @@ export const useSearch = (pageNumber: number, query: string) => {
 
     axios({
       method: 'GET',
-      url: `http://localhost:5000/search/${query}`,
-      params: { page: pageNumber },
+      url: `http://localhost:5000/search/${payload.query}`,
+      params: { operation: payload.operation, page: pageNumber },
     })
       .then((response) => {
         if (response.data.length === 0 && pageNumber === 1) {
           setError({ isError: true, message: 'Sorry, no products found. Try being more specific' });
+        } else {
+          setSearchResult((previousProducts) => {
+            return previousProducts.concat(response.data);
+          });
+          setHasMore(response.data.length > 0);
         }
-        setSearchResult((previousProducts) => {
-          return previousProducts.concat(response.data);
-        });
-        setHasMore(response.data.length > 0);
         setLoading(false);
       })
       .catch((ResError) => {
@@ -38,7 +39,7 @@ export const useSearch = (pageNumber: number, query: string) => {
         }
         setLoading(false);
       });
-  }, [pageNumber, query]);
+  }, [pageNumber, payload.query]);
 
   return { loading, error, searchResult, hasMore };
 };

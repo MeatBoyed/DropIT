@@ -1,20 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const SideBar: React.FC = () => {
+  const history = useHistory();
   return (
     <section className="SideNavbarSection">
       {/* Optional Logo */}
       <ul className="linksContainer">
         <li className="link">
-          <Link className="tag" to="">
-            Clothes
-          </Link>
+          <a href="/search?f=Clothes">Clothes</a>
         </li>
         <li className="link">
-          <Link className="tag" to="">
-            Books
-          </Link>
+          <a href="/search?f=Books">Books</a>
         </li>
         <li className="link">
           <Link className="tag" to="">

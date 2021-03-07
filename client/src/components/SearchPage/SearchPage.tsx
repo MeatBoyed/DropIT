@@ -6,14 +6,15 @@ import { Link, useLocation } from 'react-router-dom';
 // Import Components
 import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
+import { Payload } from '../Utils/Interfaces';
 
 export const SearchPage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const [query, setQuery] = useState<string>('');
-  const { search } = useLocation();
-  const params = new URLSearchParams(search);
 
-  const { loading, error, searchResult, hasMore } = useSearch(pageNumber, query);
+  const [payload, setPayload] = useState<Payload>({ query: '', operation: 0 });
+  const { search } = useLocation();
+
+  const { loading, error, searchResult, hasMore } = useSearch(payload, pageNumber);
 
   const observer = useRef<IntersectionObserver>();
   const lastItemElementRef = useCallback(
@@ -35,9 +36,16 @@ export const SearchPage: React.FC = () => {
   );
 
   useEffect(() => {
-    const newQuery = params.get('q');
-    if (newQuery) return setQuery(newQuery);
-  }, [params]);
+    const params = new URLSearchParams(search);
+    const newSearchQuery = params.get('q');
+    const newFilterQuery = params.get('f');
+
+    if (newSearchQuery) {
+      setPayload({ query: newSearchQuery, operation: 0 });
+    } else if (newFilterQuery) {
+      setPayload({ query: newFilterQuery, operation: 1 });
+    }
+  }, [payload.operation]);
 
   return (
     <section id="ShoppingSection">

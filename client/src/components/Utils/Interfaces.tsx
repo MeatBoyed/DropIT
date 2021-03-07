@@ -45,3 +45,8 @@ export interface CartProduct {
   frequency: number;
   frequencyList: string[];
 }
+
+export interface Payload {
+  query: string;
+  operation: number;
+}
