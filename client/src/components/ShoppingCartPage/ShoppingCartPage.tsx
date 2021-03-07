@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { CartItem } from './CartItem';
+import { Alert } from '../Utils/Alert';
 
 export const ShoppingCartPage: React.FC = () => {
   const { shoppingCart, GetShoppingCartTotal } = useContext(ShoppingCartContext);
@@ -30,6 +31,11 @@ export const ShoppingCartPage: React.FC = () => {
         </div>
       </div>
       <div className="shoppingCartItemsContainer">
+        {shoppingCart.length ? null : (
+          <div className="EmptyCartAlert">
+            <Alert message="Your cart is empty" />
+          </div>
+        )}
         {shoppingCart.map((item: ShoppingCartItem, index: number) => (
           <CartItem
             key={index}

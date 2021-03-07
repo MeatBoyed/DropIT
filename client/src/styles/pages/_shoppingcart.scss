@@ -43,6 +43,12 @@
     @include media('<=tablet') {
       width: 100%;
     }
+
+    .EmptyCartAlert {
+      width: 100%;
+      margin-top: 3em;
+      margin-bottom: 4em;
+    }
   }
 
   .cartInfo {
