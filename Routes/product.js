@@ -3,13 +3,12 @@ const router = express.Router();
 
 const Product = require('../models/Product');
 
-const limit = 5;
-
 router.get('/:id', async (req, res) => {
   const productID = req.params.id;
+  console.log(productID);
 
   try {
-    if (productID) res.status(400).json({ status: 400, message: 'Missing required field: productID' });
+    if (!productID) res.status(400).json({ status: 400, message: 'Missing required field: productID' });
 
     const product = await Product.findById(productID);
 

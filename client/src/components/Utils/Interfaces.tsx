@@ -18,6 +18,18 @@ export interface ProductViewerModel {
   frequency: number;
 }
 
+export interface ProductDescription {
+  id: string;
+  currentURL: string;
+  title: string;
+  price: number;
+  colours: string[];
+  sizes: string[];
+  description: string;
+  rating: number;
+  frequency: number;
+}
+
 export interface Error {
   isError: boolean;
   message: string;

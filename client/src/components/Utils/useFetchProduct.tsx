@@ -20,7 +20,7 @@ export const useFetchProduct = (productID: string) => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `http://localhost:5000/api/product/${productID}`,
+      url: `http://localhost:5000/product/${productID}`,
     })
       .then((response) => {
         setProduct({
