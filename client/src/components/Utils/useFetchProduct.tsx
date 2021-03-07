@@ -40,7 +40,7 @@ export const useFetchProduct = (productID: string) => {
         setErrorMessage("The product you're looking for doesn't seem to exists.");
         setLoading(false);
       });
-  });
+  }, [productID]);
 
   return { loading, errorMessage, product };
 };
