@@ -14,6 +14,16 @@ router.get('/', async (req, res) => {
           title: 'KC Jewlery',
         },
       },
+      {
+        $project: {
+          _id: 0,
+          title: 1,
+          location: 1,
+          description: 1,
+          socialMedia: 1,
+          images: 1,
+        },
+      },
     ]);
 
     res.status(200).json(clientProfile);
