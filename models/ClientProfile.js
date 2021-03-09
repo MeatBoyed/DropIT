@@ -13,7 +13,15 @@ const clientProfileSchema = new Schema(
     },
     socialMedia: [
       {
-        type: String,
+        accountName: {
+          type: String,
+        },
+        link: {
+          type: String,
+        },
+        iconImage: {
+          type: String,
+        },
       },
     ],
     description: {

@@ -26,6 +26,7 @@ export interface ClientProfileModel {
     {
       accountName: string;
       link: string;
+      iconImage: string;
     }
   ];
   images: {

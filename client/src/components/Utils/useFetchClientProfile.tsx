@@ -9,7 +9,7 @@ export const useFetchClientProfile = (profileTitle: string) => {
     title: '',
     location: '',
     description: '',
-    socialMedia: [{ accountName: '', link: '' }],
+    socialMedia: [{ accountName: '', link: '', iconImage: '' }],
     images: {
       bannerImage: '',
       profileImage: '',
@@ -23,7 +23,6 @@ export const useFetchClientProfile = (profileTitle: string) => {
       params: { title: profileTitle },
     })
       .then((response) => {
-        console.log(response);
         setClientProfile({
           title: response.data[0].title,
           location: response.data[0].location,

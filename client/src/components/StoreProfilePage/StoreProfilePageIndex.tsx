@@ -8,12 +8,10 @@ import ProfileBanner from '../../images/profileBanner.jpg';
 import ProfileIcon from '../../images/profileIcon.jpg';
 
 // SocialMedia Icons
-import InstagramIcon from '../../images/instagramIcon.svg';
-import TwitterIcon from '../../images/twitterIcon.svg';
-import FacebookIcon from '../../images/facebookIcon.svg';
 import { useLocation } from 'react-router';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { Alert } from '../Utils/Alert';
+import { Link } from 'react-router-dom';
 
 // TODO Ensure social media icons are the correct size
 
@@ -91,9 +89,11 @@ export const ClientProfilePageIndex: React.FC<Props> = () => {
                         <p className="profileLocation">{clientProfile.location}</p>
                       </div>
                       <div className="socialLinksContainer">
-                        <img className="socialMediaIcon" src={InstagramIcon} alt="" />
-                        <img className="socialMediaIcon" src={TwitterIcon} alt="" />
-                        <img className="socialMediaIcon" src={FacebookIcon} alt="" />
+                        {clientProfile.socialMedia.map((socialMedia) => (
+                          <Link to={socialMedia.link}>
+                            <img className="socialMediaIcon" src={socialMedia.iconImage} alt="" />
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   </div>
