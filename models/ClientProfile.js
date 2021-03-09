@@ -35,4 +35,4 @@ const clientProfileSchema = new Schema(
 );
 
 const ClientProfiles = mongoose.model('ClientProfile', clientProfileSchema);
-modules.exports = ClientProfiles;
+module.exports = ClientProfiles;
