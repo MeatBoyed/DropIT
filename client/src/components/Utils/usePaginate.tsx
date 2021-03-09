@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ProductCardModel, ReturnedError, Error } from './Interfaces';
+import { ProductCardModel, Error } from './Interfaces';
 
 export const usePaginate = (pageNumber: number) => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,13 +26,11 @@ export const usePaginate = (pageNumber: number) => {
         setHasMore(response.data.length > 0);
         setLoading(false);
       })
-      .catch((ResError) => {
-        const error: ReturnedError = ResError.response.data;
-
-        switch (error.status) {
-          case 400:
-            setError({ isError: true, message: 'An unexpected error occured' });
-        }
+      .catch((error) => {
+        setError({
+          isError: true,
+          message: 'An unexpected error occured. Please check you internet connection and try again',
+        });
         setLoading(false);
       });
   }, [pageNumber]);

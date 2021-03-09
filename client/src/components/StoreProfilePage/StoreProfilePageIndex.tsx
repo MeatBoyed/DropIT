@@ -108,6 +108,7 @@ export const ClientProfilePageIndex: React.FC<Props> = () => {
               />
             );
           })}
+          {error.isError && <h1>{error.message}</h1>}
         </div>
       </div>
     </section>
