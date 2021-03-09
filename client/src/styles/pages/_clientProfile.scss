@@ -112,6 +112,11 @@
     border: 1px solid #eee;
     margin-bottom: 4em;
     padding: 20px;
+    width: 80%;
+
+    @include media('<=tablet') {
+      width: 100%;
+    }
 
     .descriptionText {
       font-size: 15px;
