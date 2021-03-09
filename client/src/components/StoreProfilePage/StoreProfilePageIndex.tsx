@@ -73,12 +73,12 @@ export const ClientProfilePageIndex: React.FC<Props> = () => {
 
                 <p className="profileLocation">Windhoek, Namibia</p>
               </div>
+              <div className="socialLinksContainer">
+                <img className="socialMediaIcon" src={InstagramIcon} alt="" />
+                <img className="socialMediaIcon" src={TwitterIcon} alt="" />
+                <img className="socialMediaIcon" src={FacebookIcon} alt="" />
+              </div>
             </div>
-          </div>
-          <div className="socialLinksContainer">
-            <img className="socialMediaIcon" src={InstagramIcon} alt="" />
-            <img className="socialMediaIcon" src={TwitterIcon} alt="" />
-            <img className="socialMediaIcon" src={FacebookIcon} alt="" />
           </div>
         </div>
       </div>

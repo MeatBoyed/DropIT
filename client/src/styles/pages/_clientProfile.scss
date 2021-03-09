@@ -15,13 +15,17 @@
     justify-content: center;
     align-items: center;
     margin-top: 1em;
-    margin-bottom: 6em;
+    margin-bottom: 4em;
     width: 100%;
     border-bottom: 1px solid #eee;
 
     .bannerContainer {
       width: 100%;
       height: 15em;
+
+      @include media('<=tablet') {
+        height: 8em;
+      }
 
       img {
         width: 100%;
@@ -36,6 +40,10 @@
       margin-top: 2em;
       width: 100%;
       margin-bottom: 1em;
+
+      @include media('<=tablet') {
+        flex-direction: column;
+      }
 
       .profileDetailsContainer {
         display: flex;
@@ -83,17 +91,18 @@
               width: 15px;
             }
           }
-        }
-      }
 
-      .socialLinksContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+          .socialLinksContainer {
+            display: flex;
+            align-items: center;
+            justify-self: flex-start;
+            margin-top: 9px;
 
-        .socialMediaIcon {
-          width: 25px;
-          margin-left: 15px;
+            .socialMediaIcon {
+              width: 20px;
+              margin-right: 9px;
+            }
+          }
         }
       }
     }
@@ -101,13 +110,17 @@
 
   #ProfileDescriptionContainer {
     border: 1px solid #eee;
-    margin-bottom: 7em;
+    margin-bottom: 4em;
     padding: 20px;
 
     .descriptionText {
       font-size: 15px;
       letter-spacing: 1px;
       text-align: left;
+
+      @include media('<=tablet') {
+        font-size: 13px;
+      }
     }
   }
 
