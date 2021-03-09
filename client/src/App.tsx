@@ -10,6 +10,7 @@ import SideBar from './components/NavigationBars/SideBar';
 
 const HomePage = React.lazy(() => import('./components/HomePage/HomePage'));
 const SearchPage = React.lazy(() => import('./components/SearchPage/SearchPage'));
+const StoreProfilePage = React.lazy(() => import('./components/StoreProfilePage/StoreProfilePageIndex'));
 const ShoppingCartPage = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPage'));
 const ItemPageIndex = React.lazy(() => import('./components/ItemPage/ItemPageIndex'));
 const PageNotFound = React.lazy(() => import('./components/PageNotFound'));
@@ -32,6 +33,7 @@ function App() {
               <Switch>
                 <Route exact path="/" render={() => <HomePage />} />
                 <Route exact path="/search" render={() => <SearchPage />} />
+                <Route exact path="/:storename" render={() => <StoreProfilePage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
                 <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/404" render={() => <PageNotFound />} />
