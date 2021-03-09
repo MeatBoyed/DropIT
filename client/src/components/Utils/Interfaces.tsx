@@ -18,6 +18,22 @@ export interface ProductViewerModel {
   frequency: number;
 }
 
+export interface ClientProfileModel {
+  title: string;
+  location: string;
+  description: string;
+  socialMedia: [
+    {
+      accountName: string;
+      link: string;
+    }
+  ];
+  images: {
+    bannerImage: string;
+    profileImage: string;
+  };
+}
+
 export interface ProductDescription {
   id: string;
   currentURL: string;

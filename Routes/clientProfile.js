@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const clientProfile = await ClientProfile.aggregate([
       {
         $match: {
-          title: 'KC Jewlery',
+          title: title,
         },
       },
       {
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 
     res.status(200).json(clientProfile);
   } catch (error) {
-    res.status(400).json('Internal error');
+    res.status(400);
   }
 });
 
