@@ -4,9 +4,6 @@ import { ItemCard } from '../ItemCard';
 import { usePaginate } from '../Utils/usePaginate';
 import { useFetchClientProfile } from '../Utils/useFetchClientProfile';
 
-import ProfileBanner from '../../images/profileBanner.jpg';
-import ProfileIcon from '../../images/profileIcon.jpg';
-
 // SocialMedia Icons
 import { useLocation } from 'react-router';
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -38,12 +35,12 @@ export const ClientProfilePageIndex: React.FC<Props> = () => {
             <React.Fragment>
               <div id="ProfileHeader">
                 <div className="bannerContainer">
-                  <img src={ProfileBanner} alt="" />
+                  <img src={clientProfile.images.bannerImage} alt="" />
                 </div>
                 <div className="detailContainer">
                   <div className="profileDetailsContainer">
                     <div className="profileIconContainer">
-                      <img src={ProfileIcon} alt="" />
+                      <img src={clientProfile.images.profileImage} alt="" />
                     </div>
                     <div className="profileTilesContainer">
                       <p className="profileTitle">{clientProfile.title}</p>
@@ -89,8 +86,8 @@ export const ClientProfilePageIndex: React.FC<Props> = () => {
                         <p className="profileLocation">{clientProfile.location}</p>
                       </div>
                       <div className="socialLinksContainer">
-                        {clientProfile.socialMedia.map((socialMedia) => (
-                          <Link to={socialMedia.link}>
+                        {clientProfile.socialMedia.map((socialMedia, index) => (
+                          <Link key={index} to={socialMedia.link}>
                             <img className="socialMediaIcon" src={socialMedia.iconImage} alt="" />
                           </Link>
                         ))}
