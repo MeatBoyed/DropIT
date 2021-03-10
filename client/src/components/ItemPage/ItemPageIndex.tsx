@@ -29,7 +29,7 @@ const ItemPageIndex: React.FC = () => {
       ) : (
         <React.Fragment>
           {error.isError ? (
-            <Alert message={error.message} />
+            <Alert message={error.message} returnHome={true} />
           ) : (
             <React.Fragment>
               <ImageViewer viewerImages={product.viewerImages} />

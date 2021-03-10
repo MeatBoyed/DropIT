@@ -24,7 +24,7 @@ export const ClientProfilePageIndex: React.FC = () => {
       ) : (
         <React.Fragment>
           {profileError.isError ? (
-            <Alert message={profileError.message} />
+            <Alert message={profileError.message} returnHome={true} />
           ) : (
             <React.Fragment>
               <Header

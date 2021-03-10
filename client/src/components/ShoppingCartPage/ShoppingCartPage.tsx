@@ -33,7 +33,7 @@ export const ShoppingCartPage: React.FC = () => {
       <div className="shoppingCartItemsContainer">
         {shoppingCart.length ? null : (
           <div className="EmptyCartAlert">
-            <Alert message="Your cart is empty" />
+            <Alert message="Your cart is empty" returnHome={true} />
           </div>
         )}
         {shoppingCart.map((item: ShoppingCartItem, index: number) => (

@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   message: string;
+  returnHome: boolean;
 }
 
-export const Alert: React.FC<Props> = ({ message }) => {
+export const Alert: React.FC<Props> = ({ message, returnHome }) => {
   return (
     <div id="AlertContainer">
       <p className="message">{message}</p>
-      <Link to="/">
-        <p className="returnHome">Return home</p>
-      </Link>
+      {returnHome && (
+        <Link to="/">
+          <p className="returnHome">Return home</p>
+        </Link>
+      )}
     </div>
   );
 };

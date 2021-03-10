@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // Import Components
 import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
+import { Alert } from '../Utils/Alert';
 
 export const HomePage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -65,7 +66,7 @@ export const HomePage: React.FC = () => {
         })}
       </div>
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
-      <div>{error.isError && <h3>{error.message}</h3>}</div>
+      <div className="shoppingSectionError">{error.isError && <Alert message={error.message} returnHome={false} />}</div>
     </section>
   );
 };

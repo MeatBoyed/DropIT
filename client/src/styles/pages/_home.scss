@@ -25,6 +25,10 @@
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
   }
+
+  .shoppingSectionError {
+    width: 100%;
+  }
 }
 // #ShoppingSection {
 //   // @include MainBackground;
