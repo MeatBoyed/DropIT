@@ -71,7 +71,26 @@
         font-weight: 400;
         margin-top: 1rem;
       }
+
+      .itemMetadataContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 12px;
+
+        .vendorTitle {
+          color: $ButtonColour;
+          font-size: 15px;
+          margin-right: 10px;
+        }
+
+        .rating {
+          font-size: 15px;
+        }
+      }
     }
+
     .itemSelectorsContainer {
       display: flex;
       flex-direction: row;

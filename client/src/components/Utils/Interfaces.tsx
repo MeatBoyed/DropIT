@@ -40,6 +40,7 @@ export interface ProductDescription {
   currentURL: string;
   title: string;
   price: number;
+  vendor: string;
   colours: string[];
   sizes: string[];
   description: string;

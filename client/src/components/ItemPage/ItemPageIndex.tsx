@@ -10,10 +10,14 @@ import { ItemDetailsViewer } from './ItemDetailsViewer';
 
 interface Param {
   itemid: string;
+  storename: string;
 }
 
 const ItemPageIndex: React.FC = () => {
-  const currentId = useParams<Param>().itemid;
+  const params = useParams<Param>();
+
+  const storename = params.storename;
+  const currentId = params.itemid;
   const currentUrl = useLocation();
 
   const { loading, error, product } = useFetchProduct(currentId);
@@ -34,6 +38,7 @@ const ItemPageIndex: React.FC = () => {
                 currentURL={currentUrl.pathname}
                 title={product.title}
                 price={product.price}
+                vendor={storename}
                 colours={product.colours}
                 sizes={product.sizes}
                 description={product.description}

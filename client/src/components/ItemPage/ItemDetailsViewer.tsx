@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { ShoppingCartItem, ShoppingCartContext } from '../ShoppingCartContext';
 import { ProductDescription } from '../Utils/Interfaces';
 
@@ -10,6 +11,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
   currentURL,
   title,
   price,
+  vendor,
   colours,
   sizes,
   description,
@@ -43,6 +45,12 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
       <div className="itemDetailsContainer">
         <p className="itemTitle">{title}</p>
         <p className="itemPrice">${price}</p>
+        <div className="itemMetadataContainer">
+          <Link className="vendorTitle" to={`/${vendor}`}>
+            {vendor} -
+          </Link>
+          <p className="rating">{rating}</p>
+        </div>
       </div>
       <div className="itemSelectorsContainer">
         {colours.length !== 0 && (
