@@ -15,12 +15,12 @@ export const ClientProfilePageIndex: React.FC = () => {
   const location = useLocation();
   const clientTitle = location.pathname.replaceAll('/', '');
 
-  const { profileLoading, profileError, clientProfile } = useFetchClientProfile(clientTitle);
+  const { loading, profileError, clientProfile } = useFetchClientProfile(clientTitle);
 
   return (
     <section id="ClientProfileSection">
-      {profileLoading ? (
-        <LoadingSpinner />
+      {loading ? (
+        <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       ) : (
         <React.Fragment>
           {profileError.isError ? (

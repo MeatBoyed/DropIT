@@ -25,7 +25,7 @@ const ItemPageIndex: React.FC = () => {
   return (
     <section id="ItemSection">
       {loading ? (
-        <LoadingSpinner />
+        <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       ) : (
         <React.Fragment>
           {error.isError ? (

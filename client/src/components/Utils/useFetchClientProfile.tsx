@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ReturnedError, Error, ClientProfileModel } from './Interfaces';
 
 export const useFetchClientProfile = (profileTitle: string) => {
-  const [profileLoading, setProfileLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [profileError, setProfileError] = useState<Error>({ isError: false, message: '' });
   const [clientProfile, setClientProfile] = useState<ClientProfileModel>({
     title: '',
@@ -30,7 +30,7 @@ export const useFetchClientProfile = (profileTitle: string) => {
           socialMedia: response.data[0].socialMedia,
           images: response.data[0].images,
         });
-        setProfileLoading(false);
+        setLoading(false);
       })
       .catch((ResError) => {
         try {
@@ -49,9 +49,9 @@ export const useFetchClientProfile = (profileTitle: string) => {
             message: 'An unexpected error occured. Please check you internet connection and try again',
           });
         }
-        setProfileLoading(false);
+        setLoading(false);
       });
   }, [profileTitle]);
 
-  return { profileLoading, profileError, clientProfile };
+  return { loading, profileError, clientProfile };
 };
