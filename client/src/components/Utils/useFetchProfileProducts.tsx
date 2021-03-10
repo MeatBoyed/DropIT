@@ -33,7 +33,7 @@ export const useFetchProfileProducts = (profileTitle: string, pageNumber: number
         });
         setLoading(false);
       });
-  }, [pageNumber]);
+  }, [profileTitle, pageNumber]);
 
   return { loading, error, products, hasMore };
 };

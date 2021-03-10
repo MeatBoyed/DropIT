@@ -26,7 +26,7 @@ export const useFetchCartProductData = (productID: string) => {
       .catch((ResError) => {
         console.log(ResError);
       });
-  }, []);
+  }, [productID]);
 
   return { cartProductData };
 };

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { CartItem } from './CartItem';
 import { Alert } from '../Utils/Alert';
