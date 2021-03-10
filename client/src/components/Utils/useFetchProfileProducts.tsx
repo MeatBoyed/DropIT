@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ProductCardModel, Error } from './Interfaces';
 
-export const usePaginate = (pageNumber: number) => {
+export const useFetchProfileProducts = (profileTitle: string, pageNumber: number) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [error, setError] = useState<Error>({ isError: false, message: '' });
@@ -16,8 +16,8 @@ export const usePaginate = (pageNumber: number) => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:5000/',
-      params: { page: pageNumber },
+      url: 'http://localhost:5000/client-profile/products',
+      params: { vendor: profileTitle, page: pageNumber },
     })
       .then((response) => {
         setProducts((previousProducts) => {

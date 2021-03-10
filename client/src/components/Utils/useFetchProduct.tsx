@@ -37,16 +37,22 @@ export const useFetchProduct = (productID: string) => {
         setLoading(false);
       })
       .catch((ResError) => {
-        const error: ReturnedError = ResError.response.data;
+        try {
+          const error: ReturnedError = ResError.response.data;
 
-        switch (error.status) {
-          case 404:
-            setError({ isError: true, message: "The product you're looking for doesn't seem to exist" });
-            break;
-          case 400:
-            setError({ isError: true, message: 'An unexpected error occured' });
+          switch (error.status) {
+            case 404:
+              setError({ isError: true, message: "The product you're looking for doesn't seem to exist" });
+              break;
+            case 400:
+              setError({ isError: true, message: 'An unexpected error occured' });
+          }
+        } catch (error) {
+          setError({
+            isError: true,
+            message: 'An unexpected error occured. Please check you internet connection and try again',
+          });
         }
-
         setLoading(false);
       });
   }, [productID]);
