@@ -91,7 +91,7 @@ router.get('/:query', async (req, res, next) => {
 
     res.status(200).json(products);
   } catch (error) {
-    res.status(400).json('Internal error');
+    res.status(400);
   }
 });
 
