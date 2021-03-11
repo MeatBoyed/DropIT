@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Thumbnail from '../../images/CartImage1.png';
+
 interface Props {}
 
 export const ShoppingCartProductCard: React.FC<Props> = () => {
@@ -7,7 +9,7 @@ export const ShoppingCartProductCard: React.FC<Props> = () => {
     <div className="shoppingCartProductCard">
       <div className="informationsContainer">
         <div className="imageContainer">
-          <img src="" alt="" className="thumbnail" />
+          <img src={Thumbnail} alt="" className="thumbnail" />
           <img src="" alt="" className="quantity" />
         </div>
         <div className="infoContainer">

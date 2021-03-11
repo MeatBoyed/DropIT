@@ -7,7 +7,9 @@ export const CheckoutPageIndex: React.FC = () => {
   return (
     <section id="CheckoutSection">
       <ShoppingCartSummary />
-      <Information />
+      <div id="PagesContainer">
+        <Information />
+      </div>
     </section>
   );
 };

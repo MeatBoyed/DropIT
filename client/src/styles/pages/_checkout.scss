@@ -1,0 +1,24 @@
+#CheckoutSection {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+
+  #ShoppingCartSummary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $ShoppingCartSummaryBackgroundColour;
+    width: 50%;
+
+    .productsContainer {
+      width: 85%;
+    }
+  }
+
+  #PagesContainer {
+    width: 50%;
+  }
+}
