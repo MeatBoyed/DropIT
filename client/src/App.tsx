@@ -33,9 +33,9 @@ function App() {
               <Switch>
                 <Route exact path="/" render={() => <HomePage />} />
                 <Route exact path="/search" render={() => <SearchPage />} />
+                <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/:storename" render={() => <StoreProfilePage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
-                <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/404" render={() => <PageNotFound />} />
                 {/* <Route path="" component={PageNotFound} /> */}
               </Switch>
