@@ -1,9 +1,13 @@
 import React from 'react';
 
+import { Information } from './Information';
+import { ShoppingCartSummary } from './ShoppingCartSummary';
+
 export const CheckoutPageIndex: React.FC = () => {
   return (
-    <div>
-      <h1>Checkout PAge index</h1>
-    </div>
+    <section id="CheckoutSection">
+      <ShoppingCartSummary />
+      <Information />
+    </section>
   );
 };
