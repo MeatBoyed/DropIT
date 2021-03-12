@@ -92,5 +92,72 @@
         color: $BreadcrumActiveColour;
       }
     }
+
+    #Information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 75%;
+
+      .formTitle {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 1em;
+      }
+
+      .formInput {
+        display: block;
+        height: 1.2em;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+
+      .inlineInputContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .firstInput {
+          margin-right: 1em;
+          width: 100%;
+        }
+      }
+
+      .contactContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 2em;
+      }
+
+      .shippingContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .formInput {
+          margin-bottom: 1em;
+        }
+
+        .addressContainer {
+          width: 100%;
+          .formInput {
+            width: 94%;
+          }
+          .formSelector {
+            @include formSelector();
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
