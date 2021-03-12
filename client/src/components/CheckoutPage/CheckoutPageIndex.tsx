@@ -4,6 +4,7 @@ import { Information } from './Information';
 import { ShoppingCartSummary } from './ShoppingCartSummary';
 
 export const CheckoutPageIndex: React.FC = () => {
+  // breadcrums colours variables in styles
   return (
     <section id="CheckoutSection">
       <ShoppingCartSummary />
