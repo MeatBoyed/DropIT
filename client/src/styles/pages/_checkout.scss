@@ -93,17 +93,16 @@
       }
     }
 
+    .formTitle {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
     #Information {
       display: flex;
       flex-direction: column;
       justify-content: center;
       width: 85%;
-
-      .formTitle {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 1em;
-      }
 
       .formInput {
         display: block;
@@ -158,6 +157,50 @@
           .formSelector {
             @include formSelector();
             width: 100%;
+          }
+        }
+      }
+    }
+
+    #ShippingSection {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 85%;
+
+      .shippingSummary {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid #eee;
+        padding: 0 1rem;
+
+        .top {
+          border-bottom: 1px solid #eee;
+        }
+
+        .contactContainer {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 1rem 0;
+
+          .cardTitle {
+            color: #666;
+            width: 15%;
+          }
+
+          .cardText {
+            width: 85%;
+          }
+
+          .changeText {
+            font-size: 12px;
+            color: $BreadcrumActiveColour;
+          }
+
+          .changeText:hover {
+            cursor: pointer;
           }
         }
       }

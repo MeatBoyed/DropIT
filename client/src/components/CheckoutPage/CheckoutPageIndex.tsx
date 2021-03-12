@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Information } from './Information';
+import { InformationSummary } from './InformationSummary';
 import { ShoppingCartSummary } from './ShoppingCartSummary';
 
 export const CheckoutPageIndex: React.FC = () => {
@@ -17,7 +18,8 @@ export const CheckoutPageIndex: React.FC = () => {
           <p className="breadCrum">{'Shipping >'}</p>
           <p className="breadCrum">{'Payment'}</p>
         </div>
-        <Information />
+        {/* <Information /> */}
+        <InformationSummary />
         <div className="navigation">
           <div className="returnContainer">
             <p className="icon">{'<'}</p>
