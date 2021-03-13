@@ -18,8 +18,8 @@ export const CheckoutPageIndex: React.FC = () => {
           <p className="breadCrum">{'Shipping >'}</p>
           <p className="breadCrum">{'Payment'}</p>
         </div>
-        <Information />
-        {/* <InformationSummary /> */}
+        {/* <Information /> */}
+        <InformationSummary />
         <div className="navigation">
           <div className="returnContainer">
             <p className="icon">{'<'}</p>

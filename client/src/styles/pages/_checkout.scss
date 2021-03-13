@@ -190,6 +190,10 @@
       justify-content: center;
       width: 85%;
 
+      @include media('<=tablet') {
+        width: 100%;
+      }
+
       .shippingSummary {
         display: flex;
         flex-direction: column;
@@ -207,13 +211,26 @@
           align-items: center;
           padding: 1rem 0;
 
+          @include media('<=tablet') {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
           .cardTitle {
             color: #666;
             width: 15%;
+            @include media('<=tablet') {
+              width: 100%;
+              margin-bottom: 0.5em;
+            }
           }
 
           .cardText {
             width: 85%;
+            @include media('<=tablet') {
+              width: 100%;
+              margin-bottom: 0.5em;
+            }
           }
 
           .changeText {
