@@ -30,8 +30,16 @@
       display: flex;
       align-items: center;
 
+      @include media('<=tablet') {
+        margin-left: 5px;
+      }
+
       svg {
         width: 30px;
+
+        @include media('<=tablet') {
+          margin-right: 5px;
+        }
       }
 
       .mobileTitle {
@@ -48,6 +56,10 @@
       font-size: 17px;
       font-weight: 600;
       margin-right: 5px;
+
+      @include media('<=tablet') {
+        margin-left: 5px;
+      }
     }
   }
 
