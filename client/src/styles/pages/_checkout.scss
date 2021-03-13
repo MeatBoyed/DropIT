@@ -13,6 +13,44 @@
     padding-top: 0;
   }
 
+  .mobileDropDown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f6f6;
+    border: solid #ddd;
+    width: 100%;
+    height: 60px;
+
+    @include media('>=tablet') {
+      display: none;
+    }
+
+    .main {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 30px;
+      }
+
+      .mobileTitle {
+        color: $BreadcrumActiveColour;
+        margin-right: 5px;
+      }
+
+      .dropDown:hover {
+        cursor: pointer;
+      }
+    }
+
+    .mobileTotalPrice {
+      font-size: 17px;
+      font-weight: 600;
+      margin-right: 5px;
+    }
+  }
+
   #ShoppingCartSummary {
     display: flex;
     flex-direction: column;
@@ -25,6 +63,11 @@
 
     @include media('<=tablet') {
       width: 100%;
+      border-right: solid #ddd;
+      border-left: solid #ddd;
+      border-bottom: solid #ddd;
+      border-top: 0;
+      padding-top: 15px;
     }
 
     .productsContainer {
