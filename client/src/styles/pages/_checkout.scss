@@ -218,7 +218,7 @@
 
           .cardTitle {
             color: #666;
-            width: 15%;
+            width: 25%;
             @include media('<=tablet') {
               width: 100%;
               margin-bottom: 0.5em;
@@ -226,7 +226,7 @@
           }
 
           .cardText {
-            width: 85%;
+            width: 80%;
             @include media('<=tablet') {
               width: 100%;
               margin-bottom: 0.5em;
