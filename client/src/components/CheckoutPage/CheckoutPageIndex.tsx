@@ -6,6 +6,7 @@ import { InformationSummary } from './InformationSummary';
 import { ShoppingCartSummary } from './ShoppingCartSummary';
 
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
+import { ReactComponent as BreadcrumArrow } from '../../images/BreadcrumArrow.svg';
 
 export const CheckoutPageIndex: React.FC = () => {
   // breadcrums colours variables in styles
@@ -15,10 +16,13 @@ export const CheckoutPageIndex: React.FC = () => {
       <div id="PagesContainer">
         <h2 className="sectionTitle">Grabbler</h2>
         <div className="breadCrumsContaienr">
-          <p className="breadCrum">{'Cart >'}</p>
-          <p className="breadCrum">{'Information >'}</p>
-          <p className="breadCrum">{'Shipping >'}</p>
-          <p className="breadCrum">{'Payment'}</p>
+          <p className="breadCrum">Cart</p>
+          <BreadcrumArrow className="arrow" />
+          <p className="breadCrum">Information</p>
+          <BreadcrumArrow className="arrow" />
+          <p className="breadCrum">Shipping</p>
+          <BreadcrumArrow className="arrow" />
+          <p className="breadCrum">Payment</p>
         </div>
         <Information />
         {/* <InformationSummary /> */}
