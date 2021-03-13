@@ -32,6 +32,10 @@
       .infoText {
         font-size: 14px;
         font-weight: 100;
+
+        @include media('<=tablet') {
+          font-size: 12px;
+        }
       }
     }
   }
