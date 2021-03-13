@@ -2,22 +2,34 @@ import React from 'react';
 
 import Thumbnail from '../../images/CartImage1.png';
 
-interface Props {}
+import { useFetchCartProductData } from '../Utils/useFetchCartProductData';
 
-export const ShoppingCartProductCard: React.FC<Props> = () => {
+interface Props {
+  id: string
+  title: string
+  price: number 
+  colour: string
+  size: string
+  quantity?: number
+}
+
+export const ShoppingCartProductCard: React.FC<Props> = ({ id, title, price, colour, size, quantity  }) => {
+
+  const { cartProductData } = useFetchCartProductData(id);
+
   return (
     <div className="shoppingCartProductCard">
       <div className="informationsContainer">
         <div className="imageContainer">
-          <img src={Thumbnail} alt="" className="thumbnail" />
+          <img src={cartProductData.image} alt="" className="thumbnail" />
           <img src="" alt="" className="quantity" />
         </div>
         <div className="infoContainer">
-          <p className="title">Vintage BAT Logo Seal Crewneck (Red Logo)</p>
-          <p className="infoText">Colour: Black / Size: XXL</p>
+          <p className="title">{title}</p>
+          <p className="infoText">{colour} {colour !== '' && size !== '' && '/'} {size}</p>
         </div>
       </div>
-      <p className="productTitle">$300</p>
+      <p className="productTitle">${price}</p>
     </div>
   );
 };

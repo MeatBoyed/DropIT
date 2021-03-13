@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ShoppingCartProductCard } from './ShoppingCartProductCard';
+
+import { ShoppingCartContext, ShoppingCartItem } from "../ShoppingCartContext"
 
 import { ReactComponent as ShoppingCartIcon } from '../../images/CheckoutCartIcon.svg';
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
@@ -8,6 +10,24 @@ interface Props {}
 
 export const ShoppingCartSummary: React.FC<Props> = () => {
   const [activateDropDown, setActivateDropDown] = useState<boolean>(true);
+  const { shoppingCart} = useContext(ShoppingCartContext)
+
+  // TODO make this more constant and not done inside Checkout
+  const [subTotal, setSubTotal] = useState<number>(0)
+  const [shippingFee, setShippingFee] = useState<number>(0)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
+
+  useEffect(() => {
+    shoppingCart.map((item: ShoppingCartItem) => {
+      setSubTotal((prevTotal) => prevTotal + item.price)
+    })
+  }, [shoppingCart])
+
+  useEffect(() => {
+    setShippingFee(subTotal * 0.05)
+    setTotalPrice(subTotal + shippingFee)
+  }, [subTotal, shippingFee])
+
 
   return (
     <React.Fragment>
@@ -22,25 +42,31 @@ export const ShoppingCartSummary: React.FC<Props> = () => {
       {activateDropDown && (
         <div id="ShoppingCartSummary">
           <div className="productsContainer">
-            <ShoppingCartProductCard />
-            <ShoppingCartProductCard />
-            <ShoppingCartProductCard />
-            <ShoppingCartProductCard />
+            {shoppingCart.map((item: ShoppingCartItem, index: number) => (
+              <ShoppingCartProductCard
+                id={item.id}
+                key={index}
+                title={item.title}
+                price={item.price}
+                colour={item.colour}
+                size={item.size}
+              />
+            ))}
           </div>
           <div className="summaryContainer">
             <div className="subCalculationContainer">
               <div className="subContainer">
                 <p className="subTitle">Subtotal</p>
-                <p className="subPrice">$2000</p>
+                <p className="subPrice">${subTotal}</p>
               </div>
               <div className="subContainer">
                 <p className="subTitle">Shipping</p>
-                <p className="subPrice">$513</p>
+                <p className="subPrice">${shippingFee}</p>
               </div>
             </div>
             <div className="totalContainer">
               <p className="totalTitle">Total</p>
-              <p className="totalPrice">$22555</p>
+              <p className="totalPrice">${totalPrice}</p>
             </div>
           </div>
         </div>
