@@ -26,6 +26,7 @@ app.use('/search', search);
 app.use('/product', product);
 app.use('/client-profile', clientProfile);
 
+
 // Serving of React static build files
 if (process.env.NODE_ENV === "production") {
 
