@@ -26,7 +26,7 @@ export const ShoppingCartProductCard: React.FC<Props> = ({ id, title, price, col
         </div>
         <div className="infoContainer">
           <p className="title">{title} x{quantity}</p>
-          <p className="infoText">{colour} {colour !== '' && size !== '' && '/'} {size}</p>
+          <p className="infoText">{colour && "Colour:"} {colour} {colour !== '' && size !== '' && '/'} {size && "Size:"} {size.toUpperCase()}</p>
         </div>
       </div>
       <p className="productTitle">${price}</p>
