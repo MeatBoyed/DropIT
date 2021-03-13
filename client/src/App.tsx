@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/main.scss';
 
 import { ShoppingCartContextProvider } from './components/ShoppingCartContext';
+
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { Navbar } from './components/NavigationBars/Navbar';
 import SideBar from './components/NavigationBars/SideBar';

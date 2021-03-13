@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useOnCheckout } from '../Utils/useOnCheckout';
 import { ShoppingCartContext } from '../ShoppingCartContext';
+import { useOnCheckout } from "../Utils/useOnCheckout"
 
 import { ReactComponent as ShoppingCartIcon } from '../../images/shoppingCartIcon.svg';
 import { ReactComponent as LogoIcon } from '../../images/logo.svg';
@@ -12,13 +12,13 @@ const NavbarDropDown = React.lazy(() => import('./NavbarDropDown'));
 const Searchbar = React.lazy(() => import('./Searchbar'));
 
 export const Navbar: React.FC = () => {
-  const { onCheckout } = useOnCheckout();
+  const { onCheckout } = useOnCheckout()
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
   const { shoppingCartLength } = useContext(ShoppingCartContext);
 
   return (
     <React.Fragment>
-      <nav id="NavbarContainer" style={{ display: onCheckout ? 'none' : '' }}>
+      <nav id="NavbarContainer" style={{display : onCheckout ? "none" : ""}} >
         <Searchbar />
         <Link to="/">
           <LogoIcon className="logoIcon" />
