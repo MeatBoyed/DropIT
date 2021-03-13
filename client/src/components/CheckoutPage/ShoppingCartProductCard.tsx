@@ -25,7 +25,7 @@ export const ShoppingCartProductCard: React.FC<Props> = ({ id, title, price, col
           <img src="" alt="" className="quantity" />
         </div>
         <div className="infoContainer">
-          <p className="title">{title}</p>
+          <p className="title">{title} x{quantity}</p>
           <p className="infoText">{colour} {colour !== '' && size !== '' && '/'} {size}</p>
         </div>
       </div>

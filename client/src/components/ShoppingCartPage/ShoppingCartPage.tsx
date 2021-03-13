@@ -55,7 +55,7 @@ export const ShoppingCartPage: React.FC = () => {
         <p className="italics">Shipping & Taxes calculated on next page</p>
         <div className="buttonsContainer">
           <button onClick={() => history.push('/')}>Continue Shopping</button>
-          <button className="checkoutBtn">Check Out</button>
+          <button className="checkoutBtn" onClick={() => history.push("/checkout")} >Check Out</button>
         </div>
       </div>
     </section>
