@@ -328,6 +328,10 @@
         justify-content: center;
         align-items: center;
 
+        .icon {
+          transform: rotate(90deg);
+        }
+
         .returnText {
           font-size: 14px;
           margin-left: 3px;

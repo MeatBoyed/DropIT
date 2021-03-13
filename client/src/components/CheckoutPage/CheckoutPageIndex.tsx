@@ -5,6 +5,8 @@ import { Information } from './Information';
 import { InformationSummary } from './InformationSummary';
 import { ShoppingCartSummary } from './ShoppingCartSummary';
 
+import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
+
 export const CheckoutPageIndex: React.FC = () => {
   // breadcrums colours variables in styles
   return (
@@ -22,7 +24,7 @@ export const CheckoutPageIndex: React.FC = () => {
         {/* <InformationSummary /> */}
         <div className="navigation">
           <div className="returnContainer">
-            <p className="icon">{'<'}</p>
+            <DrownDownIcon className="icon" />
             <Link to="/shoppingCart" className="returnText">
               Return to Cart
             </Link>

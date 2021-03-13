@@ -42,7 +42,7 @@ export const Information: React.FC = () => {
                 required
                 className="formInput extended"
               />
-              <select name="city" id="city" required className="formSelectContainer formSelector">
+              <select name="city" id="city" required className="formSelector">
                 <option value="Walvis Bay">Walvis Bay</option>
                 <option value="Swakopmund">Swakopmund</option>
                 <option value="Windhoek">Windhoek</option>

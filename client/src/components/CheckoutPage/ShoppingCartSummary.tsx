@@ -15,7 +15,7 @@ export const ShoppingCartSummary: React.FC<Props> = () => {
         <div className="main">
           <ShoppingCartIcon />
           <p className="mobileTitle">{activateDropDown ? 'Hide' : 'Show'} order summary</p>
-          <DrownDownIcon style={{ transform: activateDropDown ? 'rotate(180deg)' : 'none' }} />
+          <DrownDownIcon className="dropDown" style={{ transform: activateDropDown ? 'rotate(180deg)' : 'none' }} />
         </div>
         <p className="mobileTotalPrice">$2255</p>
       </div>
