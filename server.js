@@ -15,10 +15,8 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded());
 
-const db = require('./apiKeys').mongoURI;
-
 mongoose
-  .connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'));
 
 app.use('', home);
