@@ -1,12 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useSearch } from '../Utils/useSearch';
-
+import { Payload } from '../Utils/Interfaces';
 import { Link, useLocation } from 'react-router-dom';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 // Import Components
-import { ItemCard } from '../ItemCard';
-import { LoadingSpinner } from '../LoadingSpinner';
-import { Payload } from '../Utils/Interfaces';
+const ItemCard = React.lazy(() => import("../ItemCard"))
 
 export const SearchPage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
