@@ -56,7 +56,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
         {colours.length !== 0 && (
           <Selector onChange={(newValue) => setColour(newValue)} title={'Colours'} options={colours} />
         )}
-        {sizes.length !== 0 && <Selector onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />}
+        {sizes.length !== 0 && <Selector className="sizeSelector" onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />}
       </div>
       <div className="ButtonsContainer">
         {frequency !== 0 ? (
