@@ -13,7 +13,6 @@ const SearchPage = React.lazy(() => import('./components/SearchPage/SearchPage')
 const StoreProfilePage = React.lazy(() => import('./components/StoreProfilePage/StoreProfilePageIndex'));
 const ShoppingCartPage = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPage'));
 const ItemPageIndex = React.lazy(() => import('./components/ItemPage/ItemPageIndex'));
-const PageNotFound = React.lazy(() => import('./components/PageNotFound'));
 
 function App() {
   return (
@@ -36,8 +35,6 @@ function App() {
                 <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/:storename" render={() => <StoreProfilePage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
-                <Route exact path="/404" render={() => <PageNotFound />} />
-                {/* <Route path="" component={PageNotFound} /> */}
               </Switch>
             </div>
           </ShoppingCartContextProvider>
