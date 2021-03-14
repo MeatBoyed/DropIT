@@ -67,7 +67,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
           <button className="addToCartBtn">Out Of Stock</button>
         )}
         {addToCart && (
-          <button onClick={() => history.push('/')} className="buyNowBtn">
+          <button onClick={() => history.goBack()} className="buyNowBtn">
             Continue Shopping
           </button>
         )}
