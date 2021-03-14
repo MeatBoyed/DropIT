@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
     res.status(200).json(clientProfile);
   } catch (error) {
-    res.status(400);
+    res.status(400).json('Internal error');
   }
 });
 
@@ -63,7 +63,6 @@ router.get('/products', async (req, res) => {
           price: 1,
           vendor: 1,
           'thumbnails.mainThumbnail': 1,
-          category: 1,
         },
       },
       {
@@ -76,7 +75,7 @@ router.get('/products', async (req, res) => {
 
     res.status(200).json(products);
   } catch (error) {
-    res.status(400);
+    res.status(400).json('Internal error');
   }
 });
 
