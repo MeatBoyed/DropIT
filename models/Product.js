@@ -52,7 +52,7 @@ const productSchema = new Schema(
       required: true,
     },
   },
-  { collection: 'Products', timestamps: true }
+  { collection: 'Products-Mock', timestamps: true }
 );
 
 const Product = mongoose.model('Product', productSchema);
