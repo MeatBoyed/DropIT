@@ -10,6 +10,7 @@ interface Props {
 export const Selector: React.FC<Props> = ({ title, options, onChange, NOMARGIN }) => {
   useEffect(() => {
     onChange(options[0]);
+    // eslint-disable-next-line
   }, []);
 
   return (
