@@ -23,10 +23,10 @@ router.get('/:query', async (req, res, next) => {
       products = await Product.aggregate([
         {
           $search: {
-            index: 'homePageSearch',
+            index: 'MockDataSearch',
             text: {
               query: query,
-              path: ['title', 'vendor', 'description', 'category'],
+              path: ['title', 'vendor', 'description', 'categories'],
               fuzzy: {
                 maxEdits: 2,
                 prefixLength: 3,
@@ -47,7 +47,7 @@ router.get('/:query', async (req, res, next) => {
             price: 1,
             vendor: 1,
             'thumbnails.mainThumbnail': 1,
-            category: 1,
+            categories: 1,
           },
         },
         {
@@ -61,7 +61,7 @@ router.get('/:query', async (req, res, next) => {
       products = await Product.aggregate([
         {
           $match: {
-            category: query,
+            categories: query,
           },
         },
         {
@@ -77,7 +77,7 @@ router.get('/:query', async (req, res, next) => {
             price: 1,
             vendor: 1,
             'thumbnails.mainThumbnail': 1,
-            category: 1,
+            categories: 1,
           },
         },
         {
