@@ -68,3 +68,5 @@ export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour
     </div>
   );
 };
+
+export default CartItem;

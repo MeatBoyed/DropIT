@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 import { useHistory } from 'react-router-dom';
 
-import { CartItem } from './CartItem';
-import { Alert } from '../Utils/Alert';
+const CartItem = React.lazy(() => import("./CartItem"));
+const Alert = React.lazy(() => import("../Utils/Alert"))
 
 export const ShoppingCartPage: React.FC = () => {
   const { shoppingCart, GetShoppingCartTotal } = useContext(ShoppingCartContext);
