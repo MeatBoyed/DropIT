@@ -33,7 +33,7 @@ const productSchema = new Schema(
         required: true,
       },
     ],
-    category: [
+    categories: [
       {
         type: String,
         required: true,
