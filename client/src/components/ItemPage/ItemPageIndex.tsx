@@ -5,8 +5,10 @@ import { useFetchProduct } from '../Utils/useFetchProduct';
 
 // Import Componets
 import { LoadingSpinner } from '../LoadingSpinner';
-import { ImageViewer } from './ImageViewer';
-import { ItemDetailsViewer } from './ItemDetailsViewer';
+
+const ImageViewer = React.lazy(() => import("./ImageViewer"))
+const ItemDetailsViewer = React.lazy(() => import("./ItemDetailsViewer"))
+
 
 interface Param {
   itemid: string;
