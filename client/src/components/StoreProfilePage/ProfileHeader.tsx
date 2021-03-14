@@ -81,3 +81,5 @@ export const Header: React.FC<Props> = ({ title, location, socialMedia, images }
     </div>
   );
 };
+
+export default Header;

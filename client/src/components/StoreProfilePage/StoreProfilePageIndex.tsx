@@ -5,9 +5,10 @@ import { useFetchClientProfile } from '../Utils/useFetchClientProfile';
 // SocialMedia Icons
 import { useLocation } from 'react-router';
 import { LoadingSpinner } from '../LoadingSpinner';
-import { Alert } from '../Utils/Alert';
-import { Header } from './ProfileHeader';
 import { ProfileProducts } from './ProfileProducts';
+
+const Alert = React.lazy(() => import("../Utils/Alert"))
+const  Header = React.lazy(() => import("./ProfileHeader"));
 
 // TODO Ensure social media icons are the correct size
 
