@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true}));
 
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI || "mongodb+srv://Adim-Dev:yqwhTgW3QlOrVDMX@grabble.erwzi.mongodb.net/Grabble?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'));
 
 app.use('', home);
