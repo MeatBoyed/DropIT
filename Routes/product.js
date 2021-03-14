@@ -14,7 +14,6 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(product);
   } catch (error) {
-    console.log(error.constructor.name);
     if (error.constructor.name == 'CastError') {
       res.status(400).json({ status: 404, message: 'No product found with that ID' });
     } else {
@@ -48,7 +47,6 @@ router.get('/cartThumbnail/:id', async (req, res) => {
 
     res.status(200).json(product[0]);
   } catch (error) {
-    console.log(error.constructor.name);
     if (error.constructor.name == 'CastError') {
       res.status(400).json({ status: 404, message: 'No product found with that ID' });
     } else {
