@@ -47,7 +47,6 @@ router.get('/:query', async (req, res, next) => {
             price: 1,
             vendor: 1,
             'thumbnails.mainThumbnail': 1,
-            categories: 1,
           },
         },
         {
@@ -77,7 +76,6 @@ router.get('/:query', async (req, res, next) => {
             price: 1,
             vendor: 1,
             'thumbnails.mainThumbnail': 1,
-            categories: 1,
           },
         },
         {
@@ -91,7 +89,7 @@ router.get('/:query', async (req, res, next) => {
 
     res.status(200).json(products);
   } catch (error) {
-    res.status(400);
+    res.status(400).json('Internal error');    
   }
 });
 
