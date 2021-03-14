@@ -4,16 +4,16 @@ interface Props {
   title: string;
   options: string[];
   onChange: (newValue: string) => void;
-  className?: string
+  NOMARGIN?: string
 }
 
-export const Selector: React.FC<Props> = ({ title, options, onChange, className }) => {
+export const Selector: React.FC<Props> = ({ title, options, onChange, NOMARGIN }) => {
   useEffect(() => {
     onChange(options[0]);
   }, []);
 
   return (
-    <div className={`formSelectContainer ${className}`} >
+    <div className={`formSelectContainer ${NOMARGIN}`} >
       {title !== '' && <p className="formSelectTitle">{title}:</p>}
       <div className="formSelect">
         <select
