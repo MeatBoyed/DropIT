@@ -19,7 +19,7 @@ export const ShoppingCartSummary: React.FC<Props> = () => {
 
   useEffect(() => {
     shoppingCart.map((item: ShoppingCartItem) => {
-      setSubTotal((prevTotal) => prevTotal + item.price)
+      return setSubTotal((prevTotal) => prevTotal + item.price)
     })
   }, [shoppingCart])
 

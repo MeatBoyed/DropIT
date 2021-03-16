@@ -6,7 +6,7 @@ export const useOnCheckout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname == '/checkout') {
+    if (location.pathname === '/checkout') {
       setOnCheckout(true);
     } else {
       setOnCheckout(false);

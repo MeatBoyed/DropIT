@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Thumbnail from '../../images/CartImage1.png';
-
 import { useFetchCartProductData } from '../Utils/useFetchCartProductData';
 
 interface Props {

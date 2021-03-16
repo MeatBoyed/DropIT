@@ -10,7 +10,6 @@ import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg'
 import { ReactComponent as BreadcrumArrow } from '../../images/BreadcrumArrow.svg';
 
 const BreadcrumActiveColour = "#1990c6";
-const BreadcrumColour = "#333";
 
 export const CheckoutPageIndex: React.FC = () => {
   // breadcrums colours variables in styles
@@ -58,7 +57,7 @@ export const CheckoutPageIndex: React.FC = () => {
                 <React.Fragment>
                 <div className="returnContainer">
                   <DrownDownIcon className="icon" />
-                  <a className="returnText" onClick={() => setCurrentState("information")}>
+                  <a className="returnText" href=" " onClick={() => setCurrentState("information")}>
                     Return to Information
                   </a>
                 </div>
@@ -70,7 +69,7 @@ export const CheckoutPageIndex: React.FC = () => {
                 <React.Fragment>
                 <div className="returnContainer">
                   <DrownDownIcon className="icon" />
-                  <a className="returnText" onClick={() => setCurrentState("informationCheck")}>
+                  <a className="returnText" href=" " onClick={() => setCurrentState("informationCheck")}>
                     Return to Shipping
                   </a>
                 </div>
