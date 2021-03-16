@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCartContext } from '../ShoppingCartContext';
 
 import { ReactComponent as ShoppingCartIcon } from '../../images/shoppingCartIcon.svg';
@@ -12,6 +12,12 @@ const Searchbar = React.lazy(() => import('./Searchbar'));
 export const Navbar: React.FC = () => {
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
   const { shoppingCartLength } = useContext(ShoppingCartContext);
+
+  const loaction = useLocation()
+
+  useEffect(() => {
+    setIsDropDownActive(false)
+  }, [loaction])
 
   return (
     <React.Fragment>
