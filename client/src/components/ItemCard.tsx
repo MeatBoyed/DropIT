@@ -29,3 +29,5 @@ export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
     </div>
   );
 };
+
+export default ItemCard

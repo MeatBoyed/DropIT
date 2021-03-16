@@ -57,6 +57,7 @@ export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour
         <p className="cartItemPrice">${price}</p>
         <div className="cartItemPropContainer">
           <Selector
+            NOMARGIN="NOMARGIN"
             title={''}
             options={cartProductData.frequencyList}
             onChange={(newFre) => setFrequency(parseInt(newFre))}
@@ -67,3 +68,5 @@ export const CartItem: React.FC<props> = ({ id, index, url, title, price, colour
     </div>
   );
 };
+
+export default CartItem;

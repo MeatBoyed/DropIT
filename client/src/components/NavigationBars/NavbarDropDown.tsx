@@ -23,35 +23,17 @@ export const NavbarDropDown: React.FC<Props> = ({ shoppingCartLength }) => {
         </Link>
       </div>
       <div className="dropdownItem">
-        <Link to="">Checkout</Link>
+        <Link to="/checkout">Checkout</Link>
       </div>
       <div className="dropdownItem">
-        <a className="tag" href="/search?f=Clothes">
+        <a className="tag" href="/search?f=Clothing">
           Clothes
         </a>
       </div>
       <div className="dropdownItem">
-        <a className="tag" href="/search?f=Books">
-          Books
+        <a className="tag" href="/search?f=Accessories">
+          Accessories
         </a>
-      </div>
-      <div className="dropdownItem">
-        <a href="/search?f=House+Appliance" className="tag">
-          House Appliances
-        </a>
-      </div>
-      <div className="dropdownItem">
-        <a href="/search?f=Tech" className="tag">
-          Tech
-        </a>
-      </div>
-      <div className="dropdownItem">
-        <a href="/search?f=Music" className="tag">
-          Music
-        </a>
-      </div>
-      <div className="dropdownItem">
-        <Link to="">About</Link>
       </div>
     </div>
   );

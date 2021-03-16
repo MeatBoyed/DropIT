@@ -93,9 +93,16 @@ p {
     align-items: center;
   }
   margin-right: 2rem;
+
+
+
   .formSelector {
     @include formSelector();
   }
+}
+
+.NOMARGIN {
+  margin-right: 0;
 }
 
 button:hover {

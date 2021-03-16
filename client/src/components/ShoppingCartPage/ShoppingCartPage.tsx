@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 import { useHistory } from 'react-router-dom';
 
-import { CartItem } from './CartItem';
-import { Alert } from '../Utils/Alert';
+const CartItem = React.lazy(() => import("./CartItem"));
+const Alert = React.lazy(() => import("../Utils/Alert"))
 
 export const ShoppingCartPage: React.FC = () => {
   const { shoppingCart, GetShoppingCartTotal } = useContext(ShoppingCartContext);
@@ -54,7 +54,7 @@ export const ShoppingCartPage: React.FC = () => {
         <p className="subtotal">Subtotal ${subtotal}</p>
         <p className="italics">Shipping & Taxes calculated on next page</p>
         <div className="buttonsContainer">
-          <button onClick={() => history.push('/')}>Continue Shopping</button>
+          <button onClick={() => history.goBack()}>Continue Shopping</button>
           <button className="checkoutBtn" onClick={() => history.push("/checkout")} >Check Out</button>
         </div>
       </div>

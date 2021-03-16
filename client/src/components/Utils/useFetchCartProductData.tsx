@@ -7,7 +7,7 @@ export const useFetchCartProductData = (productID: string) => {
 
   useEffect(() => {
     let temp: string[] = [];
-    for (let i = 1; i <= cartProductData.frequency; i++) {
+    for (let i = 1; i <= cartProductData.frequency && i <= 15; i++) {
       temp.push(`${i}`);
     }
     setCartProductData((prevData) => {

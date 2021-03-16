@@ -4,15 +4,17 @@ interface Props {
   title: string;
   options: string[];
   onChange: (newValue: string) => void;
+  NOMARGIN?: string
 }
 
-export const Selector: React.FC<Props> = ({ title, options, onChange }) => {
+export const Selector: React.FC<Props> = ({ title, options, onChange, NOMARGIN }) => {
   useEffect(() => {
     onChange(options[0]);
+    // eslint-disable-next-line
   }, []);
 
   return (
-    <div className="formSelectContainer">
+    <div className={`formSelectContainer ${NOMARGIN}`} >
       {title !== '' && <p className="formSelectTitle">{title}:</p>}
       <div className="formSelect">
         <select

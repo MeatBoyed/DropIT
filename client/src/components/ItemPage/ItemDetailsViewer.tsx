@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCartItem, ShoppingCartContext } from '../ShoppingCartContext';
 import { ProductDescription } from '../Utils/Interfaces';
 
-import Selector from './Selector';
+const Selector = React.lazy(() => import("./Selector"))
 
 export const ItemDetailsViewer: React.FC<ProductDescription> = ({
   id,
@@ -56,7 +56,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
         {colours.length !== 0 && (
           <Selector onChange={(newValue) => setColour(newValue)} title={'Colours'} options={colours} />
         )}
-        {sizes.length !== 0 && <Selector onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />}
+        {sizes.length !== 0 && <Selector NOMARGIN="NOMARGIN" onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />}
       </div>
       <div className="ButtonsContainer">
         {frequency !== 0 ? (
@@ -67,7 +67,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
           <button className="addToCartBtn">Out Of Stock</button>
         )}
         {addToCart && (
-          <button onClick={() => history.push('/')} className="buyNowBtn">
+          <button onClick={() => history.goBack()} className="buyNowBtn">
             Continue Shopping
           </button>
         )}
@@ -78,3 +78,5 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
     </div>
   );
 };
+
+export default ItemDetailsViewer;

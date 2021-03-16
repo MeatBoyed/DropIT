@@ -18,3 +18,5 @@ export const Alert: React.FC<Props> = ({ message, returnHome }) => {
     </div>
   );
 };
+
+export default Alert;

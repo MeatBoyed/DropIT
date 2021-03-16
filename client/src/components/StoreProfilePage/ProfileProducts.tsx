@@ -1,9 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { useFetchProfileProducts } from '../Utils/useFetchProfileProducts';
+
+const ItemCard = React.lazy(() => import("../ItemCard"))
 
 interface Props {
   profileTitle: string;
@@ -71,3 +72,4 @@ export const ProfileProducts: React.FC<Props> = ({ profileTitle }) => {
     </section>
   );
 };
+

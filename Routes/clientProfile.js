@@ -29,9 +29,16 @@ router.get('/', async (req, res) => {
       },
     ]);
 
+    if (!clientProfile) return res.status(404).json({ status: 404, message: "Client Profile not found"})
+
     res.status(200).json(clientProfile);
   } catch (error) {
-    res.status(400);
+
+    if (error.constructor.name == 'CastError') {
+      res.status(404).json({ status: 404, message: 'No product found with that ID' });
+    } else {
+      res.status(500).json({ status: 500, message: 'Internal Error' });
+    }
   }
 });
 
@@ -63,7 +70,6 @@ router.get('/products', async (req, res) => {
           price: 1,
           vendor: 1,
           'thumbnails.mainThumbnail': 1,
-          category: 1,
         },
       },
       {
@@ -74,9 +80,11 @@ router.get('/products', async (req, res) => {
       },
     ]);
 
+    if (!clientProfile) return res.status(404).json({ status: 404, message: "Client Profile not found"})
+
     res.status(200).json(products);
   } catch (error) {
-    res.status(400);
+    res.status(500).json({ status: 500, message: 'Internal Error' });
   }
 });
 

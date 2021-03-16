@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
-const db = require('./apiKeys').mongoURI;
+const MONGOURI = process.env.MONGO_URI || "mongodb+srv://Adim-Dev:yqwhTgW3QlOrVDMX@grabble.erwzi.mongodb.net/Grabble?retryWrites=true&w=majority"
 
 mongoose
-  .connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .connect(MONGOURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'));
 
 app.use('', home);

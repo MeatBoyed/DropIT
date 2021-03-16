@@ -29,7 +29,7 @@ export const usePaginate = (pageNumber: number) => {
       .catch((error) => {
         setError({
           isError: true,
-          message: 'An unexpected error occured. Please check you internet connection and try again',
+          message: 'An unexpected error occured. Please check your internet connection and try again',
         });
         setLoading(false);
       });
