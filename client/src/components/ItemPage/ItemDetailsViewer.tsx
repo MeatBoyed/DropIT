@@ -54,7 +54,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
       </div>
       <div className="itemSelectorsContainer">
         {colours.length !== 0 && (
-          <Selector onChange={(newValue) => setColour(newValue)} title={'Colours'} options={colours} />
+          <Selector NOMARGIN={sizes.length !== 0 ? "" : "NOMARGIN"} onChange={(newValue) => setColour(newValue)} title={'Colours'} options={colours} />
         )}
         {sizes.length !== 0 && <Selector NOMARGIN="NOMARGIN" onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />}
       </div>
