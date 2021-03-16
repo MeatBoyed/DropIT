@@ -6,7 +6,7 @@ import { ReactComponent as ShoppingCartIcon } from '../../images/shoppingCartIco
 import { ReactComponent as LogoIcon } from '../../images/logo.svg';
 import { ReactComponent as MenueBtn } from '../../images/menueBtn.svg';
 
-const NavbarDropDown = React.lazy(() => import('./NavbarDropDown'));
+import {NavbarDropDown} from "./NavbarDropDown"
 const Searchbar = React.lazy(() => import('./Searchbar'));
 
 export const Navbar: React.FC = () => {
