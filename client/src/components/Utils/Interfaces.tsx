@@ -68,3 +68,4 @@ export interface Payload {
   query: string;
   operation: number;
 }
+

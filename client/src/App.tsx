@@ -4,9 +4,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/main.scss';
 
 import { ShoppingCartContextProvider } from './components/ShoppingCartContext';
+
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { Navbar } from './components/NavigationBars/Navbar';
 import SideBar from './components/NavigationBars/SideBar';
+import { CheckoutPageIndex } from './components/CheckoutPage/CheckoutPageIndex';
 
 const HomePage = React.lazy(() => import('./components/HomePage/HomePage'));
 const SearchPage = React.lazy(() => import('./components/SearchPage/SearchPage'));
@@ -33,6 +35,7 @@ function App() {
                 <Route exact path="/" render={() => <HomePage />} />
                 <Route exact path="/search" render={() => <SearchPage />} />
                 <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
+                <Route exact path="/checkout" render={() => <CheckoutPageIndex />} />
                 <Route exact path="/:storename" render={() => <StoreProfilePage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
               </Switch>

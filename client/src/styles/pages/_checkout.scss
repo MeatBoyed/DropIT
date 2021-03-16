@@ -1,0 +1,366 @@
+#CheckoutSection {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  height: 80vh;
+
+  @include media('<=tablet') {
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    padding-top: 0;
+  }
+
+  .mobileDropDown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f6f6;
+    border: solid #ddd;
+    width: 100%;
+    height: 60px;
+
+    @include media('>=tablet') {
+      display: none;
+    }
+
+    .main {
+      display: flex;
+      align-items: center;
+
+      @include media('<=tablet') {
+        margin-left: 5px;
+      }
+
+      svg {
+        width: 30px;
+
+        @include media('<=tablet') {
+          margin-right: 5px;
+        }
+      }
+
+      .mobileTitle {
+        color: $BreadcrumActiveColour;
+        margin-right: 5px;
+      }
+
+      .dropDown:hover {
+        cursor: pointer;
+      }
+    }
+
+    .mobileTotalPrice {
+      font-size: 17px;
+      font-weight: 600;
+      margin-right: 5px;
+
+      @include media('<=tablet') {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  #ShoppingCartSummary {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: $ShoppingCartSummaryBackgroundColour;
+    width: 40%;
+    padding-top: 25px;
+    border: solid #ddd;
+
+    @include media('<=tablet') {
+      width: 100%;
+      border-right: solid #ddd;
+      border-left: solid #ddd;
+      border-bottom: solid #ddd;
+      border-top: 0;
+      padding-top: 15px;
+    }
+
+    .productsContainer {
+      width: 85%;
+    }
+
+    .summaryContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid #ddd;
+      padding-top: 17px;
+      width: 85%;
+
+      .subCalculationContainer {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        width: 100%;
+
+        .subContainer {
+          @include CheckoutSumaryContainer();
+          margin-bottom: 1em;
+
+          .subTitle {
+            font-size: 17px;
+            font-weight: 100;
+          }
+
+          .subPrice {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .totalContainer {
+        @include CheckoutSumaryContainer();
+        border-top: 1px solid #ddd;
+        padding-top: 17px;
+
+        @include media('<=tablet') {
+          margin-bottom: 2em;
+        }
+
+        .totalTitle {
+          font-size: 20px;
+        }
+
+        .totalPrice {
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  #PagesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 60%;
+
+    @include media('<=tablet') {
+      width: 100%;
+    }
+
+    .sectionTitle {
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .breadCrumsContaienr {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 2em;
+
+      @include media('<=tablet') {
+        display: none;
+      }
+
+      .breadCrum {
+        font-size: 12.5px;
+        margin-right: 5px;
+      }
+
+      .arrow {
+        margin-right: 5px;
+      }
+    }
+
+    .formTitle {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
+
+    #Information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 85%;
+
+      @include media('<=tablet') {
+        width: 100%;
+      }
+
+      .formInput {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        height: 2.8em;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+
+      .inlineInputContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        @include media('<=tablet') {
+          flex-direction: column;
+        }
+
+        .firstInput {
+          margin-right: 1em;
+
+          @include media('<=tablet') {
+            margin: 0;
+            margin-bottom: 1em;
+          }
+        }
+      }
+
+      .contactContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 2em;
+      }
+
+      .shippingContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .formInput {
+          margin-bottom: 1em;
+        }
+
+        .addressContainer {
+          width: 100%;
+          .formSelector {
+            @include formSelector();
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    #InformationSummarySectoin {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 85%;
+
+      @include media('<=tablet') {
+        width: 100%;
+      }
+
+      .shippingSummary {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid #eee;
+        padding: 0 1rem;
+
+        .top {
+          border-bottom: 1px solid #eee;
+        }
+
+        .contactContainer {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 1rem 0;
+
+          @include media('<=tablet') {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .cardTitle {
+            color: #666;
+            width: 25%;
+            @include media('<=tablet') {
+              width: 100%;
+              margin-bottom: 0.5em;
+            }
+          }
+
+          .cardText {
+            width: 80%;
+            @include media('<=tablet') {
+              width: 100%;
+              margin-bottom: 0.5em;
+            }
+          }
+
+          .changeText {
+            font-size: 12px;
+            color: $BreadcrumActiveColour;
+          }
+
+          .changeText:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .navigation {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3em;
+      width: 85%;
+
+      @include media('<=tablet') {
+        width: 100%;
+        flex-direction: column-reverse;
+        justify-content: center;
+      }
+
+      .returnContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+          transform: rotate(90deg);
+        }
+
+        .returnText {
+          font-size: 14px;
+          margin-left: 3px;
+        }
+
+        .returnText:hover, .icon:hover {
+          cursor: pointer;
+        }
+
+        @include media('<=tablet') {
+          margin-bottom: 3em;
+        }
+      }
+
+      .continueBtn {
+        @include Button();
+        width: 12em;
+        background-color: #007bff;
+        color: #fff;
+
+        @include media('<=tablet') {
+          height: 3em;
+          margin-bottom: 1.5em;
+        }
+      }
+    }
+  }
+}

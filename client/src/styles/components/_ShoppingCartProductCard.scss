@@ -1,0 +1,47 @@
+.shoppingCartProductCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  width: 100%;
+
+  .informationsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .imageContainer {
+      margin-right: 15px;
+      .thumbnail {
+        width: 38px;
+      }
+    }
+
+    .infoContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      .title {
+        font-size: 13px;
+        margin-bottom: 3px;
+        font-weight: 600;
+      }
+
+      .infoText {
+        font-size: 14px;
+        font-weight: 100;
+
+        @include media('<=tablet') {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .productTitle {
+    font-size: 15px;
+    font-weight: 600;
+  }
+}

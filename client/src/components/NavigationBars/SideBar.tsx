@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { useOnCheckout } from '../Utils/useOnCheckout';
+
 const SideBar: React.FC = () => {
+  const { onCheckout } = useOnCheckout();
+
   return (
-    <section className="SideNavbarSection">
+    <section className="SideNavbarSection" style={{ display: onCheckout ? 'none' : '' }}>
       {/* Optional Logo */}
       <ul className="linksContainer">
         <li className="link">
