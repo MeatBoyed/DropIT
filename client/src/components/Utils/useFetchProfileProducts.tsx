@@ -16,7 +16,7 @@ export const useFetchProfileProducts = (profileTitle: string, pageNumber: number
 
     axios({
       method: 'GET',
-      url: 'http://localhost:5000/client-profile/products',
+      url: 'https://dropitserver.herokuapp.com/client-profile/products',
       params: { vendor: profileTitle, page: pageNumber },
     })
       .then((response) => {

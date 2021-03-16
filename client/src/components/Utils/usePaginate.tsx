@@ -16,7 +16,7 @@ export const usePaginate = (pageNumber: number) => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:5000/',
+      url: 'https://dropitserver.herokuapp.com/',
       params: { page: pageNumber },
     })
       .then((response) => {

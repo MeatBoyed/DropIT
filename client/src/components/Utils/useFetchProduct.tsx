@@ -20,7 +20,7 @@ export const useFetchProduct = (productID: string) => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `http://localhost:5000/product/${productID}`,
+      url: `https://dropitserver.herokuapp.com/product/${productID}`,
     })
       .then((response) => {
         setProduct({

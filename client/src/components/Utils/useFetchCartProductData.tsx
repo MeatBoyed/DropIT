@@ -17,7 +17,7 @@ export const useFetchCartProductData = (productID: string) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/product/cartThumbnail/${productID}`)
+      .get(`https://dropitserver.herokuapp.com/product/cartThumbnail/${productID}`)
       .then((response) => {
         setCartProductData((prevData) => {
           return { ...prevData, image: response.data.thumbnails.cartThumbnail, frequency: response.data.frequency };

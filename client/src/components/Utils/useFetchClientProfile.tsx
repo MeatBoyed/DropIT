@@ -19,7 +19,7 @@ export const useFetchClientProfile = (profileTitle: string) => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `http://localhost:5000/client-profile`,
+      url: `https://dropitserver.herokuapp.com/client-profile`,
       params: { title: profileTitle },
     })
       .then((response) => {
