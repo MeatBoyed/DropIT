@@ -12,12 +12,15 @@ router.get('/:id', async (req, res) => {
 
     const product = await Product.findById(productID);
 
+    if (!product) return res.status(404).json({ status: 404, message: "Product not found"})
+
     res.status(200).json(product);
   } catch (error) {
+
     if (error.constructor.name == 'CastError') {
-      res.status(400).json({ status: 404, message: 'No product found with that ID' });
+      res.status(404).json({ status: 404, message: 'No product found with that ID' });
     } else {
-      res.status(400).json('Internal error');
+      res.status(500).json({ status: 500, message: 'Internal Error' });
     }
   }
 });
@@ -45,12 +48,14 @@ router.get('/cartThumbnail/:id', async (req, res) => {
       },
     ]);
 
+    if (!product) return res.status(404).json({ status: 404, message: "No thumbnail found with that ID"})
+
     res.status(200).json(product[0]);
   } catch (error) {
     if (error.constructor.name == 'CastError') {
-      res.status(400).json({ status: 404, message: 'No product found with that ID' });
+      res.status(404).json({ status: 404, message: 'No thumbnail found with that ID' });
     } else {
-      res.status(400).json({ status: 400, message: 'Internal Error' });
+      res.status(500).json({ status: 400, message: 'Internal Error' });
     }
   }
 });

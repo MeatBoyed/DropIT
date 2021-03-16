@@ -38,9 +38,11 @@ router.get('/', async (req, res, next) => {
       },
     ]);
 
+    if (!products) return res.status(404).json({ status: 404, message: "No Products found"})
+
     res.status(200).json(products);
   } catch (error) {
-    res.status(400).json({ status: 400, message: 'Internal Error' });
+    res.status(500).json({ status: 500, message: 'Internal Error' });
   }
 });
 
