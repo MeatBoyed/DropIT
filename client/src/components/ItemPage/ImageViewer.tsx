@@ -1,37 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import AliceCarousel from 'react-alice-carousel';
+import React from 'react';
+
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
+import './style.css';
 
 interface Props {
   viewerImages: string[];
 }
 
 export const ImageViewer: React.FC<Props> = ({ viewerImages }) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  const items: React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>[] = [];
-
-  useEffect(() => {
-    if (activeIndex >= viewerImages.length - 1) return setActiveIndex(viewerImages.length - 1);
-    if (activeIndex < 0) return setActiveIndex(0);
-  }, [viewerImages, activeIndex]);
-
-  useEffect(() => {
-    viewerImages.map((viewerImage) => {
-      return items.push(<img src={viewerImage} alt="" />);
-    });
-  });
-
   return (
     <div className="ItemDisplaySection">
-      <AliceCarousel disableButtonsControls disableDotsControls activeIndex={activeIndex} items={items} />
-      <div className="controlButtonContainers">
-        <button className="controlBtn" onClick={() => setActiveIndex(activeIndex - 1)}>
-          Prev
-        </button>
-        <button className="controlBtn" onClick={() => setActiveIndex(activeIndex + 1)}>
-          Next
-        </button>
-      </div>
+      <AwesomeSlider>
+        {viewerImages.map((imageUrl, index) => (
+          <div key={index} data-src={imageUrl} />
+        ))}
+      </AwesomeSlider>
     </div>
   );
 };
