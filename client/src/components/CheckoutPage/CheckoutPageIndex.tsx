@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Lazy Load components
+import Alert from '../Utils/Alert';
 import { Payment } from './Payment';
 import { Information } from './Information';
 import { InformationSummary } from './InformationSummary';
@@ -9,8 +11,6 @@ import { ShoppingCartSummary } from './ShoppingCartSummary';
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 import { ReactComponent as BreadcrumArrow } from '../../images/BreadcrumArrow.svg';
 import { ShoppingCartContext } from '../ShoppingCartContext';
-
-import Alert from '../Utils/Alert';
 
 const BreadcrumActiveColour = '#1990c6';
 
