@@ -46,7 +46,7 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
         <p className="itemPrice">${price}</p>
         <div className="itemMetadataContainer">
           <Link className="vendorTitle" to={`/${vendor}`}>
-            {vendor} -
+            {vendor}
           </Link>
         </div>
       </div>
