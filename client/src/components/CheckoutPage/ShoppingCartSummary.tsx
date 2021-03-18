@@ -19,7 +19,7 @@ export const ShoppingCartSummary: React.FC<Props> = () => {
 
   useEffect(() => {
     setSubTotal(GetShoppingCartTotal());
-  }, [shoppingCart]);
+  }, [GetShoppingCartTotal]);
 
   useEffect(() => {
     setShippingFee(subTotal * 0.05);
