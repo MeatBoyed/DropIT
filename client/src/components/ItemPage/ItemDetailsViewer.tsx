@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCartItem, ShoppingCartContext } from '../ShoppingCartContext';
 import { ProductDescription } from '../Utils/Interfaces';
 
-const Selector = React.lazy(() => import("./Selector"))
+const Selector = React.lazy(() => import('./Selector'));
 
 export const ItemDetailsViewer: React.FC<ProductDescription> = ({
   id,
@@ -15,7 +15,6 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
   colours,
   sizes,
   description,
-  rating,
   frequency,
 }) => {
   const history = useHistory();
@@ -47,16 +46,22 @@ export const ItemDetailsViewer: React.FC<ProductDescription> = ({
         <p className="itemPrice">${price}</p>
         <div className="itemMetadataContainer">
           <Link className="vendorTitle" to={`/${vendor}`}>
-            {vendor} -
+            {vendor}
           </Link>
-          <p className="rating">{rating}</p>
         </div>
       </div>
       <div className="itemSelectorsContainer">
         {colours.length !== 0 && (
-          <Selector NOMARGIN={sizes.length !== 0 ? "" : "NOMARGIN"} onChange={(newValue) => setColour(newValue)} title={'Colours'} options={colours} />
+          <Selector
+            NOMARGIN={sizes.length !== 0 ? '' : 'NOMARGIN'}
+            onChange={(newValue) => setColour(newValue)}
+            title={'Colours'}
+            options={colours}
+          />
         )}
-        {sizes.length !== 0 && <Selector NOMARGIN="NOMARGIN" onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />}
+        {sizes.length !== 0 && (
+          <Selector NOMARGIN="NOMARGIN" onChange={(newValue) => setSize(newValue)} title={'Sizes'} options={sizes} />
+        )}
       </div>
       <div className="ButtonsContainer">
         {frequency !== 0 ? (
