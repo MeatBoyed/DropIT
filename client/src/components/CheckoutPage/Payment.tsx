@@ -1,9 +1,10 @@
 import React from 'react';
+import Alert from '../Utils/Alert';
 
 export const Payment: React.FC = () => {
   return (
-    <div>
-      <h1>Payment index PAge</h1>
+    <div style={{ width: '85%' }}>
+      <Alert message="Payment section comming soon" returnHome={true} />
     </div>
   );
 };
