@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ShoppingCartProductCard } from './ShoppingCartProductCard';
 
-import { ShoppingCartContext, ShoppingCartItem } from "../ShoppingCartContext"
+import { ShoppingCartContext, ShoppingCartItem } from '../ShoppingCartContext';
 
 import { ReactComponent as ShoppingCartIcon } from '../../images/CheckoutCartIcon.svg';
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
@@ -10,24 +10,21 @@ interface Props {}
 
 export const ShoppingCartSummary: React.FC<Props> = () => {
   const [activateDropDown, setActivateDropDown] = useState<boolean>(true);
-  const { shoppingCart} = useContext(ShoppingCartContext)
+  const { shoppingCart, GetShoppingCartTotal } = useContext(ShoppingCartContext);
 
   // TODO make this more constant and not done inside Checkout
-  const [subTotal, setSubTotal] = useState<number>(0)
-  const [shippingFee, setShippingFee] = useState<number>(0)
-  const [totalPrice, setTotalPrice] = useState<number>(0)
+  const [subTotal, setSubTotal] = useState<number>(0);
+  const [shippingFee, setShippingFee] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
-    shoppingCart.map((item: ShoppingCartItem) => {
-      return setSubTotal((prevTotal) => prevTotal + item.price)
-    })
-  }, [shoppingCart])
+    setSubTotal(GetShoppingCartTotal());
+  }, [shoppingCart]);
 
   useEffect(() => {
-    setShippingFee(subTotal * 0.05)
-    setTotalPrice(subTotal + shippingFee)
-  }, [subTotal, shippingFee])
-
+    setShippingFee(subTotal * 0.05);
+    setTotalPrice(subTotal + shippingFee);
+  }, [subTotal, shippingFee]);
 
   return (
     <React.Fragment>
