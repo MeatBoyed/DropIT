@@ -6,9 +6,8 @@ import { useFetchProduct } from '../Utils/useFetchProduct';
 // Import Componets
 import { LoadingSpinner } from '../LoadingSpinner';
 
-const ImageViewer = React.lazy(() => import("./ImageViewer"))
-const ItemDetailsViewer = React.lazy(() => import("./ItemDetailsViewer"))
-
+const ImageViewer = React.lazy(() => import('./ImageViewer'));
+const ItemDetailsViewer = React.lazy(() => import('./ItemDetailsViewer'));
 
 interface Param {
   itemid: string;
@@ -25,7 +24,7 @@ const ItemPageIndex: React.FC = () => {
   const { loading, error, product } = useFetchProduct(currentId);
 
   return (
-    <section id="ItemSection">
+    <section id="ItemSection" style={{ justifyContent: loading ? 'center' : 'space-between' }}>
       {loading ? (
         <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       ) : (
