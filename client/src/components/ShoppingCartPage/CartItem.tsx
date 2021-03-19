@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCartContext } from '../ShoppingCartContext';
 
 // Temp Cart Image loader image
-import Selector from '../ItemPage/Selector';
+import Selector from '../Utils/Selector';
 import { useFetchCartProductData } from '../Utils/useFetchCartProductData';
 
 interface props {

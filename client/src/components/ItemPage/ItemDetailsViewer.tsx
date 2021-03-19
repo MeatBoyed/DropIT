@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCartItem, ShoppingCartContext } from '../ShoppingCartContext';
 import { ProductDescription } from '../Utils/Interfaces';
 
-const Selector = React.lazy(() => import('./Selector'));
+const Selector = React.lazy(() => import('../Utils/Selector'));
 
 export const ItemDetailsViewer: React.FC<ProductDescription> = ({
   id,

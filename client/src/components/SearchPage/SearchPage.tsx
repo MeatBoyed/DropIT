@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { LoadingSpinner } from '../LoadingSpinner';
 
 // Import Components
-const ItemCard = React.lazy(() => import("../ItemCard"))
+const ItemCard = React.lazy(() => import('../ItemCard'));
 
 export const SearchPage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
