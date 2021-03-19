@@ -12,6 +12,7 @@ import { CheckoutPageIndex } from './components/CheckoutPage/CheckoutPageIndex';
 
 const HomePage = React.lazy(() => import('./components/HomePage/HomePage'));
 const SearchPage = React.lazy(() => import('./components/SearchPage/SearchPage'));
+const AboutIndex = React.lazy(() => import('./components/AboutPage/AboutIndex'));
 const StoreProfilePage = React.lazy(() => import('./components/StoreProfilePage/StoreProfilePageIndex'));
 const ShoppingCartPage = React.lazy(() => import('./components/ShoppingCartPage/ShoppingCartPage'));
 const ItemPageIndex = React.lazy(() => import('./components/ItemPage/ItemPageIndex'));
@@ -36,6 +37,7 @@ function App() {
                 <Route exact path="/search" render={() => <SearchPage />} />
                 <Route exact path="/shoppingcart" render={() => <ShoppingCartPage />} />
                 <Route exact path="/checkout" render={() => <CheckoutPageIndex />} />
+                <Route exact path="/about" render={() => <AboutIndex />} />
                 <Route exact path="/:storename" render={() => <StoreProfilePage />} />
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
               </Switch>
