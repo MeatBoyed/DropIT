@@ -1,0 +1,38 @@
+.informationCard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+
+  @include media('<=tablet') {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardTitle {
+    color: #666;
+    width: 25%;
+    @include media('<=tablet') {
+      width: 100%;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .cardText {
+    width: 80%;
+    @include media('<=tablet') {
+      width: 100%;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .changeText {
+    font-size: 12px;
+    color: $BreadcrumActiveColour;
+  }
+
+  .changeText:hover {
+    cursor: pointer;
+  }
+}

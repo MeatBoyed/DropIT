@@ -64,7 +64,7 @@ export const CheckoutPageIndex: React.FC = () => {
                             Return to Shipping
                           </p>
                         </div>
-                        <button className="continueBtn">Pay Now</button>
+                        <button className="continueBtn">Complete Order</button>
                       </React.Fragment>
                     );
                 }
