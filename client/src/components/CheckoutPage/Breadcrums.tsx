@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 
-import { CheckoutContext } from '../Utils/CheckoutContext';
 import { ReactComponent as BreadcrumArrow } from '../../images/BreadcrumArrow.svg';
+
+interface Props {
+  currentState: string;
+}
 
 const BreadcrumActiveColour = '#1990c6';
 
-export const Breadcrums: React.FC = () => {
-  const { currentState } = useContext(CheckoutContext);
-
+export const Breadcrums: React.FC<Props> = ({ currentState }) => {
   return (
     <div className="breadCrumsContaienr">
       <p className="breadCrum" style={{ color: BreadcrumActiveColour }}>

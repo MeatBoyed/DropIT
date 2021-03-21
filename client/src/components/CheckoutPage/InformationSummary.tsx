@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 
 interface Props {}
 
@@ -20,15 +17,6 @@ export const InformationSummary: React.FC<Props> = () => {
           <p className="cardText">12 Thomas Morris st. Walvis Bay, 1959, Namibia</p>
           <p className="changeText">Change</p>
         </div>
-      </div>
-      <div className="navigation">
-        <div className="returnContainer">
-          <DrownDownIcon className="icon" />
-          <Link to="/shoppingCart" className="returnText">
-            Return to Information
-          </Link>
-        </div>
-        <button className="continueBtn">Continue to Payment</button>
       </div>
     </section>
   );

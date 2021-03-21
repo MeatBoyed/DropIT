@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 
 export const Information: React.FC = () => {
   return (
@@ -54,16 +51,6 @@ export const Information: React.FC = () => {
           </div>
         </div>
       </form>
-
-      <div className="navigation">
-        <div className="returnContainer">
-          <DrownDownIcon className="icon" />
-          <Link to="/shoppingCart" className="returnText">
-            Return to Cart
-          </Link>
-        </div>
-        <button className="continueBtn">Continue to Shipping</button>
-      </div>
     </section>
   );
 };
