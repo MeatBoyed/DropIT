@@ -1,0 +1,89 @@
+#InformationSummarySectoin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+
+  @include media('<=tablet') {
+    width: 100%;
+  }
+
+  .top {
+    border-bottom: 1px solid #eee;
+  }
+
+  .shippingSummary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 0 1rem;
+
+    .contactContainer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1rem 0;
+
+      @include media('<=tablet') {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cardTitle {
+        color: #666;
+        width: 25%;
+        @include media('<=tablet') {
+          width: 100%;
+          margin-bottom: 0.5em;
+        }
+      }
+
+      .cardText {
+        width: 80%;
+        @include media('<=tablet') {
+          width: 100%;
+          margin-bottom: 0.5em;
+        }
+      }
+
+      .changeText {
+        font-size: 12px;
+        color: $BreadcrumActiveColour;
+      }
+
+      .changeText:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .paymentMethodContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 4em;
+
+    .paymentMethodOptions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 0 1rem;
+
+      .paymentMethod {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1rem 0;
+
+        #paymentMethodOption {
+          margin: 0 2em 0 0;
+        }
+      }
+    }
+  }
+}

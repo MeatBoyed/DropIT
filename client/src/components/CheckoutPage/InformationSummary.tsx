@@ -18,6 +18,24 @@ export const InformationSummary: React.FC<Props> = () => {
           <p className="changeText">Change</p>
         </div>
       </div>
+
+      <div className="paymentMethodContainer">
+        <p className="formTitle">Select Payment Method</p>
+        <div className="paymentMethodOptions">
+          <div className="paymentMethod top">
+            <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+            <p className="cardText">E - Wallet</p>
+          </div>
+          <div className="paymentMethod top">
+            <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+            <p className="cardText">Blue Wallet</p>
+          </div>
+          <div className="paymentMethod">
+            <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+            <p className="cardText">EFT</p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
