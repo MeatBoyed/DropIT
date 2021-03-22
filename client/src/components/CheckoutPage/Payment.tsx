@@ -18,7 +18,7 @@ export const Payment: React.FC = () => {
   };
 
   return (
-    <section id="PaymentSection" style={{ width: '85%' }}>
+    <section id="PaymentSection">
       <div className="orderSummaryContainer">
         <InformationCard cardTitle="Contact" cardText="johndoe@example.com" changeOption={true} />
         <InformationCard cardTitle="Ship To" cardText="12 Thomis Morris st, Walivs Bay, P.O BOX 1595" changeOption={true} />
