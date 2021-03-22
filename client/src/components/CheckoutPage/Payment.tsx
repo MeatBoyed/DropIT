@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ReactComponent as ClipboardIcon } from '../../images/ClipboardIcon.svg';
 import { InformationCard } from '../Utils/InformationCard';
 
 export const Payment: React.FC = () => {
+  const [copiedSucess, setCopiedSucess] = useState<boolean>(false);
+
+  const HandleCopyToClipboard = () => {
+    navigator.clipboard.writeText('Order Number: #55135 - Name: John Doe West');
+    setCopiedSucess(true);
+
+    const timer = setTimeout(() => {
+      console.log('timer running');
+      setCopiedSucess(false);
+    }, 20000);
+    return () => clearTimeout(timer);
+  };
+
   return (
     <section id="PaymentSection" style={{ width: '85%' }}>
       <div className="orderSummaryContainer">
@@ -33,9 +46,12 @@ export const Payment: React.FC = () => {
             </div>
           </div>
           <div className="messageTemplaiteContainer">
+            <p className="copySucess" style={{ display: copiedSucess ? '' : 'none' }}>
+              Copied to Clipboard!
+            </p>
             <div className="header">
               <p className="formTitle">Attachment Details</p>
-              <ClipboardIcon className="clipboardIcon" />
+              <ClipboardIcon className="clipboardIcon" onClick={() => HandleCopyToClipboard()} />
             </div>
             <div className="attachTemplateContainer">
               <InformationCard cardTitle="Order Number" cardText="# 55135" />
