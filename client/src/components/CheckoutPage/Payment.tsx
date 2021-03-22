@@ -1,18 +1,47 @@
 import React from 'react';
-import Alert from '../Utils/Alert';
+
+import { ReactComponent as ClipboardIcon } from '../../images/ClipboardIcon.svg';
+import { InformationCard } from '../Utils/InformationCard';
 
 export const Payment: React.FC = () => {
   return (
     <section id="PaymentSection" style={{ width: '85%' }}>
       <div className="orderSummaryContainer">
-        <h1>Here's your order summary</h1>
+        <InformationCard cardTitle="Contact" cardText="johndoe@example.com" changeOption={true} />
+        <InformationCard cardTitle="Ship To" cardText="12 Thomis Morris st, Walivs Bay, P.O BOX 1595" changeOption={true} />
+        <InformationCard cardTitle="Payment Method" cardText="eWallet" changeOption={true} />
       </div>
       <div className="PaymentContainer">
-        <div className="messageTemplate">
-          <h1>You must send this message</h1>
+        <div className="paymentDetailsContainer">
+          <p className="formTitle">Payment Details</p>
+          <p className="notice">
+            Orders will only be processed once <strong>Proof of Payment</strong> & <strong>Attachment Info</strong> are send
+            to Grabbler LLC.
+          </p>
+          <div className="paymentDetails">
+            <InformationCard cardTitle="Account Name" cardText="Grabbler LLC" />
+            <InformationCard cardTitle="Account Number" cardText="# 3338812" />
+            <InformationCard cardTitle="Total Price" cardText="$3318" />
+          </div>
         </div>
-        <div className="paymentMethod">
-          <h1>Here's what you must do</h1>
+        <div className="contactDetailsContainer">
+          <p className="formTitle">Attachment Info</p>
+          <div className="contactDetails">
+            <div className="contactMethodContainer">
+              <InformationCard cardTitle="Email" cardText="payments@grabbler.com" />
+              <InformationCard cardTitle="WhatsApp" cardText="+264 84 965 4884" />
+            </div>
+          </div>
+          <div className="messageTemplaiteContainer">
+            <div className="header">
+              <p className="formTitle">Attachment Details</p>
+              <ClipboardIcon className="clipboardIcon" />
+            </div>
+            <div className="attachTemplateContainer">
+              <InformationCard cardTitle="Order Number" cardText="# 55135" />
+              <InformationCard cardTitle="Name" cardText="John Does West" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,89 @@
+#PaymentSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+
+  @include media('<=tablet') {
+    width: 100%;
+  }
+
+  .orderSummaryContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 0 1rem;
+  }
+
+  .notice {
+    font-size: 13px;
+    margin-bottom: 2em;
+  }
+
+  .PaymentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3em;
+
+    .paymentDetailsContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .paymentDetails {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 0 1rem;
+      }
+    }
+
+    .contactDetailsContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 3em;
+
+      .contactDetails {
+        display: flex;
+        flex-direction: column;
+
+        .contactMethodContainer {
+          border: 1px solid #eee;
+          border-radius: 10px;
+          padding: 0 1rem;
+          margin-top: 0.5em;
+        }
+      }
+
+      .messageTemplaiteContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3em;
+
+        .header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .clipboardIcon {
+            width: 20px;
+          }
+
+          .clipboardIcon:hover {
+            cursor: pointer;
+          }
+        }
+
+        .attachTemplateContainer {
+          border: 1px solid #eee;
+          border-radius: 10px;
+          padding: 0 1rem;
+          margin-top: 0.5em;
+        }
+      }
+    }
+  }
+}

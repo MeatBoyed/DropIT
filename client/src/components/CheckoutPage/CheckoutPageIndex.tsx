@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 export const CheckoutPageIndex: React.FC = () => {
   // breadcrums colours variables in styles
-  const [currentState, setCurrentState] = useState<'Information' | 'InformationCheck' | 'Payment'>('InformationCheck');
+  const [currentState, setCurrentState] = useState<'Information' | 'InformationCheck' | 'Payment'>('Payment');
   const { shoppingCartLength } = useContext(ShoppingCartContext);
 
   return (
