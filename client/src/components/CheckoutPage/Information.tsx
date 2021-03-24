@@ -57,6 +57,7 @@ export const Information: React.FC<Props> = ({ onChange }) => {
               masks={{ na: '(..) ... ....' }}
               onChange={setPhoneNumber}
               inputProps={{ required: true }}
+              inputStyle={{ height: '3.2em', width: '100%' }}
             />
           </div>
         </div>
