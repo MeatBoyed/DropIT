@@ -19,19 +19,19 @@ export const Information: React.FC<Props> = ({ onChange }) => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [noNumber, setNoNumber] = useState<boolean>(false);
 
-  const { SaveUserInfo, userInfo } = useCheckout();
+  const { SaveUserInfo, userData } = useCheckout();
 
   useEffect(() => {
-    if (userInfo) {
-      setValue('email', userInfo?.email);
-      setValue('firstName', userInfo?.firstName);
-      setValue('lastName', userInfo?.lastName);
-      setValue('address1', userInfo?.address1);
-      setValue('address1', userInfo?.address1);
-      setValue('city', userInfo?.city);
-      setPhoneNumber(userInfo?.phoneNumber);
+    if (userData) {
+      setValue('email', userData.userInfo?.email);
+      setValue('firstName', userData.userInfo?.firstName);
+      setValue('lastName', userData.userInfo?.lastName);
+      setValue('address1', userData.userInfo?.address1);
+      setValue('address1', userData.userInfo?.address1);
+      setValue('city', userData.userInfo?.city);
+      setPhoneNumber(userData.userInfo?.phoneNumber);
     }
-  }, [userInfo]);
+  }, [userData]);
 
   const onSubmit = (data: FormData) => {
     let payload: UserInfo = {

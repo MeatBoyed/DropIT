@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 
 import { InformationCard } from '../Utils/InformationCard';
+import { useCheckout } from '../Utils/useCheckout';
 
 interface Props {
   onChange: (state: 'Information' | 'InformationCheck' | 'Payment') => void;
 }
 
+interface formData {
+  paymentMethod: 'eWallet' | 'blueWallet' | 'eft' | 'payToday' | 'easyWallet';
+}
+
 export const InformationSummary: React.FC<Props> = ({ onChange }) => {
+  const {} = useCheckout();
+  const { register, handleSubmit, setValue } = useForm();
+
+  const onSubmit = (data: formData) => {
+    console.log(data);
+  };
+
   return (
-    <React.Fragment>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <section id="InformationSummarySectoin">
         <p className="formTitle">Information Summary</p>
         <div className="shippingSummary">
@@ -22,23 +35,51 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
           <p className="formTitle">Select Payment Method</p>
           <div className="paymentMethodOptions">
             <div className="paymentMethod ">
-              <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="eWallet"
+                className="paymentMethodOption"
+                ref={register}
+                id="eWallet"
+              />
               <p className="cardText">eWallet</p>
             </div>
             <div className="paymentMethod ">
-              <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="blueWallet"
+                className="paymentMethodOption"
+                ref={register}
+                id="blueWallet"
+              />
               <p className="cardText">Blue Wallet</p>
             </div>
             <div className="paymentMethod">
-              <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+              <input type="radio" name="paymentMethod" value="eft" className="paymentMethodOption" ref={register} id="eft" />
               <p className="cardText">EFT</p>
             </div>
             <div className="paymentMethod">
-              <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="payToday"
+                className="paymentMethodOption"
+                ref={register}
+                id="payToday"
+              />
               <p className="cardText">PayToday</p>
             </div>
             <div className="paymentMethod bottom">
-              <input type="radio" name="paymentMethod" required id="paymentMethodOption" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="easyWallet"
+                className="paymentMethodOption"
+                ref={register}
+                id="easyWallet"
+              />
               <p className="cardText">EasyWallet</p>
             </div>
           </div>
@@ -51,10 +92,8 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
             Return to Information
           </p>
         </div>
-        <button className="continueBtn" onClick={() => onChange('Payment')}>
-          Continue to Payment
-        </button>
+        <button className="continueBtn">Continue to Payment</button>
       </div>
-    </React.Fragment>
+    </form>
   );
 };

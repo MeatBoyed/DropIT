@@ -87,3 +87,8 @@ export interface UserInfo {
   address2: string;
   city: string;
 }
+
+export interface UserData {
+  userInfo: UserInfo;
+  paymentMethod: 'eWallet' | 'blueWallet' | 'eft' | 'payToday' | 'easyWallet' | 'none';
+}
