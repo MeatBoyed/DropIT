@@ -12,7 +12,7 @@ import { Payment } from './Payment';
 
 export const CheckoutPageIndex: React.FC = () => {
   // breadcrums colours variables in styles
-  const [currentState, setCurrentState] = useState<'Information' | 'InformationCheck' | 'Payment'>('Information');
+  const [currentState, setCurrentState] = useState<'Information' | 'InformationCheck' | 'Payment'>('InformationCheck');
   const { shoppingCartLength } = useContext(ShoppingCartContext);
 
   const onChangeHandler = (state: 'Information' | 'InformationCheck' | 'Payment') => {
