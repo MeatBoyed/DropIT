@@ -17,7 +17,7 @@ export const Information: React.FC<Props> = ({ onChange }) => {
   const { register, handleSubmit, setValue } = useForm();
 
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [noNumber, setNoNumber] = useState<boolean>(true);
+  const [noNumber, setNoNumber] = useState<boolean>(false);
 
   const { SaveUserInfo, userInfo } = useCheckout();
 
@@ -34,10 +34,6 @@ export const Information: React.FC<Props> = ({ onChange }) => {
   }, [userInfo]);
 
   const onSubmit = (data: FormData) => {
-    if (!phoneNumber || phoneNumber.length < 12) return setNoNumber(true);
-
-    console.log(data.firstName);
-
     let payload: UserInfo = {
       email: data.email,
       phoneNumber: phoneNumber,
@@ -48,8 +44,13 @@ export const Information: React.FC<Props> = ({ onChange }) => {
       city: data.city,
     };
 
-    const saved = SaveUserInfo(payload);
-    if (saved) return onChange('InformationCheck');
+    if (phoneNumber.length < 12) {
+      return setNoNumber(true);
+    } else {
+      setNoNumber(false);
+      const saved = SaveUserInfo(payload);
+      if (saved) return onChange('InformationCheck');
+    }
   };
 
   return (
@@ -72,6 +73,7 @@ export const Information: React.FC<Props> = ({ onChange }) => {
               country={'na'}
               disableDropdown={true}
               masks={{ na: '(..) ... ....' }}
+              value={phoneNumber}
               onChange={setPhoneNumber}
               inputProps={{ required: true }}
               inputStyle={{ height: '3.2em', width: '100%' }}
