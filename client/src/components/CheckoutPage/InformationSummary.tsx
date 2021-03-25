@@ -15,8 +15,12 @@ interface formData {
 }
 
 export const InformationSummary: React.FC<Props> = ({ onChange }) => {
-  const {} = useCheckout();
+  const { userData } = useCheckout();
   const { register, handleSubmit, setValue } = useForm();
+
+  useEffect(() => {
+    setValue('paymentMethod', userData.paymentMethod);
+  }, [userData]);
 
   const onSubmit = (data: formData) => {
     console.log(data);
@@ -27,8 +31,8 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
       <section id="InformationSummarySectoin">
         <p className="formTitle">Information Summary</p>
         <div className="shippingSummary">
-          <InformationCard cardTitle="Contact" cardText="johndoe@example.com" />
-          <InformationCard cardTitle="Ship To" cardText="12 Thomis Morris st, Walivs Bay, P.O BOX 1595" />
+          <InformationCard cardTitle="Contact" cardText={userData.userInfo.email} />
+          <InformationCard cardTitle="Ship To" cardText={userData.userInfo.address1} />
         </div>
 
         <div className="paymentMethodContainer">
