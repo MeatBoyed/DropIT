@@ -88,7 +88,9 @@ export interface UserInfo {
   city: string;
 }
 
+export type PaymentMethod = 'eWallet' | 'blueWallet' | 'eft' | 'payToday' | 'easyWallet' | 'none';
+
 export interface UserData {
   userInfo: UserInfo;
-  paymentMethod: 'eWallet' | 'blueWallet' | 'eft' | 'payToday' | 'easyWallet' | 'none';
+  paymentMethod: PaymentMethod;
 }
