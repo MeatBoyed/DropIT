@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
-import { UserInfo } from '../Utils/Interfaces';
+import { FormData, UserInfo } from '../Utils/Interfaces';
+import { Link } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
-import { Link } from 'react-router-dom';
 import { useCheckout } from '../Utils/useCheckout';
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 
@@ -14,20 +13,11 @@ interface Props {
   onChange: (state: 'Information' | 'InformationCheck' | 'Payment') => void;
 }
 
-interface FormData {
-  email: string;
-  firstName: string;
-  lastName: string;
-  address1: string;
-  address2: string;
-  city: string;
-}
-
 export const Information: React.FC<Props> = ({ onChange }) => {
-  const { register, handleSubmit, errors, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [noNumber, setNoNumber] = useState<boolean>(false);
+  const [noNumber, setNoNumber] = useState<boolean>(true);
 
   const { SaveUserInfo, userInfo } = useCheckout();
 
@@ -78,7 +68,6 @@ export const Information: React.FC<Props> = ({ onChange }) => {
               required
               ref={register}
             />
-            {noNumber && <p>Please enter a number</p>}
             <PhoneInput
               country={'na'}
               disableDropdown={true}
@@ -88,6 +77,7 @@ export const Information: React.FC<Props> = ({ onChange }) => {
               inputStyle={{ height: '3.2em', width: '100%' }}
             />
           </div>
+          {noNumber && <p className="phoneNumberError">Please enter a valid Phone Number</p>}
         </div>
         <div className="shippingContainer">
           <p className="formTitle">Shipping Address</p>

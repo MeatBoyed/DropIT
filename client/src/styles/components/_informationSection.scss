@@ -44,6 +44,14 @@
     }
   }
 
+  .phoneNumberError {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    color: #e60a20;
+  }
+
   .contactContainer {
     display: flex;
     flex-direction: column;

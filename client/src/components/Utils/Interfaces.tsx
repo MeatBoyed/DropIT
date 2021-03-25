@@ -69,6 +69,15 @@ export interface Payload {
   operation: number;
 }
 
+export interface FormData {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address1: string;
+  address2: string;
+  city: string;
+}
+
 export interface UserInfo {
   email: string;
   phoneNumber: string;
