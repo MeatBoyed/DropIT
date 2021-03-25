@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { UserInfo } from '../Utils/Interfaces';
+
 import { useForm } from 'react-hook-form';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 import { Link } from 'react-router-dom';
-
+import { useCheckout } from '../Utils/useCheckout';
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 
 interface Props {
@@ -21,17 +24,42 @@ interface FormData {
 }
 
 export const Information: React.FC<Props> = ({ onChange }) => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setValue } = useForm();
 
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [noNumber, setNoNumber] = useState<boolean>(false);
 
-  const onSubmit = (data: FormData) => {
-    if (!phoneNumber) {
-      setNoNumber(true);
-      return console.log('No Phone number inputted');
+  const { SaveUserInfo, userInfo } = useCheckout();
+
+  useEffect(() => {
+    if (userInfo) {
+      setValue('email', userInfo?.email);
+      setValue('firstName', userInfo?.firstName);
+      setValue('lastName', userInfo?.lastName);
+      setValue('address1', userInfo?.address1);
+      setValue('address1', userInfo?.address1);
+      setValue('city', userInfo?.city);
+      setPhoneNumber(userInfo?.phoneNumber);
     }
-    return console.log(data, phoneNumber);
+  }, [userInfo]);
+
+  const onSubmit = (data: FormData) => {
+    if (!phoneNumber || phoneNumber.length < 12) return setNoNumber(true);
+
+    console.log(data.firstName);
+
+    let payload: UserInfo = {
+      email: data.email,
+      phoneNumber: phoneNumber,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      address1: data.address1,
+      address2: data.address2,
+      city: data.city,
+    };
+
+    const saved = SaveUserInfo(payload);
+    if (saved) return onChange('InformationCheck');
   };
 
   return (
@@ -67,14 +95,22 @@ export const Information: React.FC<Props> = ({ onChange }) => {
             <div className="inlineInputContainer">
               <input
                 type="text"
-                name="firstname"
-                id="firstname"
+                name="firstName"
+                id="firstName"
                 placeholder="First Name"
                 required
                 className="formInput firstInput"
                 ref={register}
               />
-              <input type="text" name="lastname" id="lastname" placeholder="Last Name" required className="formInput" />
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Last Name"
+                required
+                className="formInput "
+                ref={register}
+              />
             </div>
             <div className="addressContainer">
               <input
