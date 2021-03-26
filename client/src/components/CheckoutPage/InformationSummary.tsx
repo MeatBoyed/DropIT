@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { PaymentMethod } from '../Utils/Interfaces';
 
 import { ReactComponent as DrownDownIcon } from '../../images/DrownDownIcon.svg';
 
@@ -10,20 +11,21 @@ interface Props {
   onChange: (state: 'Information' | 'InformationCheck' | 'Payment') => void;
 }
 
-interface formData {
-  paymentMethod: 'eWallet' | 'blueWallet' | 'eft' | 'payToday' | 'easyWallet';
+interface FormData {
+  paymentMethod: PaymentMethod;
 }
 
 export const InformationSummary: React.FC<Props> = ({ onChange }) => {
-  const { userData } = useCheckout();
+  const { userData, SavePaymentMethod } = useCheckout();
   const { register, handleSubmit, setValue } = useForm();
 
   useEffect(() => {
     setValue('paymentMethod', userData.paymentMethod);
   }, [userData]);
 
-  const onSubmit = (data: formData) => {
-    console.log(data);
+  const onSubmit = (data: FormData) => {
+    let success = SavePaymentMethod(data.paymentMethod);
+    if (success) return onChange('Payment');
   };
 
   return (
@@ -44,7 +46,9 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
                 name="paymentMethod"
                 value="eWallet"
                 className="paymentMethodOption"
-                ref={register}
+                ref={register({
+                  required: true,
+                })}
                 id="eWallet"
               />
               <p className="cardText">eWallet</p>
@@ -55,13 +59,26 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
                 name="paymentMethod"
                 value="blueWallet"
                 className="paymentMethodOption"
-                ref={register}
+                required
+                ref={register({
+                  required: true,
+                })}
                 id="blueWallet"
               />
               <p className="cardText">Blue Wallet</p>
             </div>
             <div className="paymentMethod">
-              <input type="radio" name="paymentMethod" value="eft" className="paymentMethodOption" ref={register} id="eft" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="eft"
+                className="paymentMethodOption"
+                required
+                ref={register({
+                  required: true,
+                })}
+                id="eft"
+              />
               <p className="cardText">EFT</p>
             </div>
             <div className="paymentMethod">
@@ -70,7 +87,10 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
                 name="paymentMethod"
                 value="payToday"
                 className="paymentMethodOption"
-                ref={register}
+                required
+                ref={register({
+                  required: true,
+                })}
                 id="payToday"
               />
               <p className="cardText">PayToday</p>
@@ -81,7 +101,10 @@ export const InformationSummary: React.FC<Props> = ({ onChange }) => {
                 name="paymentMethod"
                 value="easyWallet"
                 className="paymentMethodOption"
-                ref={register}
+                required
+                ref={register({
+                  required: true,
+                })}
                 id="easyWallet"
               />
               <p className="cardText">EasyWallet</p>
