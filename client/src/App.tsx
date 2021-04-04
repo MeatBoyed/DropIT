@@ -41,8 +41,8 @@ function App() {
                 <Route exact path="/:storename/:itemid" render={() => <ItemPageIndex />} />
               </Switch>
             </div>
+            <FooterBar />
           </ShoppingCartContextProvider>
-          <FooterBar />
         </section>
       </React.Suspense>
     </BrowserRouter>

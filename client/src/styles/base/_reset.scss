@@ -37,6 +37,8 @@ p {
   justify-content: center;
   align-items: center;
 
+  min-height: 100%;
+
   #PageContainer {
     display: flex;
     flex-direction: row;
@@ -93,8 +95,6 @@ p {
     align-items: center;
   }
   margin-right: 2rem;
-
-
 
   .formSelector {
     @include formSelector();
