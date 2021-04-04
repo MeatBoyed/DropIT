@@ -7,6 +7,7 @@ import { ShoppingCartContextProvider } from './components/ShoppingCartContext';
 
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { Navbar } from './components/NavigationBars/Navbar';
+import { FooterBar } from './components/FooterBar';
 import SideBar from './components/NavigationBars/SideBar';
 import { CheckoutPageIndex } from './components/CheckoutPage/CheckoutPageIndex';
 
@@ -41,6 +42,7 @@ function App() {
               </Switch>
             </div>
           </ShoppingCartContextProvider>
+          <FooterBar />
         </section>
       </React.Suspense>
     </BrowserRouter>
