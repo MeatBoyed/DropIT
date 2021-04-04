@@ -36,7 +36,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px;
 
     @include media('<=tablet') {
       display: none;
@@ -47,10 +46,18 @@
     }
     .shoppingCartIcon {
       margin-right: 10px;
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
 
     .checkoutButton {
       margin-left: 10px;
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
