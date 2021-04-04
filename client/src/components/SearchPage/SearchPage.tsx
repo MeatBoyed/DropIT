@@ -49,9 +49,9 @@ export const SearchPage: React.FC = () => {
   }, [payload.operation, search]);
 
   return (
-    <section id="ShoppingSection">
+    <section id="ResultsSection">
       <FilterBar />
-      <div className="itemsContainer">
+      <div className="productsContainer">
         {searchResult.map((product, index) => {
           if (searchResult.length === index + 1) {
             return (

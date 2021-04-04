@@ -1,0 +1,24 @@
+#ResultsSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  border-top: 1px solid #eee;
+
+  @include media('<=tablet') {
+    width: 90%;
+  }
+
+  .productsContainer {
+    display: grid;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 5.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    margin-top: 2rem;
+    width: 100%;
+
+    @include media('<=tablet') {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+  }
+}

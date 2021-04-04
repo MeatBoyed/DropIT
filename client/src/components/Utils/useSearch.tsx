@@ -16,7 +16,7 @@ export const useSearch = (payload: { query: string; operation: number }, pageNum
 
     axios({
       method: 'GET',
-      url: `http://localhost:5000/search/${payload.query}`,
+      url: `https://dropitserver.herokuapp.com/search/${payload.query}`,
       params: { operation: payload.operation, page: pageNumber },
     })
       .then((response) => {
