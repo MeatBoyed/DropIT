@@ -11,10 +11,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 353px;
     height: 35px;
     border-radius: 7px;
     background: $CategoryHeaderBackgroundColour;
+
+    @include media('<=tablet') {
+      width: 100%;
+    }
 
     .headerText {
       font-size: 25px;
