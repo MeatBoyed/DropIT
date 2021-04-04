@@ -4,6 +4,8 @@ import { Payload } from '../Utils/Interfaces';
 import { Link, useLocation } from 'react-router-dom';
 import { LoadingSpinner } from '../LoadingSpinner';
 
+import { FilterBar } from './FilterBar';
+
 // Import Components
 const ItemCard = React.lazy(() => import('../ItemCard'));
 
@@ -48,6 +50,7 @@ export const SearchPage: React.FC = () => {
 
   return (
     <section id="ShoppingSection">
+      <FilterBar />
       <div className="itemsContainer">
         {searchResult.map((product, index) => {
           if (searchResult.length === index + 1) {
