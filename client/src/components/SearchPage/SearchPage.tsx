@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../LoadingSpinner';
 
 import { FilterBar } from './FilterBar';
 import { PaginationController } from './PaginationController';
+import { Alert } from '../Utils/Alert';
 
 // Import Components
 const ItemCard = React.lazy(() => import('../ItemCard'));
@@ -52,6 +53,7 @@ export const SearchPage: React.FC = () => {
   return (
     <section id="ResultsSection">
       <FilterBar />
+      <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div className="productsContainer">
         {searchResult.map((product, index) => {
           if (searchResult.length === index + 1) {
@@ -83,9 +85,8 @@ export const SearchPage: React.FC = () => {
           }
         })}
       </div>
+      <React.Fragment>{error.isError && <Alert message={error.message} returnHome={false} />}</React.Fragment>
       <PaginationController />
-      <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
-      <div>{error.isError && <h3>{error.message}</h3>}</div>
     </section>
   );
 };
