@@ -1,0 +1,68 @@
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 4em;
+  margin-bottom: 4em;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 353px;
+    height: 35px;
+    border-radius: 7px;
+    background: $CategoryHeaderBackgroundColour;
+
+    @include media('<=tablet') {
+      width: 100%;
+    }
+
+    .headerText {
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 38px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: $CategoryHeaderTextColour;
+    }
+  }
+
+  .productsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(210px, 1fr));
+    gap: 2em;
+    width: 100%;
+    margin-top: 3em;
+
+    @include media('<desktop') {
+      grid-template-columns: repeat(2, minmax(210px, 1fr));
+    }
+
+    @include media('<=768') {
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    }
+
+    @include media('<tablet') {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+  }
+
+  .viewMoreBtn {
+    background: #f7fff7;
+    width: 135px;
+    height: 34px;
+    border: 0.5px solid #000000;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 3em;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: $TextColour;
+  }
+}

@@ -3,9 +3,11 @@ import { usePaginate } from '../Utils/usePaginate';
 import { Link } from 'react-router-dom';
 
 // Import Components
-import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { Alert } from '../Utils/Alert';
+import { CategorySection } from './CategorySection';
+
+import TempBannerImage from '../../images/profileBanner.jpg';
 
 export const HomePage: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -33,36 +35,10 @@ export const HomePage: React.FC = () => {
 
   return (
     <section id="ShoppingSection">
-      <div className="itemsContainer">
-        {products.map((product, index) => {
-          if (products.length === index + 1) {
-            return (
-              <div key={index} ref={lastItemElementRef} className="itemCard">
-                <Link to={`/${product.vendor}/${product._id}`}>
-                  <img src={product.thumbnails.mainThumbnail} alt="" className="itemImage" />
-                </Link>
-                <div className="itemInfo">
-                  <Link to={`/${product.vendor}/${product._id}`}>
-                    <p className="itemTitle">{product.title}</p>
-                  </Link>
-                  <Link to={`/${product.vendor}/${product._id}`}>
-                    <p className="itemPrice">{product.price}</p>
-                  </Link>
-                </div>
-              </div>
-            );
-          } else {
-            return (
-              <ItemCard
-                key={index}
-                url={`/${product.vendor}/${product._id}`}
-                title={product.title}
-                price={product.price}
-                mainImage={product.thumbnails.mainThumbnail}
-              />
-            );
-          }
-        })}
+      <div className="mainSection">
+        <img src={TempBannerImage} className="bannerImage" alt="" />
+        <CategorySection headerText="Top Picks" products={products} />
+        <CategorySection headerText="Best This Month" products={products} />
       </div>
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div className="shoppingSectionError">{error.isError && <Alert message={error.message} returnHome={false} />}</div>

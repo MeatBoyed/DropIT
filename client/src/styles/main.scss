@@ -11,6 +11,7 @@
 @import './layout/navbar';
 @import './layout/sidenavbar';
 @import './layout/navbardropdown';
+@import './layout/footer';
 
 // Components
 @import './components/itemcard';
@@ -18,6 +19,9 @@
 @import './components/spinner';
 @import './components/_alert';
 @import './components/ShoppingCartProductCard';
+@import './components/categorySection';
+@import './components/filterbar';
+@import './components/paginationController';
 
 // Pages
 @import './pages/home';
@@ -25,3 +29,4 @@
 @import './pages/_clientProfile.scss';
 @import './pages/shoppingcart';
 @import './pages/checkout';
+@import './pages/results';

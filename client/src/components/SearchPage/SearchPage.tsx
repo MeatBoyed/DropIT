@@ -4,6 +4,9 @@ import { Payload } from '../Utils/Interfaces';
 import { Link, useLocation } from 'react-router-dom';
 import { LoadingSpinner } from '../LoadingSpinner';
 
+import { FilterBar } from './FilterBar';
+import { PaginationController } from './PaginationController';
+
 // Import Components
 const ItemCard = React.lazy(() => import('../ItemCard'));
 
@@ -47,8 +50,9 @@ export const SearchPage: React.FC = () => {
   }, [payload.operation, search]);
 
   return (
-    <section id="ShoppingSection">
-      <div className="itemsContainer">
+    <section id="ResultsSection">
+      <FilterBar />
+      <div className="productsContainer">
         {searchResult.map((product, index) => {
           if (searchResult.length === index + 1) {
             return (
@@ -79,6 +83,7 @@ export const SearchPage: React.FC = () => {
           }
         })}
       </div>
+      <PaginationController />
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div>{error.isError && <h3>{error.message}</h3>}</div>
     </section>
