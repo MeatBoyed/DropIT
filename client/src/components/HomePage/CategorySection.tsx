@@ -1,21 +1,25 @@
 import React from 'react';
 
 import { ItemCard } from '../ItemCard';
-import { ProductCardModel } from '../Utils/Interfaces';
+import { LoadingSpinner } from '../LoadingSpinner';
+import { Alert } from '../Utils/Alert';
+import { useSearch } from '../Utils/useSearch';
 
 interface Props {
+  payload: { query: string; operation: 0 | 1 };
   headerText: string;
-  products: ProductCardModel[];
 }
 
-export const CategorySection: React.FC<Props> = ({ headerText, products }) => {
+export const CategorySection: React.FC<Props> = ({ payload, headerText }) => {
+  const { searchResult, loading, error } = useSearch(payload, 1);
+
   return (
     <div className="categorySection">
       <div className="header">
         <p className="headerText">{headerText}</p>
       </div>
       <div className="productsContainer">
-        {products.map((product, index) => {
+        {searchResult.map((product, index) => {
           if (index < 3) {
             return (
               <ItemCard
@@ -27,8 +31,11 @@ export const CategorySection: React.FC<Props> = ({ headerText, products }) => {
               />
             );
           }
+          return null;
         })}
       </div>
+      <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
+      <div className="shoppingSectionError">{error.isError && <Alert message={error.message} returnHome={false} />}</div>
       <button className="viewMoreBtn">View More</button>
     </div>
   );
