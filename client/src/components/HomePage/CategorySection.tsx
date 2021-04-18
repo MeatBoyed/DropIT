@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ItemCard } from '../ItemCard';
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -36,7 +37,9 @@ export const CategorySection: React.FC<Props> = ({ payload, headerText }) => {
       </div>
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div className="shoppingSectionError">{error.isError && <Alert message={error.message} returnHome={false} />}</div>
-      <button className="viewMoreBtn">View More</button>
+      <Link to={`/search?f=${payload.query}`}>
+        <button className="viewMoreBtn">View More</button>
+      </Link>
     </div>
   );
 };
