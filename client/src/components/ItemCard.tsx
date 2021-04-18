@@ -26,7 +26,9 @@ export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
           <p className="itemPrice">${price}</p>
         </Link>
       </div>
-      <button className="addToCart">Add To Cart</button>
+      <Link to={url}>
+        <button className="addToCart">Add To Cart</button>
+      </Link>
     </div>
   );
 };
