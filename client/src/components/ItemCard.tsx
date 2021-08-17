@@ -12,6 +12,7 @@ interface Props {
 }
 
 export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
+  // eslint-disable-next-line
   const [image, setImage] = useState<string>(thumbnail);
   return (
     <div className="itemCard">

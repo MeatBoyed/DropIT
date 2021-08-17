@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { usePaginate } from '../Utils/usePaginate';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // Import Components
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -15,6 +15,7 @@ export const HomePage: React.FC = () => {
   const { loading, error, products, hasMore } = usePaginate(pageNumber);
 
   const observer = useRef<IntersectionObserver>();
+  // eslint-disable-next-line
   const lastItemElementRef = useCallback(
     // Node relates to the last element that is rendered (last document)
     (node) => {

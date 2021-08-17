@@ -27,6 +27,8 @@ export const CategorySection: React.FC<Props> = ({ headerText, products }) => {
               />
             );
           }
+          // Fix return value
+          return false;
         })}
       </div>
       <button className="viewMoreBtn">View More</button>
