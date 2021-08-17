@@ -37,9 +37,11 @@ export const CategorySection: React.FC<Props> = ({ payload, headerText }) => {
       </div>
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div className="shoppingSectionError">{error.isError && <Alert message={error.message} returnHome={false} />}</div>
-      <Link to={`/search?f=${payload.query}`}>
-        <button className="viewMoreBtn">View More</button>
-      </Link>
+      {error.isError ? null : (
+        <Link to={`/search?f=${payload.query}`}>
+          <button className="viewMoreBtn">View More</button>
+        </Link>
+      )}
     </div>
   );
 };
