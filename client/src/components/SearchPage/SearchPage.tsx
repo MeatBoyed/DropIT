@@ -8,6 +8,9 @@ import { FilterBar } from './FilterBar';
 import { PaginationController } from './PaginationController';
 import { Alert } from '../Utils/Alert';
 
+// Import temp Loading image
+import thumbnail from '../../images/thumbnail.jpg';
+
 // Import Components
 const ItemCard = React.lazy(() => import('../ItemCard'));
 
@@ -57,19 +60,24 @@ export const SearchPage: React.FC = () => {
       <div className="productsContainer">
         {searchResult.map((product, index) => {
           if (searchResult.length === index + 1) {
+            let url = `/${product.vendor}/${product._id}`;
+
             return (
               <div key={index} ref={lastItemElementRef} className="itemCard">
-                <Link to={`/${product.vendor}/${product._id}`}>
-                  <img src={product.thumbnails.mainThumbnail} alt="" className="itemImage" />
+                <Link to={url}>
+                  <img src={thumbnail} alt="" className="itemImage" />
                 </Link>
                 <div className="itemInfo">
-                  <Link to={`/${product.vendor}/${product._id}`}>
+                  <Link to={url}>
                     <p className="itemTitle">{product.title}</p>
                   </Link>
-                  <Link to={`/${product.vendor}/${product._id}`}>
-                    <p className="itemPrice">{product.price}</p>
+                  <Link to={url}>
+                    <p className="itemPrice">${product.price}</p>
                   </Link>
                 </div>
+                <Link to={url} className="buttonContainer">
+                  <button className="addToCart">Add To Cart</button>
+                </Link>
               </div>
             );
           } else {
