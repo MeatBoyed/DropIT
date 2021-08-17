@@ -39,12 +39,20 @@
   .addToCart {
     height: 31px;
     width: 175px;
-    border-radius: 25px;
-    background: $ProductCardAddToButtonColour;
-    border: 0;
-    color: #fff;
+    border: 1px solid $ButtonColour;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    color: $ButtonColour;
+    // border-radius: 25px;
+    // background: $ProductCardAddToButtonColour;
+    // border: 0;
+    // color: #fff;
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
+
+    @include media('<=phone') {
+      width: 140px;
+    }
   }
 }
