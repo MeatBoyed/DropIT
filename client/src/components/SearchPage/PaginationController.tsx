@@ -43,10 +43,8 @@ export const PaginationController: React.FC<Props> = () => {
       <div className="buttonsContainer">
         <button className="btn">
           <LeftArrow />
-          <p className="text">Previous</p>
         </button>
         <button className="btn next">
-          <p className="text">Next</p>
           <LeftArrow />
         </button>
       </div>

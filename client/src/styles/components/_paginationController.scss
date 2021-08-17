@@ -21,6 +21,7 @@
       font-weight: 600;
       line-height: 24px;
       margin-right: 30px;
+      text-decoration: underline;
 
       @include media('<=tablet') {
         margin-right: 10px;
@@ -34,22 +35,16 @@
     align-items: center;
     margin-top: 1em;
 
-    .btn {
+    button {
+      @include Button();
       display: flex;
       justify-content: center;
       align-items: center;
       height: 30px;
-      width: 102px;
-      background: #f7fff7;
-      border: 0.5px solid #000000;
-      border-radius: 4px;
+    }
 
-      .text {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 23px;
-        letter-spacing: 0em;
-      }
+    button:hover {
+      @include ButtonHover($ButtonColour, $DefaultBackgroundColour);
     }
 
     .next {
