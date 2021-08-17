@@ -52,17 +52,9 @@
   }
 
   .viewMoreBtn {
-    background: #f7fff7;
-    width: 135px;
-    height: 34px;
-    border: 0.5px solid #000000;
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin-top: 3em;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: $TextColour;
+    @include Button();
+    background-color: #007bff;
+    color: #fff;
+    margin-bottom: 1rem;
   }
 }
