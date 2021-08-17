@@ -9,9 +9,10 @@ interface Props {
   url: string;
   price: number;
   mainImage: string;
+  isOnResult?: boolean;
 }
 
-export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
+export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage, isOnResult }) => {
   const [image, setImage] = useState<string>(thumbnail);
   return (
     <div className="itemCard">
@@ -26,9 +27,11 @@ export const ItemCard: React.FC<Props> = ({ url, title, price, mainImage }) => {
           <p className="itemPrice">${price}</p>
         </Link>
       </div>
-      <Link to={url} className="buttonContainer">
-        <button className="addToCart">Add To Cart</button>
-      </Link>
+      {isOnResult ? null : (
+        <Link to={url} className="buttonContainer">
+          <button className="addToCart">Add To Cart</button>
+        </Link>
+      )}
     </div>
   );
 };

@@ -75,9 +75,6 @@ export const SearchPage: React.FC = () => {
                     <p className="itemPrice">${product.price}</p>
                   </Link>
                 </div>
-                <Link to={url} className="buttonContainer">
-                  <button className="addToCart">Add To Cart</button>
-                </Link>
               </div>
             );
           } else {
@@ -88,6 +85,7 @@ export const SearchPage: React.FC = () => {
                 title={product.title}
                 price={product.price}
                 mainImage={product.thumbnails.mainThumbnail}
+                isOnResult={true}
               />
             );
           }
