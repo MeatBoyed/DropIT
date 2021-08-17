@@ -40,23 +40,19 @@
     }
   }
 
-  .addToCart {
-    height: 31px;
-    width: 175px;
-    border: 1px solid $ButtonColour;
-    border-radius: 0.25rem;
-    background-color: transparent;
-    color: $ButtonColour;
-    // border-radius: 25px;
-    // background: $ProductCardAddToButtonColour;
-    // border: 0;
-    // color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
+  .buttonContainer {
+    width: 50%;
 
-    @include media('<=phone') {
-      width: 140px;
+    @include media('<=tablet') {
+      width: 100%;
+    }
+
+    button {
+      @include Button();
+    }
+
+    button:hover {
+      @include ButtonHover($ButtonColour, $DefaultBackgroundColour);
     }
   }
 }
