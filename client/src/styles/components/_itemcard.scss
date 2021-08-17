@@ -30,6 +30,10 @@
     margin-top: 10px;
     margin-bottom: 20px;
 
+    @include media('>=tablet') {
+      width: 300px;
+    }
+
     @include media('<=phone') {
       align-self: center;
       align-items: center;
