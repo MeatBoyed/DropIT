@@ -5,25 +5,25 @@
   align-items: center;
   margin-top: 1em;
 
-  .dropDown {
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-right: 1em;
+  }
+
+  .formSelector {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: $FilterbarColour;
     height: 30px;
     width: 110px;
     margin-right: 2em;
-
-    .title {
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 24px;
-      letter-spacing: 0em;
-      text-align: center;
-    }
   }
 
-  .dropDown:hover {
-    cursor: pointer;
+  .formSelectContainer {
+    margin-right: 0;
   }
 }
