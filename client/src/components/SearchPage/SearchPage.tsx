@@ -9,7 +9,10 @@ import { PaginationController } from './PaginationController';
 import { Alert } from '../Utils/Alert';
 
 // Import temp Loading image
-import thumbnail from '../../images/thumbnail.jpg';
+// import thumbnail from '../../images/thumbnail.jpg';
+
+// Importing dummy data
+import dummyData from '../../MOCK_DATA.json';
 
 // Import Components
 const ItemCard = React.lazy(() => import('../ItemCard'));
@@ -20,7 +23,9 @@ export const SearchPage: React.FC = () => {
   const [payload, setPayload] = useState<Payload>({ query: '', operation: 0 });
   const { search } = useLocation();
 
+  // eslint-disable-next-line
   const { loading, error, searchResult, hasMore } = useSearch(payload, pageNumber);
+  let results = dummyData;
 
   const observer = useRef<IntersectionObserver>();
   const lastItemElementRef = useCallback(
@@ -55,17 +60,21 @@ export const SearchPage: React.FC = () => {
 
   return (
     <section id="ResultsSection">
+      <Alert
+        message={'Product Links are dead for data storage reasons. Please visit the Home Page to view an available Product'}
+        returnHome={true}
+      />
       <FilterBar />
       <div className="loadingSpinner">{loading && <LoadingSpinner />}</div>
       <div className="productsContainer">
-        {searchResult.map((product, index) => {
-          if (searchResult.length === index + 1) {
+        {results.map((product, index) => {
+          if (results.length === index + 1) {
             let url = `/${product.vendor}/${product._id}`;
 
             return (
               <div key={index} ref={lastItemElementRef} className="itemCard">
                 <Link to={url}>
-                  <img src={thumbnail} alt="" className="itemImage" />
+                  <img src={product.mainThumbnail} alt="" className="itemImage" />
                 </Link>
                 <div className="itemInfo">
                   <Link to={url}>
@@ -84,7 +93,7 @@ export const SearchPage: React.FC = () => {
                 url={`/${product.vendor}/${product._id}`}
                 title={product.title}
                 price={product.price}
-                mainImage={product.thumbnails.mainThumbnail}
+                mainImage={product.mainThumbnail}
                 isOnResult={true}
               />
             );
