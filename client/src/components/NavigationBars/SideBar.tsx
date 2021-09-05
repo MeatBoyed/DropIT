@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useOnCheckout } from '../Utils/useOnCheckout';
 
@@ -10,14 +11,14 @@ const SideBar: React.FC = () => {
       {/* Optional Logo */}
       <ul className="linksContainer">
         <li className="link">
-          <a className="tag" href="/search?f=Clothing">
+          <Link className="tag" to="/search?f=Clothing">
             Clothes
-          </a>
+          </Link>
         </li>
         <li className="link">
-          <a className="tag" href="/search?f=Accessories">
+          <Link className="tag" to="/search?f=Accessories">
             Accessories
-          </a>
+          </Link>
         </li>
       </ul>
     </section>
